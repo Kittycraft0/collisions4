@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/user2/vscodeprojects/collisions3/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/thefirsttry.dir/main.cpp.o -c /home/user2/vscodeprojects/collisions3/main.cpp",
+  "file": "/home/user2/vscodeprojects/collisions3/main.cpp"
+}
+]

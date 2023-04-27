@@ -1,0 +1,13 @@
+4/20/2023
+wow day
+birthday in 5 days
+turning 18 niceee
+
+TODO:
+- make it work
+but what is wrong? that is the big, large, magnificient question that yearns to be answered...
+- add BOUNDARY WALLS
+- implement PROPER COLLISIONS
+- fix the collisions
+- add/remove gravity - experiment with gravity???
+- experiment with masses

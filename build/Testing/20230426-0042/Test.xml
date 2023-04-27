@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Linux-g++"
+	BuildStamp="20230426-0042-Experimental"
+	Name="c40-05-theubuntucomputer"
+	Generator="ctest-3.19.4268486-MSVC_2"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="11.3.0"
+	OSName="Linux"
+	Hostname="c40-05-theubuntucomputer"
+	OSRelease="5.19.0-38-generic"
+	OSVersion="#39~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 17 21:16:15 UTC 2"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="22"
+	ModelID="48"
+	ProcessorCacheSize="2048"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="14943"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="1996.24"
+	>
+	<Testing>
+		<StartDateTime>Apr 25 19:42 CDT</StartDateTime>
+		<StartTestTime>1682469778</StartTestTime>
+		<TestList/>
+		<EndDateTime>Apr 25 19:42 CDT</EndDateTime>
+		<EndTestTime>1682469778</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
