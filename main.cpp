@@ -202,7 +202,7 @@ int main()
                     forces[j]-=impulse;
                 }
             }
-//gagh
+//gaghaaaa.h.
             // wall collisions -4/19/2023
             Obj oi=orbs[i];
             sf::Vector2f oip=oi.model.getPosition();
