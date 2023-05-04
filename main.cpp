@@ -7,6 +7,7 @@
 #include <list>
 #include <random>
 #include <cmath>
+#include "src/math/invsqrt.h"
 
 //tutorialspoint 3/14/2023
 float fastInvSqrt(float n) {
@@ -29,7 +30,9 @@ struct Obj{
 
 int main()
 {
-    //const double G = 6.67430e-11; // gravitational constant in m^3 kg^-1 s^-2
+    // the normal G
+    // const double G = 6.67430e-11; // gravitational constant in m^3 kg^-1 s^-2
+    // G is arbitrary and can be whatever you want - constants are funny like that
     const double G=1;
     // the coeffecient of restitution!
     float restitution=1;
@@ -37,14 +40,13 @@ int main()
     // wall sizes
     std::vector<int> walls={0,0,800,500};
 
+    // 5/4/2023
+    // window size
+    std::vector<int> windowSize={800,800};
+
     // Initialize the window
-    sf::RenderWindow window(sf::VideoMode(walls[2], walls[3]), "SFML works!", sf::Style::Default);
-    //sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Window", sf::Style::Default);
-
-
-    //std::vector<sf::RectangleShape> orbs;
-    //std::vector<sf::Vector2f> velocities;
-
+    sf::RenderWindow window(sf::VideoMode(windowSize[0], windowSize[1]), "Collisions \"4\"!", sf::Style::Default);
+    
     // seconds multiplier, such that this many simulated seconds pass every second
     //currently set to a day -3/14/2023
     //now a week

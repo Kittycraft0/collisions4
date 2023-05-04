@@ -11,3 +11,7 @@ but what is wrong? that is the big, large, magnificient question that yearns to 
 - fix the collisions
 - add/remove gravity - experiment with gravity???
 - experiment with masses
+
+5/4/2023
+It has come to my attention that making all of the header files first may actually be a good idea!
+I can then write all of the code afterwards. Great for planning ahead, I guess!
