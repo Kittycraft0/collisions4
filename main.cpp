@@ -29,8 +29,8 @@ struct Obj{
 
 int main()
 {
-    const double G = 6.67430e-11; // gravitational constant in m^3 kg^-1 s^-2
-
+    //const double G = 6.67430e-11; // gravitational constant in m^3 kg^-1 s^-2
+    const double G=1;
     // the coeffecient of restitution!
     float restitution=1;
 
