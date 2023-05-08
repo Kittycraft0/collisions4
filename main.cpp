@@ -9,17 +9,6 @@
 #include <cmath>
 #include "src/math/invsqrt.h"
 
-//tutorialspoint 3/14/2023
-float fastInvSqrt(float n) {
-    const float threehalfs=1.5F;
-    float y=n;
-    long i=*(long*)&y;
-    i=0x5f3759df-(i>>1);
-    y=*(float*)&i;
-    y=y*(threehalfs-((n*0.5F)*y*y));
-    return y;
-}
-
 struct Obj{
     sf::RectangleShape model;
     //velocity in meters per second or pixels per second
@@ -259,7 +248,7 @@ int main()
                     // get the distance
                     float vx=orbs[i].vel.x-orbs[j].vel.x;
                     float vy=orbs[i].vel.y-orbs[j].vel.y;
-                    float invV=fastInvSqrt(vx*vx+vy*vy);
+                    float invV=invSqrt(vx*vx+vy*vy);
                     float vSquared=1/(vx*vx+vy*vy);
                     
                     // potential energy

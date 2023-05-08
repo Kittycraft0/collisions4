@@ -3,4 +3,7 @@
 #ifndef INITWINDOW_H
 #define INITWINDOW_H
 
+#include <SFML/Graphics.hpp>
+//what??? what is even needed here...? not sure...
+
 #endif //INITWINDIW_H

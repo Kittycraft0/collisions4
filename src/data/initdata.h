@@ -14,6 +14,7 @@ float invSqrt(float n);
 
 #include <vector>
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class ModelData;
 class Object3d;
@@ -23,14 +24,19 @@ class Settings;
 class Data{
 public:
     ModelData modelData;
-    std::vector<Object3d> objects;
+    // 5/8/2023 chatgpt "oh noo that breaks encapsulation" [below] well whatever idk
+    // since it is public
+    // i guess encapsulation could be implemented later??? probably not but
+    // eh whatever
+    std::vector<Object3d*> objects;
     Settings settings;
+    sf::RenderWindow window;
 };
 
 class ModelData{
 public:
     std::vector<std::string> modelNames;
-    std::vector<Model> models;
+    std::vector<Model*> models;
 };
 
 class Object3d{
@@ -53,6 +59,8 @@ class Settings{
 public:
     int windowWidth;
     int windowHeight;
+    //remember the std:: for strings
+    std::string windowName;
     bool showWireframe;
     bool showBoundingBox;
     float maxSimplificationDistance;

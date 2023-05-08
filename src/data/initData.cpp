@@ -21,17 +21,25 @@ struct data{
 };*/
 
 //3/23/2023 1:25 PM CST Thursday
+//5/8/2023 - Data should be defined like a solid block of data
+// ...
+// with like tethers to the repeated, 
+// multiply-defied (is that even a word? probably not in this context...)
+// objects such as the models and rendered objects themselves
 class Data{public:
     ModelData modelData;
     // calling it Object3d because just "Object" may interfere with something
-    std::vector<Object3d> objects;
+    std::vector<ObjectNd*> objects;
     Settings settings;
 };
+// 5/8/2023 the ModelData class is only defined one - as such, 
+// it should be directly with data.
 class ModelData{public:
     std::vector<std::string> modelNames;
-    std::vector<Model> models;
+    std::vector<Model*> models;
 };
-class Object3d{public:
+// 5/8/2023 the object should be a solid block of data
+class ObjectNd{public:
     int modelID; // index of model in data.modelData.models
     //position
     std::vector<float> p;
@@ -42,6 +50,9 @@ class Object3d{public:
     //the scale, default of one in every dimension
     std::vector<float> scale;
 };
+// 5/8/2023 was probably defined like 2 months ago from now with everything else
+// but now i am just putting here that this should indeed be just a solid block
+// of data. just like my 1kg tungsten cube lol
 class Model{public:
     // list of arbitrary size containing lists of i guess 3 values each
     std::vector<std::vector<float>> points;
