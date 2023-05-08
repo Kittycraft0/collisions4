@@ -13,15 +13,15 @@ int main() {
     cout << myValue << endl; // prints 6
     return 0;
 }
-this is wy c++ is nice. i can use pointers here
+this is why c++ is nice. i can use pointers here
 */
 
 #include "collisionmath.h"
 //collisionMath.cpp 5/8/2023
+#include "../data/objectnd.h"
 
 
-
-void elasticCollide(float n){
+void elasticCollide(ObjectNd* obj1, ObjectNd* obj2){
 
 }
 

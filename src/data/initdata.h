@@ -15,9 +15,9 @@ float invSqrt(float n);
 #include <vector>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "objectNd.h"
+#include "modeldata.h"
 
-class ModelData;
-class Object3d;
 class Model;
 class Settings;
 
@@ -28,32 +28,23 @@ public:
     // since it is public
     // i guess encapsulation could be implemented later??? probably not but
     // eh whatever
-    std::vector<Object3d*> objects;
+    std::vector<ObjectNd*> objects;
     Settings settings;
     sf::RenderWindow window;
 };
 
-class ModelData{
-public:
-    std::vector<std::string> modelNames;
-    std::vector<Model*> models;
-};
 
-class Object3d{
+
+/*class ObjectNd{
 public:
     int modelID;
     std::vector<float> p;
     std::vector<float> v;
     float m;
     std::vector<float> scale;
-};
+};*/
 
-class Model{
-public:
-    std::vector<std::vector<float>> points;
-    std::vector<std::vector<int>> faces;
-    std::vector<int> colors;
-};
+
 
 class Settings{
 public:
