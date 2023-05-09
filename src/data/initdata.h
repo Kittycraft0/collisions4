@@ -15,11 +15,10 @@ float invSqrt(float n);
 #include <vector>
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "objectNd.h"
+#include "objectnd.h"
 #include "modeldata.h"
+#include "settings.h"
 
-class Model;
-class Settings;
 
 class Data{
 public:
@@ -31,32 +30,6 @@ public:
     std::vector<ObjectNd*> objects;
     Settings settings;
     sf::RenderWindow window;
-};
-
-
-
-/*class ObjectNd{
-public:
-    int modelID;
-    std::vector<float> p;
-    std::vector<float> v;
-    float m;
-    std::vector<float> scale;
-};*/
-
-
-
-class Settings{
-public:
-    int windowWidth;
-    int windowHeight;
-    //remember the std:: for strings
-    std::string windowName;
-    bool showWireframe;
-    bool showBoundingBox;
-    float maxSimplificationDistance;
-    std::string shaderPath;
-    std::string texturePath;
 };
 
 Data initData();
