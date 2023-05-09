@@ -249,6 +249,7 @@ int main()
                     float vx=orbs[i].vel.x-orbs[j].vel.x;
                     float vy=orbs[i].vel.y-orbs[j].vel.y;
                     float invV=invSqrt(vx*vx+vy*vy);
+                    //float invV=1/sqrt(vx*vx+vy*vy);
                     float vSquared=1/(vx*vx+vy*vy);
                     
                     // potential energy
