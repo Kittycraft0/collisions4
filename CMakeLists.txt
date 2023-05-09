@@ -20,38 +20,31 @@ enable_testing()
 # Find the SFML package
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
-# ChatGPT 5/9/2023
-# Generate a list of all source files in the folder
-#file(GLOB SOURCES "*.cpp")
 
-# chatgpt 5/9/2023
-#add_library(math src/math/invsqrt.cpp)
-#add_library(math src/math/*) does not work
+# 5/9/2023
+# The below like sets a variable of "main" to the 
+# executable (.cpp without .h) for use in
+# the cmake file here
+# this (the first parameter thing) is 
+# also probably the name of the created .exe file thing
+add_executable(collisions3 main.cpp)
 
-
-# Add a target to compile all source files
-#add_executable(MyExecutable ${SOURCES})
-
-#sadly all by hand??? wait what??? oh maybe not??? nice. what????????
-#add_executable(invsqrttest invsqrttest.cpp)
-#add_executable(invsqrttest invsqrttest.cpp src/math/invsqrt.cpp)
-add_executable(invsqrttest invsqrttest.cpp)
-
+# 5/9/2023
+# The below like sets the variable thing of "invsqrt" to the 
+# library (.cpp with .h) for use in the cmake file here
 add_library(invsqrt src/math/invsqrt.cpp)
-target_link_libraries(invsqrttest invsqrt)
 
-#add_executable(collisions3 "src/math/invsqrt.cpp")
-#add_executable(gravity1 main.cpp)
-
-#chatgpt 5/9/2023
-#add_executable(collisions3 main.cpp)
+# 5/9/2023
+# The below connects the executable (first) 
+# to the library (second and any more following)
+target_link_libraries(collisions3 invsqrt)
 
 
 
 # Link against the SFML libraries
 #target_link_libraries(collisions3 sfml-graphics sfml-audio)
 
-target_link_libraries(invsqrttest sfml-graphics sfml-audio)
+target_link_libraries(collisions3 sfml-graphics sfml-audio)
 
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
