@@ -43,10 +43,18 @@ target_link_libraries(collisions3 invsqrt)
 
 # Link against the SFML libraries
 #target_link_libraries(collisions3 sfml-graphics sfml-audio)
-
+# 5/10/2023 explanation:
+# connect executable (first parameter, collisions3) 
+# with all following libraries (all parameters 
+# following the first, the names following)
 target_link_libraries(collisions3 sfml-graphics sfml-audio)
 
 
+# 5/10/2023 explanatin:
+# set the variables (first parameters)
+# to the corresponding environment variables (second parameters)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+# 5/10/2023 explanation:
+# pack everything up i guess
 include(CPack)
