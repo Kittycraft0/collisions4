@@ -17,6 +17,14 @@ class Data{public:
     // calling it Object3d because just "Object" may interfere with something
     std::vector<ObjectNd*> objects;
     Settings settings;
+    
+    // 5/11/2023
+    void initObjects(int num){
+        for(int i=0;i<settings.numObjects;i++){
+            ObjectNd* obj=new ObjectNd();
+            objects.push_back(obj);
+        }
+    };
 };
 
 /*//4/5/2023

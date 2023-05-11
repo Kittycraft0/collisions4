@@ -16,6 +16,7 @@ public:
     float maxSimplificationDistance;
     std::string shaderPath;
     std::string texturePath;
+    int numObjects;
 };
 
 

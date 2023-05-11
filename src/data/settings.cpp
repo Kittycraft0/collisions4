@@ -24,4 +24,7 @@ class Settings{public:
     float maxSimplificationDistance;
     std::string shaderPath;
     std::string texturePath;
+    
+    // 5/11/2023 boop tungsten
+    int numObjects=10;
 };
