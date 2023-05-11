@@ -12,6 +12,14 @@ class ObjectNd{public:
     std::vector<float> v;
     //mass
     float m;
+    
+    //rotational mass? -5/11/2023
+    float i;
+    //rotational angle?
+    std::vector<float> a;
+    //angular velocity?
+    std::vector<float> av;
+    
     //the scale, default of one in every dimension
     std::vector<float> scale;
 };

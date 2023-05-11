@@ -14,6 +14,13 @@ public:
     std::vector<float> v;
     float m;
     std::vector<float> scale;
+    
+    //rotational mass? -5/11/2023
+    float i;
+    //rotational angle?
+    std::vector<float> a;
+    //angular velocity?
+    std::vector<float> av;
 };
 
 #endif
