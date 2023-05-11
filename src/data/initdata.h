@@ -34,4 +34,6 @@ public:
 
 Data initData();
 
+void initObjects(int num);
+
 #endif

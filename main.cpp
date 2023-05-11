@@ -86,14 +86,14 @@ int main()
     // load comic sans
     sf::Font comicSans;
     //why does this need the "../"!? -4/6/2023 thanks stackoverflow... finally...
-    if (!comicSans.loadFromFile("../fonts/comicsans.ttf")) {
+    if (!comicSans.loadFromFile("../assets/fonts/comicsans.ttf")) {
         // handle error
         std::cout<<"\nNO comicSans FONT :(\n";
     }
     // load monospace comic sans -4/6/2023
     sf::Font comicMono;
     //why does this need the "../"!? -4/6/2023 thanks stackoverflow... finally...
-    if (!comicMono.loadFromFile("../fonts/comicmono.ttf")) {
+    if (!comicMono.loadFromFile("../assets/fonts/comicmono.ttf")) {
         // handle error
         std::cout<<"\nNO comicMono FONT :(\n";
     }
