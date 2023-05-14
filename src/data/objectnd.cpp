@@ -11,7 +11,7 @@ class ObjectNd{public:
     //velocity
     std::vector<float> v;
     //mass
-    float m;
+    float mass;
     
     //rotational mass? -5/11/2023
     float i;
