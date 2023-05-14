@@ -12,9 +12,10 @@ public:
     int modelID;
     std::vector<float> p;
     std::vector<float> v;
-    float m;
+    // mass is better than just m... -5/14/2023 2 months since pi day i guess idk but why isn't there an e day!...
+    float mass;
     std::vector<float> scale;
-    
+
     //rotational mass? -5/11/2023
     float i;
     //rotational angle?
