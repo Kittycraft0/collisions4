@@ -23,6 +23,8 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
     float d=invSqrt(sqSum);
     
     // 5/14/2023 outer ear infections suck
-    // magnitude
-    float m=(*obj1).mass;
+    // magnitude of impulse
+    float m=(*obj1).mass*(*obj2).mass*d*d*G;
+
+    // add the impulse
 };
