@@ -9,8 +9,8 @@
 
 //oh does it auto-import!? the more you know!!!
 void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
-    float dx=(*obj2).p.at(0)-(*obj1).p.at(0);
-    float dy=(*obj2).p.at(1)-(*obj1).p.at(1);
+    // float dx=(*obj2).p.at(0)-(*obj1).p.at(0);
+    // float dy=(*obj2).p.at(1)-(*obj1).p.at(1);
     // distance vector
     std::vector<float> dv;
     // squared sum for inverse rooting
@@ -26,5 +26,10 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
     // magnitude of impulse
     float m=(*obj1).mass*(*obj2).mass*d*d*G;
 
-    // add the impulse
+    // add to the impulse
+    for(int i=0;i<(*obj1).p.size();i++){
+        float impulse=dv.at(i)/m;
+        (*obj1).linImp.at(i)+=impulse;
+        (*obj2).linImp.at(i)-=impulse;
+    }
 };
