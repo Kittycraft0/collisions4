@@ -1,3 +1,5 @@
+# 5/14/2023
+# CMakeLists.txt file for src/data
 #cmake_minimum_required(VERSION 3.0.0)
 #project(thefirsttry VERSION 0.1.0)
 
@@ -27,24 +29,31 @@ find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 # the cmake file here
 # this (the first parameter thing) is 
 # also probably the name of the created .exe file thing
-add_executable(collisions3 main.cpp)
+#add_executable(collisions3 main.cpp)
+
+# 5/14/2023 set the sources
+set(SOURCES
+    initData.cpp
+    modelData.cpp
+    modelnd.cpp
+    objectnd.cpp
+    settings.cpp
+)
 
 # 5/9/2023
 # The below like sets the variable thing of "invsqrt" to the 
 # library (.cpp with .h) for use in the cmake file here
-add_library(invsqrt src/math/invsqrt.cpp)
-
-# 5/14/2023
-# Setting the executable location
-# "bin" both stands for "binaries" and also seems like a 
-# physical bin you chuck stuff 
-# into when you are done with it. Cool!
-set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY /../bin)
+#add_library(initData initData.cpp)
+#add_library(modelData modelData.cpp)
+#add_library(modelnd modelnd.cpp)
+#add_library(objectnd objectnd.cpp)
+#add_library(settings settings.cpp)
+add_library(data SHARED ${SOURCES})
 
 # 5/9/2023
 # The below connects the executable (first) 
 # to the library (second and any more following)
-target_link_libraries(collisions3 invsqrt)
+#target_link_libraries(collisions3 invsqrt)
 
 
 
@@ -54,7 +63,7 @@ target_link_libraries(collisions3 invsqrt)
 # connect executable (first parameter, collisions3) 
 # with all following libraries (all parameters 
 # following the first, the names following)
-target_link_libraries(collisions3 sfml-graphics sfml-audio)
+#target_link_libraries(collisions3 sfml-graphics sfml-audio)
 
 
 # 5/10/2023 explanatin:
