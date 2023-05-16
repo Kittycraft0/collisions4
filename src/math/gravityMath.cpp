@@ -32,4 +32,8 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
         (*obj1).linImp.at(i)+=impulse;
         (*obj2).linImp.at(i)-=impulse;
     }
+    // :( -5/16/2023
+    //(*obj1).linImp+=dv/m;
+    //(*obj2).linImp-=dv/m;
+    
 };

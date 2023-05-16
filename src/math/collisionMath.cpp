@@ -22,13 +22,15 @@ this is why c++ is nice. i can use pointers here
 
 
 void elasticCollide(ObjectNd* obj1, ObjectNd* obj2){
-
+    collide(obj1,obj2,1);
 }
 
-void inelasticCollide(float n){
-
+void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2){
+    collide(obj1,obj2,0);
 }
 
-void collide(float n){
-
+// 5/15/2023
+// restitution should be between 0 and 1, 0 is inelastic, 1 is elastic
+void collide(ObjectNd* obj1, ObjectNd* obj2, float restitution){
+    
 }
