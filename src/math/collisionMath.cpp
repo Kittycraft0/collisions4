@@ -33,5 +33,6 @@ void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2){
 // (the coefficient of) restitution should be between 0 and 1, 
 // 0 is inelastic, 1 is elastic
 void collide(ObjectNd* obj1, ObjectNd* obj2, float restitution){
-
+    // 5/24/2023
+    
 }
