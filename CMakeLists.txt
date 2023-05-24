@@ -39,7 +39,11 @@ add_library(invsqrt src/math/invsqrt.cpp)
 # "bin" both stands for "binaries" and also seems like a 
 # physical bin you chuck stuff 
 # into when you are done with it. Cool!
-set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY /../bin)
+#set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ~/bin)
+# 5/24/2023
+# fixed the error
+set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+# YESS!!! IT WORKS!!!
 
 # 5/9/2023
 # The below connects the executable (first) 
