@@ -10,6 +10,9 @@ public:
     int windowWidth;
     int windowHeight;
     //remember the std:: for strings
+    int windowX;
+    int windowY;
+    std::string windowName;
     std::string windowName;
     bool showWireframe;
     bool showBoundingBox;

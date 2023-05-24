@@ -17,8 +17,11 @@ class Settings{public:
     // The default camera position and rotation
     // Whether to show debug information, such as wireframes or bounding boxes
 //public:
-    int windowWidth;
-    int windowHeight;
+    int windowWidth=800;
+    int windowHeight=800;
+    int windowX=200;
+    int windowY=200;
+    std::string windowName="Physics simulation";
     bool showWireframe;
     bool showBoundingBox;
     float maxSimplificationDistance;
