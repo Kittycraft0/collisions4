@@ -18,3 +18,6 @@ I can then write all of the code afterwards. Great for planning ahead, I guess!
 
 5/8/2023
 tungsten is cool
+
+5/25/2023
+TODO: add CMakeLists.txt files to all folders and subfolders in the src folders
