@@ -9,9 +9,10 @@
 
 // Method for the lazy
 sf::RenderWindow* initWindow(){
+    // Get arbitrary values to use
     std::string defaultName="Collisions \"4\"!";
-    int defaultWidth=200;
-    int defaultHeight=200;
+    int defaultWidth=800;
+    int defaultHeight=800;
     int defaultX=200;
     int defaultY=200;
     //sf::RenderWindow window(sf::VideoMode(windowSize[0], windowSize[1]), "Collisions \"4\"!", sf::Style::Default);
@@ -28,6 +29,7 @@ sf::RenderWindow* initWindow(std::string name,int width,int height,int x,int y){
 
 // Using data - generally the best option
 sf::RenderWindow* initWindow(Data* data){
+    // Get the windows values from data.settings
     std::string defaultName=data->settings.windowName;
     int defaultWidth=data->settings.windowWidth;
     int defaultHeight=data->settings.windowHeight;
