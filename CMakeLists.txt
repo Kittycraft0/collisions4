@@ -1,3 +1,32 @@
+# Include the renamed CMakeListsRoot.txt file
+# Set the project to use by commenting every line except the one to use
+#include(CMakeListsFirst.txt)
+include(projects/test1/CMakeLists.txt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 5/26/2023
+# The stuff that makes it work
+# Probably won't need modifying again
+
+
+
 # Copy/paste
 
 cmake_minimum_required(VERSION 3.0.0)
@@ -17,10 +46,6 @@ enable_testing()
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
 
-# Include the renamed CMakeListsRoot.txt file
-# Set the project to use by commenting every line except the one to use
-#include(CMakeListsFirst.txt)
-include(projects/test1/CMakeLists.txt)
 
 # I just want to code and not have to deal with CMakeLists.txt files...
 # Eh, they seem to be working now though, so it's not all that bad anymore.
@@ -31,7 +56,7 @@ include(projects/test1/CMakeLists.txt)
 # connect executable (first parameter, collisions3) 
 # with all following libraries (all parameters 
 # following the first, the names following)
-target_link_libraries(collisions3 sfml-graphics sfml-audio)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} sfml-graphics sfml-audio)
 
 
 
@@ -46,7 +71,7 @@ target_link_libraries(collisions3 sfml-graphics sfml-audio)
 #set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 # YESS!!! IT WORKS!!!
 
-set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set_target_properties(${AWESOME_PROJECT_EXECUTABLE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 
 
