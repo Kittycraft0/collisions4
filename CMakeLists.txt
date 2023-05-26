@@ -1,21 +1,38 @@
-# 5/26/2023
-
-# ChatGPT:
-# CMakeLists.txt in the root directory
-
-# Include the renamed CMakeListsRoot.txt file
-include(CMakeListsFirst.txt)
-
-# I just want to code and not have to deal with CMakeLists.txt files...
-
-
 # Copy/paste
 
 cmake_minimum_required(VERSION 3.0.0)
 project(cppProject VERSION 0.1.0)
 
+# ???
 include(CTest)
+# ???
 enable_testing()
+
+# 5/26/2023
+
+# ChatGPT:
+# CMakeLists.txt in the root directory
+
+# Find the SFML package
+find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+
+
+# Include the renamed CMakeListsRoot.txt file
+# Set the project to use by commenting every line except the one to use
+#include(CMakeListsFirst.txt)
+include(projects/test1/CMakeLists.txt)
+
+# I just want to code and not have to deal with CMakeLists.txt files...
+# Eh, they seem to be working now though, so it's not all that bad anymore.
+
+# Link against the SFML libraries
+#target_link_libraries(collisions3 sfml-graphics sfml-audio)
+# 5/10/2023 explanation:
+# connect executable (first parameter, collisions3) 
+# with all following libraries (all parameters 
+# following the first, the names following)
+target_link_libraries(collisions3 sfml-graphics sfml-audio)
+
 
 
 # 5/14/2023
@@ -36,16 +53,7 @@ set_target_properties(collisions3 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CU
 
 
 
-# Find the SFML package
-find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
-# Link against the SFML libraries
-#target_link_libraries(collisions3 sfml-graphics sfml-audio)
-# 5/10/2023 explanation:
-# connect executable (first parameter, collisions3) 
-# with all following libraries (all parameters 
-# following the first, the names following)
-target_link_libraries(collisions3 sfml-graphics sfml-audio)
 
 
 # 5/10/2023 explanatin:
