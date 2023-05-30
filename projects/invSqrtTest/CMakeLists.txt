@@ -19,9 +19,9 @@ add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/invSqrtTest/invsqrttest.cp
 # 5/9/2023
 # The below like sets the variable thing of "invsqrt" to the 
 # library (.cpp with .h) for use in the cmake file here
-add_library(invsqrt ../src/math/invsqrt.cpp)
+add_library(theinvsqrt ../src/math/invsqrt.cpp)
 
 # 5/9/2023
 # The below connects the executable (first) 
 # to the library (second and any more following)
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} invsqrt)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} theinvsqrt)

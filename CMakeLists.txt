@@ -1,7 +1,10 @@
 # Include the renamed CMakeListsRoot.txt file
 # Set the project to use by commenting every line except the one to use
-#include(CMakeListsFirst.txt)
-include(projects/test1/CMakeLists.txt)
+
+# Remember: only allow ONE!!!
+#include(projects/test1/CMakeLists.txt)
+#include(projects/invSqrtTest/CMakeLists.txt)
+include(projects/test2/CMakeLists.txt)
 
 
 
