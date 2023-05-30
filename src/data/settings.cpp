@@ -6,7 +6,7 @@
 #include <string>
 
 //4/5/2023
-class Settings{public:
+/*class Settings{public:
     // just put like whatever you want here - booleans, integers, floats, etc.
     // all of the arbitrary values should be defined here
     // chatgpt says the following as some examples:
@@ -30,4 +30,4 @@ class Settings{public:
     
     // 5/11/2023 boop tungsten
     int numObjects=10;
-};
+};*/

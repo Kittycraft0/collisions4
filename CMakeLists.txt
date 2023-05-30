@@ -4,7 +4,7 @@
 # Remember: only allow ONE!!!
 #include(projects/test1/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
-include(projects/test2/CMakeLists.txt)
+include(projects/test3/CMakeLists.txt)
 
 
 

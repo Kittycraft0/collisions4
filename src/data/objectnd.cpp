@@ -4,7 +4,7 @@
 #include <vector>
 
 // 5/8/2023 the object should be a solid block of data
-class ObjectNd{public:
+/*class ObjectNd{public:
     int modelID; // index of model in data.modelData.models
     //position
     std::vector<float> p;
@@ -31,7 +31,7 @@ class ObjectNd{public:
     
     //the scale, default of one in every dimension
     std::vector<float> scale;
-};
+};*/
 /*
 class ObjectNd{
 public:

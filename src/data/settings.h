@@ -13,7 +13,6 @@ public:
     int windowX;
     int windowY;
     std::string windowName;
-    std::string windowName;
     bool showWireframe;
     bool showBoundingBox;
     float maxSimplificationDistance;

@@ -13,14 +13,14 @@
 #include(CPack)
 
 
-cmake_minimum_required(VERSION 3.0.0)
-project(collisions3 VERSION 0.1.0)
+#cmake_minimum_required(VERSION 3.0.0)
+#project(collisions3 VERSION 0.1.0)
 
-include(CTest)
-enable_testing()
+#include(CTest)
+#enable_testing()
 
 # Find the SFML package
-find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+#find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
 
 # 5/9/2023
@@ -32,23 +32,52 @@ find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 #add_executable(collisions3 main.cpp)
 
 # 5/14/2023 set the sources
+
+
+# 5/9/2023
+# The below like sets the variable thing of "invsqrt" to the 
+# library (.cpp with .h) for use in the cmake file here
+#add_library(initData initData.cpp)
+#add_library(modelData modeldata.cpp)
+#add_library(modelnd modelnd.cpp)
+#add_library(objectnd objectnd.cpp)
+#add_library(settings settings.cpp)
+
+# 5/30/2023
+# chat gpt
+# CMakeLists.txt file for src/data
+
+# Add the source files for the data library
 set(SOURCES
+    #data.cpp
+    # Add more source files if needed
     initData.cpp
-    modelData.cpp
+    modeldata.cpp
     modelnd.cpp
     objectnd.cpp
     settings.cpp
 )
 
-# 5/9/2023
-# The below like sets the variable thing of "invsqrt" to the 
-# library (.cpp with .h) for use in the cmake file here
-add_library(initData initData.cpp)
-add_library(modelData modeldata.cpp)
-add_library(modelnd modelnd.cpp)
-add_library(objectnd objectnd.cpp)
-add_library(settings settings.cpp)
+# Create the data library
+add_library(data ${SOURCES})
+
+# Set the include directories for the data library
+target_include_directories(data PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Link any dependencies for the data library
+target_link_libraries(data
+    # Add any dependencies if needed
+)
+
+
+
 #add_library(data SHARED ${SOURCES})
+
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} initData)
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} modelData)
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} modelnd)
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} objectnd)
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} settings)
 
 # 5/9/2023
 # The below connects the executable (first) 
@@ -69,8 +98,8 @@ add_library(settings settings.cpp)
 # 5/10/2023 explanatin:
 # set the variables (first parameters)
 # to the corresponding environment variables (second parameters)
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+#set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+#set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 # 5/10/2023 explanation:
 # pack everything up i guess
-include(CPack)
+#include(CPack)
