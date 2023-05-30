@@ -6,6 +6,9 @@
 cmake_minimum_required(VERSION 3.0)
 project(MyProject)
 
+# Include something -5/30/2023
+# include_directories({CMAKE_CURRENT_SOURCE_DIR})
+
 # Include subdirectories
 add_subdirectory(data)
 add_subdirectory(game)
@@ -16,4 +19,4 @@ add_subdirectory(render)
 #add_subdirectory(src)
 #add_subdirectory(../../src)
 
-target_link_libraries(collisions3 sfml-graphics sfml-audio)
+#target_link_libraries(collisions3 sfml-graphics sfml-audio)

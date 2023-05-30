@@ -30,10 +30,11 @@ public:
     std::vector<ObjectNd*> objects;
     Settings settings;
     sf::RenderWindow window;
+    void initObjects(int num);
 };
 
 Data initData();
 
-void initObjects(int num);
+//void initObjects(int num);
 
 #endif

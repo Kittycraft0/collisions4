@@ -5,7 +5,7 @@
 // 5/8/2023 was probably defined like 2 months ago from now with everything else
 // but now i am just putting here that this should indeed be just a solid block
 // of data. just like my 1kg tungsten cube lol
-class ModelNd{public:
+/*class ModelNd{public:
     // list of arbitrary size containing lists of i guess 3 values each
     std::vector<std::vector<float>> points;
     // list of arbitrary size containing lists of arbitrary size with values replresenting indeces in the points list
@@ -28,3 +28,6 @@ class ModelNd{public:
     
     std::vector<int> colors;
 };
+*/
+
+// check initData.cpp for method implementation? -5/30/2023

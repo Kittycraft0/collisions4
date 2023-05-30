@@ -15,7 +15,8 @@
 // with like tethers to the repeated, 
 // multiply-defied (is that even a word? probably not in this context...)
 // objects such as the models and rendered objects themselves
-class Data{public:
+/*class Data{
+    public:
     ModelData modelData;
     // calling it Object3d because just "Object" may interfere with something
     std::vector<ObjectNd*> objects;
@@ -28,6 +29,14 @@ class Data{public:
             objects.push_back(obj);
         }
     };
+};*/
+
+// 5/11/2023
+void Data::initObjects(int num){
+    for(int i=0;i<settings.numObjects;i++){
+        ObjectNd* obj=new ObjectNd();
+        objects.push_back(obj);
+    }
 };
 
 /*//4/5/2023

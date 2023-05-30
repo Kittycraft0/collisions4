@@ -43,12 +43,12 @@ set(SOURCES
 # 5/9/2023
 # The below like sets the variable thing of "invsqrt" to the 
 # library (.cpp with .h) for use in the cmake file here
-#add_library(initData initData.cpp)
-#add_library(modelData modelData.cpp)
-#add_library(modelnd modelnd.cpp)
-#add_library(objectnd objectnd.cpp)
-#add_library(settings settings.cpp)
-add_library(data SHARED ${SOURCES})
+add_library(initData initData.cpp)
+add_library(modelData modeldata.cpp)
+add_library(modelnd modelnd.cpp)
+add_library(objectnd objectnd.cpp)
+add_library(settings settings.cpp)
+#add_library(data SHARED ${SOURCES})
 
 # 5/9/2023
 # The below connects the executable (first) 
