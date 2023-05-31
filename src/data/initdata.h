@@ -31,9 +31,13 @@ public:
     Settings settings;
     sf::RenderWindow window;
     void initObjects(int num);
+    void numberNowPlease(int num);
 };
 
 Data initData();
+
+// 5/30/2023
+//void giveMeANumberNow();
 
 //void initObjects(int num);
 

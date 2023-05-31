@@ -20,14 +20,7 @@ this is why c++ is nice. i can use pointers here
 //collisionMath.cpp 5/8/2023
 #include "../data/objectnd.h"
 
-
-void elasticCollide(ObjectNd* obj1, ObjectNd* obj2){
-    collide(obj1,obj2,1);
-}
-
-void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2){
-    collide(obj1,obj2,0);
-}
+// 5/30/2023 - the actual method must be declared FIRST!!!
 
 // 5/15/2023
 // (the coefficient of) restitution should be between 0 and 1, 
@@ -66,3 +59,12 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, float restitution){
         (*obj2).linImp[i]+=p2fV[i];
     }
 }
+
+void elasticCollide(ObjectNd* obj1, ObjectNd* obj2){
+    collide(obj1,obj2,1.0f);
+}
+
+void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2){
+    collide(obj1,obj2,0.0f);
+}
+

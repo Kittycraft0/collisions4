@@ -7,6 +7,13 @@
 #include <string>
 #include "../data/initdata.h"
 
+// 5/30/2023
+#include <iostream>
+
+// chatgpt's "method signature"
+sf::RenderWindow* initWindow(std::string name = "Collisions \"4\"!", int width = 800, int height = 800, int x = 200, int y = 200);
+
+
 // Method for the lazy
 sf::RenderWindow* initWindow(){
     // Get arbitrary values to use
@@ -20,15 +27,11 @@ sf::RenderWindow* initWindow(){
     sf::RenderWindow* window=initWindow(defaultName,defaultWidth,defaultHeight,defaultX,defaultY);
     return(window);
 }
-// Remember to round inputs!
-sf::RenderWindow* initWindow(std::string name,int width,int height,int x,int y){
-    sf::RenderWindow* window=new sf::RenderWindow(sf::VideoMode(width,height),name,sf::Style::Default);
-    window->setPosition(sf::Vector2i(x,y));
-    return(window);
-}
+
 
 // Using data - generally the best option
 sf::RenderWindow* initWindow(Data* data){
+    std::cout<<"TEST THAT SHOULD WORK";
     // Get the windows values from data.settings
     std::string defaultName=data->settings.windowName;
     int defaultWidth=data->settings.windowWidth;
@@ -41,7 +44,21 @@ sf::RenderWindow* initWindow(Data* data){
     //int windowX=200;
     //int windowY=200;
     //std::string windowName="Physics simulation";
-    
+    std::cout<<"what the";
     sf::RenderWindow* window=initWindow(defaultName,defaultWidth,defaultHeight,defaultX,defaultY);
     return(window);
+}
+
+// 5/30/2023 - remember the ORDER MATTERS...?
+
+// Remember to round inputs!
+sf::RenderWindow* initWindow(std::string name,int width,int height,int x,int y){
+    sf::RenderWindow* window=new sf::RenderWindow(sf::VideoMode(width,height),name,sf::Style::Default);
+    window->setPosition(sf::Vector2i(x,y));
+    std::cout<<"window made";
+    return(window);
+}
+
+void printANumberNow(){
+    std::cout<<"NO NUMBERS FOR YOU";
 }

@@ -4,9 +4,14 @@
 # Remember: only allow ONE!!!
 #include(projects/test1/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
-include(projects/test3/CMakeLists.txt)
+#include(projects/test2/CMakeLists.txt)
+#include(projects/test3/CMakeLists.txt)
+add_subdirectory(projects/test3)
 
-
+# 5/31/2023
+# According to ChatGPT, the include() basically acts as inputting the file
+# directly into the location here. Using add_subdirectory() instead might work.
+# Or maybe turning all add_subdirectory()s into include()s might work.
 
 
 

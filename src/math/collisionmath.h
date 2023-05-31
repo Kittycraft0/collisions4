@@ -4,8 +4,9 @@
 
 #include "../data/objectnd.h"
 
+void collide(float n);
 void elasticCollide(float n);
 void inelasticCollide(float n);
-void collide(float n);
+
 
 #endif

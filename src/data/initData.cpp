@@ -9,6 +9,9 @@
 #include "objectnd.h"
 #include "settings.h"
 
+// 5/30/2023
+#include <iostream>
+
 //3/23/2023 1:25 PM CST Thursday
 //5/8/2023 - Data should be defined like a solid block of data
 // ...
@@ -38,6 +41,14 @@ void Data::initObjects(int num){
         objects.push_back(obj);
     }
 };
+
+//void giveMeANumberNow(){
+//    std::cout<<"4";
+//}
+
+void Data::numberNowPlease(int num){
+    std::cout<<num;
+}
 
 /*//4/5/2023
 class Data{
