@@ -18,6 +18,10 @@ add_library(maath ${SOURCES_MATH})
 target_include_directories(maath PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Link any dependencies for the data library
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} maath
+target_link_libraries(maath PUBLIC
     # Add any dependencies if needed
 )
+
+#target_link_libraries(maath
+#    # Add any dependencies if needed
+#)

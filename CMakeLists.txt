@@ -5,8 +5,8 @@
 #include(projects/test1/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
 #include(projects/test2/CMakeLists.txt)
-#include(projects/test3/CMakeLists.txt)
-add_subdirectory(projects/test3)
+include(projects/test3/CMakeLists.txt)
+#add_subdirectory(projects/test3)
 
 # 5/31/2023
 # According to ChatGPT, the include() basically acts as inputting the file
@@ -64,7 +64,7 @@ find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 # connect executable (first parameter, collisions3) 
 # with all following libraries (all parameters 
 # following the first, the names following)
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} sfml-graphics sfml-audio)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC sfml-graphics sfml-audio)
 
 
 

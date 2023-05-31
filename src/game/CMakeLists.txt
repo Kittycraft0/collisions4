@@ -16,7 +16,7 @@ add_library(game ${SOURCES_GAME})
 target_include_directories(game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Link any dependencies for the data library
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE}
+target_link_libraries(
     game
     # Add any dependencies if needed
 )

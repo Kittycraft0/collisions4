@@ -15,6 +15,21 @@ add_subdirectory(game)
 add_subdirectory(math)
 add_subdirectory(render)
 
+# Add them to an src libary -5/31/2023
+#add_library(src INTERFACE)
+
+# Link the libaries
+#target_link_libraries(src INTERACE maath render game data)
+#target_link_libraries(src INTERACE maath)
+add_library(invsqrt ../src/math/invsqrt.cpp)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
+
+
+# what
+#add_library(invsqrt math/invsqrt.cpp)
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
+
+
 # To include this one: -5/30/2023
 #add_subdirectory(src)
 #add_subdirectory(../../src)
