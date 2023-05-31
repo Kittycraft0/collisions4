@@ -46,16 +46,16 @@
 # 5/30/2023
 # chat gpt
 # CMakeLists.txt file for src/data
-
+set(DATA_DIR ${SRC_DIR}/data)
 # Add the source files for the data library
 set(SOURCES_DATA
     #data.cpp
     # Add more source files if needed
-    initData.cpp
-    modeldata.cpp
-    modelnd.cpp
-    objectnd.cpp
-    settings.cpp
+    ${DATA_DIR}/initData.cpp
+    ${DATA_DIR}/modeldata.cpp
+    ${DATA_DIR}/modelnd.cpp
+    ${DATA_DIR}/objectnd.cpp
+    ${DATA_DIR}/settings.cpp
 )
 
 # Create the data library

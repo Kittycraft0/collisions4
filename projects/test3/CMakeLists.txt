@@ -14,6 +14,7 @@ add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test3/main.cpp)
 #add_library(invsqrt ../src/math/invsqrt.cpp)
 #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
 
-add_subdirectory(src)
+#add_subdirectory(src)
+include(src/CMakeLists.txt)
 #add_subdirectory({CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories({CMAKE_CURRENT_SOURCE_DIR}/src)

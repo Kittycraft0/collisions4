@@ -1,12 +1,12 @@
 # 5/30/2023
 # chat gpt
 # CMakeLists.txt file for src/data
-
+set(RENDER_DIR ${SRC_DIR}/render)
 # Add the source files for the data library
 set(SOURCES_RENDER
     #data.cpp
     # Add more source files if needed
-    initWindow.cpp
+    ${RENDER_DIR}/initWindow.cpp
 )
 
 # Create the render library
