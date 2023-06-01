@@ -6,6 +6,7 @@ set(SOURCES_GAME
     #data.cpp
     # Add more source files if needed
     ${GAME_DIR}/script.cpp
+    ${GAME_DIR}/loop.cpp
 )
 
 # Create the data library

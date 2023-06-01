@@ -18,33 +18,49 @@
 // with like tethers to the repeated, 
 // multiply-defied (is that even a word? probably not in this context...)
 // objects such as the models and rendered objects themselves
-/*class Data{
-    public:
-    ModelData modelData;
-    // calling it Object3d because just "Object" may interfere with something
-    std::vector<ObjectNd*> objects;
-    Settings settings;
-    
-    // 5/11/2023
-    void initObjects(int num){
-        for(int i=0;i<settings.numObjects;i++){
-            ObjectNd* obj=new ObjectNd();
-            objects.push_back(obj);
-        }
-    };
+//class Data{
+//    public:
+//    ModelData modelData;
+//    // calling it Object3d because just "Object" may interfere with something
+//    std::vector<ObjectNd*> objects;
+//    Settings settings;
+//    
+//    // 5/11/2023
+//    void initObjects(int num){
+//        for(int i=0;i<(num>0)?num:settings.numObjects;i++){
+//            ObjectNd* obj=new ObjectNd();
+//            objects.push_back(obj);
+//        }
+//    };
+//
+  /*  // 6/1/2023
+    // define data
+    void Data(){
+        modelData=new ModelData();
+        settings=new Settings();
+    }
 };*/
 
 // 5/11/2023
-void Data::initObjects(int num){
+void Data::initObjects(int num, int d){
     for(int i=0;i<settings.numObjects;i++){
-        ObjectNd* obj=new ObjectNd();
+        ObjectNd* obj=new ObjectNd(d);
         objects.push_back(obj);
     }
 };
 
+// 6/1/2023
+// define data constructor
+// this is all confusing here but OKAY!!!?
+Data::Data(){
+    settings=Settings();
+    modelData=ModelData(settings.modelPath);
+}
+
 //void giveMeANumberNow(){
 //    std::cout<<"4";
 //}
+
 
 void dataTest1(int num){
     std::cout<<num;

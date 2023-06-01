@@ -41,3 +41,40 @@ public:
     float m;
     std::vector<float> scale;
 };*/
+
+// 6/1/2023
+// constructore
+ObjectNd::ObjectNd(int d){
+    // 0 i guess as a placeholder just like everything else...?
+    int modelID=0;
+
+    // mass is better than just m... -5/14/2023 2 months 
+    // since pi day i guess idk but why isn't there an e day!...
+    // 6/1/2023 yes but i think consistancy is better, and what would i write for i?
+    // iMass? i don't want to get sued by apple!!! hahaahaha...
+    m=1;
+    
+    //rotational mass? -5/11/2023
+    i=1;
+    
+    for(int j=0;j<d;j++){
+        p.push_back(0);
+        v.push_back(0);
+        scale.push_back(1);
+        linMom.push_back(v[i]*m);
+        linImp.push_back(0);
+
+    }
+
+    // what hapens here with the number of dimensions???
+    // i found a formula! good.
+    // using j instead of i because i is already taken
+    for(int j=0;j<d*(d-1)/2;j++){
+        //rotational angle?
+        a.push_back(0);
+        //angular velocity?
+        av.push_back(0);
+        rotMom.push_back(av[i]*i);
+        rotImp.push_back(0);
+    }
+}

@@ -13,7 +13,7 @@ public:
     std::vector<float> p;
     std::vector<float> v;
     // mass is better than just m... -5/14/2023 2 months since pi day i guess idk but why isn't there an e day!...
-    float mass;
+    float m;
     std::vector<float> scale;
     std::vector<float> linMom;
     std::vector<float> linImp;
@@ -26,6 +26,11 @@ public:
     std::vector<float> av;
     std::vector<float> rotMom;
     std::vector<float> rotImp;
+
+    // 6/1/2023
+    // constructor
+    // integer d for the number of dimensions
+    ObjectNd(int d);
 };
 
 #endif

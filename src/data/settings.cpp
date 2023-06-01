@@ -35,3 +35,17 @@
 void dataTest3(int n){
     std::cout<<n;
 }
+
+// 6/1/2023
+// Set all the settings! Sorry for the lack of a text file.
+// Feeling pressured on time, even though I have like a week of school left.
+// I sure hope I work on this next year!
+Settings::Settings(){
+    windowWidth=800;
+    windowHeight=800;
+    windowX=200;
+    windowY=200;
+    windowName="Physics simulation";
+    showWireframe=false;
+    modelPath="assets/models";
+}

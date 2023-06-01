@@ -32,6 +32,11 @@ public:
     sf::RenderWindow window;
     void initObjects(int num);
     void dataTest2(int num);
+    // 6//2023 constructor
+    //void Data();
+    Data();
+    // oh wait it doesn't exist here it is just inherent or whatever well ok then
+    // wait no what
 };
 void dataTest1(int num);
 // 5/30/2023

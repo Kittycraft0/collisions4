@@ -19,6 +19,11 @@ public:
     std::string shaderPath;
     std::string texturePath;
     int numObjects;
+    std::string modelPath;
+
+    // 6/1/2023
+    // constructor
+    Settings();
 };
 
 void dataTest3(int n);

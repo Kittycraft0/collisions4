@@ -5,7 +5,7 @@
 #include(projects/test1/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
 #include(projects/test2/CMakeLists.txt)
-include(projects/test3/CMakeLists.txt)
+include(projects/test4/CMakeLists.txt)
 #add_subdirectory(projects/test3)
 
 # 5/31/2023

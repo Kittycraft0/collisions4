@@ -31,3 +31,15 @@
 */
 
 // check initData.cpp for method implementation? -5/30/2023
+
+
+#include <iostream>
+// 6/1/2023
+// constructor
+ModelNd::ModelNd(std::string modelPath){
+    std::vector<std::string> modelNames;
+    std::vector<ModelNd*> models;
+
+    //get the modeldata
+    //i hope this doesn't take more than a couple of days
+}
