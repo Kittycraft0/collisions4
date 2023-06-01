@@ -5,4 +5,8 @@
 // define all things game
 // there are currently no deer here
 
+// 6/1/2023 well now there is
+// but it's not deer
+#include "script.h"
+
 #endif //GAME_ALL_H

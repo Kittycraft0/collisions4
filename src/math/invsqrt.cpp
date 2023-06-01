@@ -12,3 +12,7 @@ float invSqrt(float n) {
     y=y*(threehalfs-((n*0.5F)*y*y));
     return y;
 }
+#include <iostream>
+void printTheNumberRightNowww(float n){
+    std::cout<<n;
+}

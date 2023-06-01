@@ -37,3 +37,7 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
     //(*obj2).linImp-=dv/m;
     
 };
+#include <iostream>
+void somethingggnoww(float n){
+    std::cout<<n;
+}

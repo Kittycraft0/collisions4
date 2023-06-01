@@ -31,3 +31,7 @@
     // 5/11/2023 boop tungsten
     int numObjects=10;
 };*/
+#include <iostream>
+void NOWNOWNOWNOWNOW(int n){
+    std::cout<<n;
+}

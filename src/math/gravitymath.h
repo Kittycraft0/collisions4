@@ -15,4 +15,7 @@
 void gravity(ObjectNd* obj1, ObjectNd* obj2, float G);
 //void gravity(ObjectNd obj1, ObjectNd obj2);
 
+void somethingggnoww(float n);
+
+
 #endif //GRAVITYMATH_H

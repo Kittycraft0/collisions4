@@ -16,10 +16,10 @@ set(SRC_DIR src)
 #add_subdirectory(render)
 
 # INCLUDE subdirectories
-include(${SRC_DIR}/data/CMakeLists.txt)
 include(${SRC_DIR}/game/CMakeLists.txt)
-include(${SRC_DIR}/math/CMakeLists.txt)
+include(${SRC_DIR}/data/CMakeLists.txt)
 include(${SRC_DIR}/render/CMakeLists.txt)
+include(${SRC_DIR}/math/CMakeLists.txt)
 
 # Add them to an src libary -5/31/2023
 #add_library(src INTERFACE)

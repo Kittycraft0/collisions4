@@ -8,4 +8,6 @@
 //#include "gravitymath.h"
 //#include "invsqrt.h"
 
+void gameNumberNOWWW(int n);
+
 #endif //SCRIPT_H

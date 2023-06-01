@@ -16,10 +16,23 @@ int main() {
     //printANumberNow();
     //sf::RenderWindow* window = initWindow();
     //giveMeANumberNow();
-    //data->numberNowPlease(7);
-    std::cout<<"The inverse square root of 5 is "<<invSqrt(5.0f);
+    data->numberNowPlease(7);
+    std::cout<<"The inverse square root of 5 is "<<invSqrt(5.0f)<<"\n";
+    somethingggnoww(3);
+    ilikenumbers(3);
+    somethingggnoww(4);
+    //why did it just start working? alright... well thanks???
+    //The below works...
+    //printTheNumberRightNowww(2013);
+    //somethingggnoww(7);
+    //What
+    NOWNOWNOWNOWNOW(60606060);
+    // wow ok long int man
+    gameNumberNOWWW(70798613);
 
-    //data->initObjects(7);
+    printANumberNow();
+
+    data->initObjects(7);
     //sf::RenderWindow* window=initWindow();
 
     /*while (window->isOpen())

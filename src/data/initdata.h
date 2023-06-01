@@ -33,11 +33,12 @@ public:
     void initObjects(int num);
     void numberNowPlease(int num);
 };
-
-Data initData();
-
+void ilikenumbers(int num);
 // 5/30/2023
 //void giveMeANumberNow();
+
+//Data Data::initData();
+
 
 //void initObjects(int num);
 

@@ -46,6 +46,34 @@
 # 5/30/2023
 # chat gpt
 # CMakeLists.txt file for src/data
+#set(DATA_DIR ${SRC_DIR}/data)
+# Add the source files for the data library
+#set(SOURCES_DATA
+#    #data.cpp
+#    # Add more source files if needed
+#    ${DATA_DIR}/initData.cpp
+#    ${DATA_DIR}/modeldata.cpp
+#    ${DATA_DIR}/modelnd.cpp
+#    ${DATA_DIR}/objectnd.cpp
+#    ${DATA_DIR}/settings.cpp
+#)
+
+# Create the data library
+#add_library(daata ${SOURCES_DATA})
+
+# Set the include directories for the data library
+#target_include_directories(daata PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Below is link, above is include. Notice the diferences!
+
+# Link any dependencies for the data library
+#target_link_libraries(
+#    daata
+#    # Add any dependencies if needed
+#)
+
+# 5/30/2023
+# CMakeLists.txt file for src/data
 set(DATA_DIR ${SRC_DIR}/data)
 # Add the source files for the data library
 set(SOURCES_DATA
@@ -59,20 +87,21 @@ set(SOURCES_DATA
 )
 
 # Create the data library
-add_library(data ${SOURCES_DATA})
+# "No SOURCES" - Why are you yelling at me!?
+add_library(daata ${SOURCES_DATA})
 
 # Set the include directories for the data library
-target_include_directories(data PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(daata PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Below is link, above is include. Notice the diferences!
-
-# Link any dependencies for the data library
-target_link_libraries(
-    data
+#Link any dependencies for the data library
+target_link_libraries(daata
     # Add any dependencies if needed
 )
 
-
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+    daata
+    # Add any dependencies if needed
+)
 
 #add_library(data SHARED ${SOURCES})
 

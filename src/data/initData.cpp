@@ -46,9 +46,15 @@ void Data::initObjects(int num){
 //    std::cout<<"4";
 //}
 
+void ilikenumbers(int num){
+    std::cout<<num;
+}
+
 void Data::numberNowPlease(int num){
     std::cout<<num;
 }
+
+
 
 /*//4/5/2023
 class Data{

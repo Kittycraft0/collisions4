@@ -21,5 +21,6 @@ public:
     int numObjects;
 };
 
+void NOWNOWNOWNOWNOW(int n);
 
 #endif //SETTINGS_H
