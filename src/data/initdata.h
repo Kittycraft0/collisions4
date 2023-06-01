@@ -31,9 +31,9 @@ public:
     Settings settings;
     sf::RenderWindow window;
     void initObjects(int num);
-    void numberNowPlease(int num);
+    void dataTest2(int num);
 };
-void ilikenumbers(int num);
+void dataTest1(int num);
 // 5/30/2023
 //void giveMeANumberNow();
 

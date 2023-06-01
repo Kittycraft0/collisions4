@@ -3,6 +3,6 @@
 #include "script.h"
 
 #include <iostream>
-void gameNumberNOWWW(int n){
+void gameTest1(int n){
     std::cout<<n;
 }

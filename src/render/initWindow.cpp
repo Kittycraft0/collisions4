@@ -59,6 +59,6 @@ sf::RenderWindow* initWindow(std::string name,int width,int height,int x,int y){
     return(window);
 }
 
-void printANumberNow(){
-    std::cout<<"NO NUMBERS FOR YOU";
+void renderTest1(){
+    std::cout<<"4";
 }

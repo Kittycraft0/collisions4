@@ -16,26 +16,28 @@ int main() {
     //printANumberNow();
     //sf::RenderWindow* window = initWindow();
     //giveMeANumberNow();
-    data->numberNowPlease(7);
+    mathTest1(3);
+    data->dataTest2(7);
     std::cout<<"The inverse square root of 5 is "<<invSqrt(5.0f)<<"\n";
-    somethingggnoww(3);
-    ilikenumbers(3);
-    somethingggnoww(4);
+    mathTest2(3);
+    dataTest1(3);
+    mathTest2(4);
     //why did it just start working? alright... well thanks???
     //The below works...
     //printTheNumberRightNowww(2013);
     //somethingggnoww(7);
     //What
-    NOWNOWNOWNOWNOW(60606060);
+    dataTest3(60606060);
     // wow ok long int man
-    gameNumberNOWWW(70798613);
+    gameTest1(70798613);
 
-    printANumberNow();
+    //YESSS!!! I WAS MISSING A LINE...
+    renderTest1();
 
     data->initObjects(7);
-    //sf::RenderWindow* window=initWindow();
+    sf::RenderWindow* window=initWindow();
 
-    /*while (window->isOpen())
+    while (window->isOpen())
     {
         sf::Event event;
         while (window->pollEvent(event))
@@ -47,6 +49,6 @@ int main() {
                 //}
             }
         }
-    }*/
+    }
     return(0);
 }

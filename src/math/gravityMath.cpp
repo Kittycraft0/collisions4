@@ -38,6 +38,6 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
     
 };
 #include <iostream>
-void somethingggnoww(float n){
+void mathTest2(float n){
     std::cout<<n;
 }

@@ -46,11 +46,11 @@ void Data::initObjects(int num){
 //    std::cout<<"4";
 //}
 
-void ilikenumbers(int num){
+void dataTest1(int num){
     std::cout<<num;
 }
 
-void Data::numberNowPlease(int num){
+void Data::dataTest2(int num){
     std::cout<<num;
 }
 

@@ -32,6 +32,6 @@
     int numObjects=10;
 };*/
 #include <iostream>
-void NOWNOWNOWNOWNOW(int n){
+void dataTest3(int n){
     std::cout<<n;
 }

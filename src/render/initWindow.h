@@ -15,6 +15,6 @@ sf::RenderWindow* initWindow(std::string name,int width,int height,int x,int y);
 sf::RenderWindow* initWindow(Data* data);
 // aparently someone thought eggs were dairy
 
-void printANumberNow();
+void renderTest1();
 
 #endif //INITWINDIW_H

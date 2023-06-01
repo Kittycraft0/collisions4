@@ -21,6 +21,6 @@ public:
     int numObjects;
 };
 
-void NOWNOWNOWNOWNOW(int n);
+void dataTest3(int n);
 
 #endif //SETTINGS_H

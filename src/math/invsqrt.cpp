@@ -13,6 +13,6 @@ float invSqrt(float n) {
     return y;
 }
 #include <iostream>
-void printTheNumberRightNowww(float n){
+void mathTest1(float n){
     std::cout<<n;
 }

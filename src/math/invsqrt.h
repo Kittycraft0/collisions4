@@ -3,6 +3,6 @@
 #define INVSQRT_H
 
 float invSqrt(float n);
-void printTheNumberRightNowww(float n);
+void mathTest1(float n);
 
 #endif
