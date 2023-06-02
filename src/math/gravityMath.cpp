@@ -24,7 +24,7 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, float G){
     
     // 5/14/2023 outer ear infections suck
     // magnitude of impulse
-    float m=(*obj1).mass*(*obj2).mass*d*d*G;
+    float m=(*obj1).m*(*obj2).m*d*d*G;
 
     // add to the impulse
     for(int i=0;i<(*obj1).p.size();i++){

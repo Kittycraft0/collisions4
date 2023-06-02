@@ -20,7 +20,6 @@ this is why c++ is nice. i can use pointers here
 //collisionMath.cpp 5/8/2023
 #include "../data/objectnd.h"
 
-// 5/30/2023 - the actual method must be declared FIRST!!!
 
 // 5/15/2023
 // (the coefficient of) restitution should be between 0 and 1, 
@@ -29,8 +28,8 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, float restitution){
     // 5/24/2023
     // the initial masses
     // pointers are really nice
-    float m1i=(*obj1).mass;
-    float m2i=(*obj2).mass;
+    float m1i=(*obj1).m;
+    float m2i=(*obj2).m;
     // The final mass is equal to the starting mass.
     float m1f=m1i;
     float m2f=m2i;

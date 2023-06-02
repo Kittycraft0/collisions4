@@ -41,6 +41,21 @@
     }
 };*/
 
+#include "../render/initWindow.h"
+
+// 6/1/2023
+// define data constructor
+// this is all confusing here but OKAY!!!?
+Data::Data(){
+    settings=Settings();
+    //window=0;
+    //sf::RenderWindow* 
+    // keyword cool
+    window=initWindow(this);
+    modelData=ModelData(settings.modelPath);
+}
+
+
 // 5/11/2023
 void Data::initObjects(int num, int d){
     for(int i=0;i<settings.numObjects;i++){
@@ -49,13 +64,7 @@ void Data::initObjects(int num, int d){
     }
 };
 
-// 6/1/2023
-// define data constructor
-// this is all confusing here but OKAY!!!?
-Data::Data(){
-    settings=Settings();
-    modelData=ModelData(settings.modelPath);
-}
+
 
 //void giveMeANumberNow(){
 //    std::cout<<"4";
@@ -117,6 +126,41 @@ struct data{
 
 
 
+//sf::CircleShape shape(10.f);
+    //shape.setFillColor(sf::Color::Green);
+    
+
+/*
+// 6/2/2023
+// the render method! called at the end of every frame.
+void render2d(int cameraIndex){
+    // get the camera object for centering the camera
+    ObjectNd* cameraObject=objects[cameraIndex]*;
+    // camera position...
+    std::vector<float> cp=cameraObject->p;
 
 
+    //straight copy/paste -6/2/2023
+        // 4/18/2023
+        // draw the fps text
+        sf::Text fpsText;
+        
+        //temp[256];RedRed
+        //sprintf(temp, "%f", 1/spf);
+        fpsText.setString(temp);
+        //fpsText.setFont(comicMono);
+        fpsText.setCharacterSize(24);
+        fpsText.setFillColor(sf::Color::Red);
+        // right align text from ChatGPT -4/6/2023
+        // Set the origin to the right side of the text
+        fpsText.setOrigin(fpsText.getLocalBounds().width,-24);
+        // Set the position to the right side of the window
+        fpsText.setPosition(window.getSize().x, 0);
+        window.draw(fpsText);
 
+        //draw the window!
+        //window.draw(shape);
+        window.display();
+        //totalFramerate+=1/spf;
+        //n++;
+}*/

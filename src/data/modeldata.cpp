@@ -12,3 +12,7 @@
 };*/
 
 //check initData.cpp for method implementation? -5/30/2023
+#include <iostream>
+ModelData::ModelData(std::string modelPath){
+    std::cout<<"Passed model path "<<modelPath<<"\n";
+}

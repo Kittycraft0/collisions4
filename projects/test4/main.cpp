@@ -12,15 +12,15 @@ int main() {
     Data* data=new Data();
 
     data->initObjects(7);
-    sf::RenderWindow* window=initWindow(data);
+    //sf::RenderWindow* window=initWindow(data);
 
-    while (window->isOpen())
+    while (data->window.isOpen())
     {
         sf::Event event;
-        while (window->pollEvent(event))
+        while (data->window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed){
-                window->close();
+                data->window.close();
                 //if(!loggedFramerate){
                 //    std::cout<<totalFramerate/n;
                 //}

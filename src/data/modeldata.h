@@ -10,6 +10,9 @@ class ModelData{
 public:
     std::vector<std::string> modelNames;
     std::vector<ModelNd*> models;
+    
+    // constructor -6/2/2023
+    ModelData(std::string modelPath);
 };
 
 #endif

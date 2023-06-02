@@ -19,6 +19,9 @@ float invSqrt(float n);
 #include "modeldata.h"
 #include "settings.h"
 
+//6/2/2023
+#include "../render/initWindow.h"
+
 
 class Data{
 public:
@@ -30,13 +33,14 @@ public:
     std::vector<ObjectNd*> objects;
     Settings settings;
     sf::RenderWindow window;
+    Data();
     void initObjects(int num);
     void dataTest2(int num);
     // 6//2023 constructor
     //void Data();
-    Data();
     // oh wait it doesn't exist here it is just inherent or whatever well ok then
     // wait no what
+    //void render2d(int cameraIndex);
 };
 void dataTest1(int num);
 // 5/30/2023
