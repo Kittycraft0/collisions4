@@ -13,6 +13,8 @@ public:
     
     // constructor -6/2/2023
     ModelData(std::string modelPath);
+    // 6/5/2023
+    ModelData();
 };
 
 #endif

@@ -5,28 +5,13 @@
 // 5/24/2023
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "../data/initdata.h"
+//#include "../data/initdata.h"
 
 // 5/30/2023
 #include <iostream>
 
 // chatgpt's "method signature"
 sf::RenderWindow* initWindow(std::string name = "Collisions \"4\"!", int width = 800, int height = 800, int x = 200, int y = 200);
-
-
-// Method for the lazy
-sf::RenderWindow* initWindow(){
-    // Get arbitrary values to use
-    std::string defaultName="Collisions \"4\"!";
-    int defaultWidth=800;
-    int defaultHeight=800;
-    int defaultX=200;
-    int defaultY=200;
-    //sf::RenderWindow window(sf::VideoMode(windowSize[0], windowSize[1]), "Collisions \"4\"!", sf::Style::Default);
-    //sf::RenderWindow window(sf::VideoMode(defaultWidth,defaultHeight),defaultName,sf::Style::Default);
-    sf::RenderWindow* window=initWindow(defaultName,defaultWidth,defaultHeight,defaultX,defaultY);
-    return(window);
-}
 
 
 // Using data - generally the best option
@@ -48,6 +33,21 @@ sf::RenderWindow* initWindow(Data* data){
     sf::RenderWindow* window=initWindow(defaultName,defaultWidth,defaultHeight,defaultX,defaultY);
     return(window);
 }
+
+// Method for the lazy
+sf::RenderWindow* initWindow(){
+    // Get arbitrary values to use
+    std::string defaultName="Collisions \"4\"!";
+    int defaultWidth=800;
+    int defaultHeight=800;
+    int defaultX=200;
+    int defaultY=200;
+    //sf::RenderWindow window(sf::VideoMode(windowSize[0], windowSize[1]), "Collisions \"4\"!", sf::Style::Default);
+    //sf::RenderWindow window(sf::VideoMode(defaultWidth,defaultHeight),defaultName,sf::Style::Default);
+    sf::RenderWindow* window=initWindow(defaultName,defaultWidth,defaultHeight,defaultX,defaultY);
+    return(window);
+}
+
 
 // 5/30/2023 - remember the ORDER MATTERS...?
 

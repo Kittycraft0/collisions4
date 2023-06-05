@@ -25,16 +25,19 @@ float invSqrt(float n);
 
 class Data{
 public:
-    ModelData modelData;
+    ModelData* modelData;
     // 5/8/2023 chatgpt "oh noo that breaks encapsulation" [below] well whatever idk
     // since it is public
     // i guess encapsulation could be implemented later??? probably not but
     // eh whatever
     std::vector<ObjectNd*> objects;
     Settings settings;
-    sf::RenderWindow window;
+    sf::RenderWindow* window;
     Data();
-    void initObjects(int num);
+    // 6/5/2023 why did this issue not immediately show???
+    // be sure to check other header files to match when adding dimensionality
+    // or really just any other parameters...
+    void initObjects(int num, int d);
     void dataTest2(int num);
     // 6//2023 constructor
     //void Data();

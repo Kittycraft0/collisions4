@@ -16,3 +16,6 @@
 ModelData::ModelData(std::string modelPath){
     std::cout<<"Passed model path "<<modelPath<<"\n";
 }
+ModelData::ModelData(){
+    std::cout<<"Passed with nothing";
+}

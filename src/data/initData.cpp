@@ -41,18 +41,19 @@
     }
 };*/
 
-#include "../render/initWindow.h"
+//NO CIRCULAR DEPENDENCIES 6/5/2023 YOUUUUU SO MANY SO MUCH TIME WHYYY
+//#include "../render/initWindow.h"
 
 // 6/1/2023
 // define data constructor
 // this is all confusing here but OKAY!!!?
 Data::Data(){
-    settings=Settings();
+    //settings=Settings();
     //window=0;
     //sf::RenderWindow* 
     // keyword cool
     window=initWindow(this);
-    modelData=ModelData(settings.modelPath);
+    modelData=new ModelData(settings.modelPath);
 }
 
 

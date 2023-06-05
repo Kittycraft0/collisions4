@@ -9,10 +9,21 @@
 
 // thing
 #include "../data/initdata.h"
+#include "../src.h"
 
+//chatgpt: add this! oh, the error says it's redundant? thank remove it!
+//class Data{
+//
+//}
+
+// thing that gets filled in later?
+// ADD THIS TO EVERYTHING. IT FIXES EVERYTHING.
+class Data;
+
+//sf::RenderWindow* initWindow(Data* data);
+sf::RenderWindow* initWindow(Data* data);
 sf::RenderWindow* initWindow();
 sf::RenderWindow* initWindow(std::string name,int width,int height,int x,int y);
-sf::RenderWindow* initWindow(Data* data);
 // aparently someone thought eggs were dairy
 
 void renderTest1();
