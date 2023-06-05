@@ -7,5 +7,7 @@
 #include "game/game.h"
 #include "math/math.h"
 #include "render/render.h"
+// 6/5/2023 also define the library
+#include <SFML/Graphics.hpp>
 
 #endif //SRC_ALL_H

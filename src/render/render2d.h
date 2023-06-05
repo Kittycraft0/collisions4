@@ -3,11 +3,16 @@
 #ifndef RENDER_2D
 #define RENDER_2D
 
-#include "../data/initdata.h";
+// no semicolons for includes
+#include "../data/initdata.h"
+#include "../data/objectnd.h"
+
+// remember this...
+#include <SFML/Graphics.hpp>
 
 class Data;
 
-void renderAsCircles(Data* data);
+void render2dAsCircles(Data* data);
 
 
 #endif //RENDER_2D

@@ -31,7 +31,7 @@ public:
     // i guess encapsulation could be implemented later??? probably not but
     // eh whatever
     std::vector<ObjectNd*> objects;
-    Settings settings;
+    Settings* settings;
     sf::RenderWindow* window;
     Data();
     // 6/5/2023 why did this issue not immediately show???

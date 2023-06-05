@@ -41,11 +41,13 @@ void dataTest3(int n){
 // Feeling pressured on time, even though I have like a week of school left.
 // I sure hope I work on this next year!
 Settings::Settings(){
-    windowWidth=800;
-    windowHeight=800;
-    windowX=200;
-    windowY=200;
-    windowName="Physics simulation";
-    showWireframe=false;
-    modelPath="assets/models";
+    this->d=1;
+    this->numObjects=7;
+    this->windowWidth=800;
+    this->windowHeight=800;
+    this->windowX=200;
+    this->windowY=200;
+    this->windowName="Physics simulation";
+    this->showWireframe=false;
+    this->modelPath="assets/models";
 }

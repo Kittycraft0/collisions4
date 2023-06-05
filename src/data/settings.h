@@ -7,6 +7,8 @@
 
 class Settings{
 public:
+    int d;
+    int numObjects;
     int windowWidth;
     int windowHeight;
     //remember the std:: for strings
@@ -18,7 +20,6 @@ public:
     float maxSimplificationDistance;
     std::string shaderPath;
     std::string texturePath;
-    int numObjects;
     std::string modelPath;
 
     // 6/1/2023

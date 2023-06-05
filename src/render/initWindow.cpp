@@ -19,11 +19,11 @@ sf::RenderWindow* initWindow(std::string name = "Collisions \"4\"!", int width =
 sf::RenderWindow* initWindow(Data* data){
     std::cout<<"TEST THAT SHOULD WORK";
     // Get the windows values from data.settings
-    std::string defaultName=data->settings.windowName;
-    int defaultWidth=data->settings.windowWidth;
-    int defaultHeight=data->settings.windowHeight;
-    int defaultX=data->settings.windowX;
-    int defaultY=data->settings.windowY;
+    std::string defaultName=data->settings->windowName;
+    int defaultWidth=data->settings->windowWidth;
+    int defaultHeight=data->settings->windowHeight;
+    int defaultX=data->settings->windowX;
+    int defaultY=data->settings->windowY;
 
     //int windowWidth=800;
     //int windowHeight=800;

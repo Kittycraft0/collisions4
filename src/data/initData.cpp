@@ -48,20 +48,31 @@
 // define data constructor
 // this is all confusing here but OKAY!!!?
 Data::Data(){
-    //settings=Settings();
+    this->settings=new Settings();
     //window=0;
     //sf::RenderWindow* 
     // keyword cool
-    window=initWindow(this);
-    modelData=new ModelData(settings.modelPath);
+    // really? wow I can do that on the start as well? ok nice
+    this->window=initWindow(this);
+    this->modelData=new ModelData(settings->modelPath);
+    //initObjects(settings)
+    //this->objects=0;
+    // 5/11/2023
+    for(int i=0;i<settings->numObjects;i++){
+        //ObjectNd* obj=new ObjectNd(settings->d);
+        // added this-> at 6/5/2023
+        //this->objects.push_back(obj);
+        this->objects.push_back(new ObjectNd(settings->d));
+    }
 }
 
 
 // 5/11/2023
 void Data::initObjects(int num, int d){
-    for(int i=0;i<settings.numObjects;i++){
+    for(int i=0;i<settings->numObjects;i++){
         ObjectNd* obj=new ObjectNd(d);
-        objects.push_back(obj);
+        // added this-> at 6/5/2023
+        this->objects.push_back(obj);
     }
 };
 
