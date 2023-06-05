@@ -1,31 +1,23 @@
 // 5/30/2023
 #include <iostream>
-//#include "../../src/data/initdata.h"
-//#include "../../src/data/modeldata.h"
-//#include "../../src/data/modelnd.h"
-//#include "../../src/data/objectnd.h"
-//#include "../../src/data/settings.h"
-#include "../../src/src.h"
-//#include "../../src/render/initWindow.h"
 
-#include <SFML/Graphics.hpp>
+#include "../../src/src.h"
+
 
 
 int main() {
+    // Initialize data 6/5/2023
     Data* data=new Data();
 
-    //data->initObjects(7, 2);
-    //sf::RenderWindow* window=initWindow(data);
-    //system.out.println("this isn't java");
-    // hey my first "Segmenation fault (core dumped)"
+    data->objects[1]->p[0]+=30;
+    data->objects[1]->p[1]+=30;
+
     std::cout<<"\nsecond object's first coordinate: "<<(data->objects[1]->p[0]);
     std::cout<<"\nsecond object's second coordinate: "<<(data->objects[1]->p[1]);
     std::cout<<"\nnumber of objects: "<<(data->objects.size())<<"\n";
 
-    // ok the window can be accessed nice
-    data->window->setTitle("Changed window!");
     // what?
-    data->window->clear(sf::Color::White);
+    data->window->clear(sf::Color::Black);
     
 
     
@@ -43,8 +35,6 @@ int main() {
             // 6/5/2023
             // no code goes here really
         }
-        // watch out for memory leaks!
-        //render2dAsCircles(data);
 
         // chatgpt 6/5/2023
         // Create a rectangle shape
@@ -53,11 +43,15 @@ int main() {
         rectangle.setPosition(300, 250);
         data->window->draw(rectangle);
 
-        // oh it needs this ok... bye bye 30 minutes!
+
+        // Render the circles
+        render2dAsCircles(data);
+
+        // Display changes
         data->window->display();
     }
 
-    // thanks for the reminder, ChatGPT
+    // De-allocate memory, wiping it foreverrrrr
     delete data;
 
     return(0);

@@ -7,9 +7,11 @@
 void render2dAsCircles(Data* data){
     for(ObjectNd* obj:data->objects){
         sf::RectangleShape sfModel;
+        sfModel.setSize(sf::Vector2f(10.f,10.f));
         sfModel.setFillColor(sf::Color::Green);
         sfModel.setPosition(sf::Vector2f(obj->p[0],obj->p[1]));
         data->window->draw(sfModel);
+        
         
     }
     // prevent memory leaks???
@@ -18,8 +20,7 @@ void render2dAsCircles(Data* data){
     // test
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
-    shape.move(0,30);
+    shape.setPosition(80,30);
     data->window->draw(shape);
-    data->window->clear(sf::Color::White);
     //std::cout<<"spam";
 }
