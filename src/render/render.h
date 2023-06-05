@@ -4,5 +4,6 @@
 
 // Define all things render
 #include "initWindow.h"
+#include "render2d.h"
 
 #endif

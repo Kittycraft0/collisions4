@@ -10,6 +10,7 @@ set(SOURCES_RENDER
     #data.cpp
     # Add more source files if needed
     ${RENDER_DIR}/initWindow.cpp
+    ${RENDER_DIR}/render2d.cpp
 )
 #message(STATUS ${SOURCES_RENDER})
 # Create the render library
