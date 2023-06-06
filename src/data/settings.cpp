@@ -45,6 +45,7 @@ Settings::Settings(){
     this->numObjects=7;
     this->windowWidth=800;
     this->windowHeight=800;
+    // 6/6/2023 - it automatically puts itself back up at the top
     this->windowX=200;
     this->windowY=200;
     this->windowName="Physics simulation";

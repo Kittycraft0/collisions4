@@ -1,16 +1,20 @@
 // 5/8/2023
 // defining an object of n dimensions...
 // ooh this can probably be used like everywhere else i make things now
-// tungsten
+
 #ifndef OBJECTND_H
 #define OBJECTND_H
-
+// tungsten tungstone heavy stone in swedish
 #include <vector>
 
 // 6/6/2023 - randomness
 #include <random>
+
+// what
+#include "settings.h"
 // Data class - NO INCLUDE STATEMENT FOR DATA, JUST ONLY THIS
 class Data;
+
 
 class ObjectNd{
 public:
@@ -35,6 +39,7 @@ public:
     // 6/1/2023
     // constructor
     // integer d for the number of dimensions
+    // 6/6/2023 added pointer to data
     ObjectNd(int d,Data* data);
 };
 
