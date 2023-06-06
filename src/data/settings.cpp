@@ -41,7 +41,7 @@ void dataTest3(int n){
 // Feeling pressured on time, even though I have like a week of school left.
 // I sure hope I work on this next year!
 Settings::Settings(){
-    this->d=1;
+    this->d=2;
     this->numObjects=7;
     this->windowWidth=800;
     this->windowHeight=800;

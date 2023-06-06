@@ -19,33 +19,50 @@
 // constructore
 ObjectNd::ObjectNd(int d,Data* data){
     // randomizers -6/6/2023
-    // create 10 circles with random positions and velocities
+    
+    // what
     std::random_device rd;
+    // performing black magic
     std::mt19937 gen(rd());
-    //std::uniform_int_distribution<> posDistX(0, window.getSize().x);
-    //std::uniform_int_distribution<> posDistY(0, window.getSize().y);
-    //std::uniform_int_distribution<> posDistX(-(int)(data->settings->windowWidth)/2,(int)(data->settings->windowWidth)/2);
-    //std::uniform_int_distribution<> posDistY(-(int)(data->settings->windowHeight)/2,(int)(data->settings->windowHeight)/2);
-    //std::uniform_real_distribution<> velDist(-100.f, 100.f);
-    //Data anotherData=*data; // <-- HERE CHATGPT RIGHT HERE
-    // 6/6/2023 test
-    //std::cout<<"\nWindow width: "<<typeid(data).name(); // the what
-    //std::cout<<"\nWindow width: "<<data->settings->windowWidth;
+    // Initialize the n-th position component randomizer thing>
+    std::vector<std::uniform_int_distribution<>> posDistD;
+    // set the initial x- and y- position randomizers
+    std::uniform_int_distribution<> posDistX(
+        -(int)(data->settings->windowWidth)/2,
+        (int)(data->settings->windowWidth)/2
+    );
+    std::uniform_int_distribution<> posDistY(
+        -(int)(data->settings->windowHeight)/2,
+        (int)(data->settings->windowHeight)/2
+    );
+    // push dimensions
+    posDistD.push_back(posDistX);
+    posDistD.push_back(posDistY);
+    // push other dimensions
+    for(int j=1;j<d;j++){
+        // uses width because why not
+        std::uniform_int_distribution<> posDistN(
+            -(int)(data->settings->windowWidth)/2,
+            (int)(data->settings->windowWidth)/2
+        );
+        posDistD.push_back(posDistN);
+    }
 
-    // 0 i guess as a placeholder just like everything else...?
+    // set the velocity randomizer
+    std::uniform_real_distribution<> velDist(-100.f, 100.f);
+    
+    // 0 as a placeholder
     int modelID=0;
 
-    // mass is better than just m... -5/14/2023 2 months 
-    // since pi day i guess idk but why isn't there an e day!...
-    // 6/1/2023 yes but i think consistancy is better, and what would i write for i?
-    // iMass? i don't want to get sued by apple!!! hahaahaha...
+    // mass
     m=1;
     
-    //rotational mass? -5/11/2023
+    // rotational mass 5/11/2023
     i=1;
     
     for(int j=0;j<d;j++){
-        p.push_back(0);
+        std::cout<<j;
+        p.push_back(posDistD[j](gen));
         v.push_back(0);
         scale.push_back(1);
         linMom.push_back(v[i]*m);
