@@ -62,7 +62,7 @@ Data::Data(){
         //ObjectNd* obj=new ObjectNd(settings->d);
         // added this-> at 6/5/2023
         //this->objects.push_back(obj);
-        this->objects.push_back(new ObjectNd(settings->d));
+        this->objects.push_back(new ObjectNd(settings->d,this));
     }
 }
 
@@ -70,7 +70,7 @@ Data::Data(){
 // 5/11/2023
 void Data::initObjects(int num, int d){
     for(int i=0;i<settings->numObjects;i++){
-        ObjectNd* obj=new ObjectNd(d);
+        ObjectNd* obj=new ObjectNd(d,this);
         // added this-> at 6/5/2023
         this->objects.push_back(obj);
     }

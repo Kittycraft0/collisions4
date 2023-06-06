@@ -7,6 +7,11 @@
 
 #include <vector>
 
+// 6/6/2023 - randomness
+#include <random>
+// Data class - NO INCLUDE STATEMENT FOR DATA, JUST ONLY THIS
+class Data;
+
 class ObjectNd{
 public:
     int modelID;
@@ -30,7 +35,7 @@ public:
     // 6/1/2023
     // constructor
     // integer d for the number of dimensions
-    ObjectNd(int d);
+    ObjectNd(int d,Data* data);
 };
 
 #endif

@@ -44,7 +44,18 @@ public:
 
 // 6/1/2023
 // constructore
-ObjectNd::ObjectNd(int d){
+ObjectNd::ObjectNd(int d,Data* data){
+    // randomizers -6/6/2023
+    // create 10 circles with random positions and velocities
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    //std::uniform_int_distribution<> posDistX(0, window.getSize().x);
+    //std::uniform_int_distribution<> posDistY(0, window.getSize().y);
+    //std::uniform_int_distribution<> posDistX(-data->settings->windowWidth/2,data->settings->windowWidth/2);
+    //std::uniform_int_distribution<> posDistY(-data->settings->windowHeight/2,data->settings->windowHeight/2);
+    //std::uniform_real_distribution<> velDist(-100.f, 100.f);
+    
+
     // 0 i guess as a placeholder just like everything else...?
     int modelID=0;
 

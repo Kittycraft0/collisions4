@@ -9,8 +9,8 @@ int main() {
     // Initialize data 6/5/2023
     Data* data=new Data();
 
-    data->objects[1]->p[0]+=30;
-    data->objects[1]->p[1]+=30;
+    //data->objects[1]->p[0]+=30;
+    //data->objects[1]->p[1]+=30;
 
     std::cout<<"\nsecond object's first coordinate: "<<(data->objects[1]->p[0]);
     std::cout<<"\nsecond object's second coordinate: "<<(data->objects[1]->p[1]);
