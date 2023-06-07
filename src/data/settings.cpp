@@ -43,11 +43,13 @@ void dataTest3(int n){
 Settings::Settings(){
     this->d=2;
     this->numObjects=7;
-    
+    this->objectSpawnMargin=200;
+
     // constants
-    this->G=100;
+    this->G=1000;
     this->restitution=1;
     
+
     // window
     this->windowWidth=800;
     this->windowHeight=800;

@@ -67,14 +67,12 @@ int main() {
                 }
                 double dist=sqrt(sqSum);
                 // abs for magnitude is not needed due to squaring
-                if(dist<data->objects[i]->radius/2+data->objects[j]->radius/2){
-                    //std::cout<<"Required distance: "<<data->objects[i]->radius/2+data->objects[j]->radius/2;
-                    //std::cout<<" Distance: "<<dist;
-                    //std::cout<<" Collide between "<<i<<" and "<<j<<"!\n";
+                if(dist<data->objects[i]->radius+data->objects[j]->radius){
                     collide(
                         data->objects[i],
                         data->objects[j],
-                        data->settings->restitution
+                        data->settings->restitution,
+                        deltaTime
                     );
                 }
             }

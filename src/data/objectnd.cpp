@@ -28,12 +28,12 @@ ObjectNd::ObjectNd(int d,Data* data){
     std::vector<std::uniform_int_distribution<>> posDistD;
     // set the initial x- and y- position randomizers
     std::uniform_int_distribution<> posDistX(
-        -(int)(data->settings->windowWidth)/2,
-        (int)(data->settings->windowWidth)/2
+        -(int)(data->settings->windowWidth)/2+data->settings->objectSpawnMargin,
+        (int)(data->settings->windowWidth)/2-data->settings->objectSpawnMargin
     );
     std::uniform_int_distribution<> posDistY(
-        -(int)(data->settings->windowHeight)/2,
-        (int)(data->settings->windowHeight)/2
+        -(int)(data->settings->windowHeight)/2+data->settings->objectSpawnMargin,
+        (int)(data->settings->windowHeight)/2-data->settings->objectSpawnMargin
     );
     // push dimensions
     posDistD.push_back(posDistX);

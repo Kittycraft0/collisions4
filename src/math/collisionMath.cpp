@@ -44,22 +44,22 @@
 // 5/15/2023
 // (the coefficient of) restitution should be between 0 and 1, 
 // 0 is inelastic, 1 is elastic
-void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution){
+void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
     // 5/24/2023
     // the initial masses
     // pointers are really nice
     // looks at the memory address (pointer) of both objects
     // and gets the masses from them
-    float m1i=(*obj1).m;
-    float m2i=(*obj2).m;
+    float m1i=obj1->m;
+    float m2i=obj2->m;
     // The final mass is equal to the starting mass.
     float m1f=m1i;
     float m2f=m2i;
     // Get coefficient of restitution
     float c=restitution;
     // Get initial velocity vectors
-    std::vector<double> v1iV=(*obj1).v;
-    std::vector<double> v2iV=(*obj2).v;
+    std::vector<double> v1iV=obj1->v;
+    std::vector<double> v2iV=obj2->v;
     // Initialize the final impulse variable vectors
     std::vector<double> p1fV;
     std::vector<double> p2fV;
@@ -70,24 +70,41 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution){
         double v1i=v1iV[i];
         double v2i=v2iV[i];
         // Set the impulse variables
-        double p1f=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
-        double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
+        //double p1f=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
+        //double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
         // Set them in the final returned vector
+
+        double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
+        double v2f=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i);
+        
+        //double v1f=m1i*m21+m1f*m2f+m2f*restitution*(v2f-v2i)
+        //double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
+
+        // Calculate the final impulses
+        double p1f=m1i*(v1f-v1i);
+        double p2f=m2i*(v2f-v2i);
+
         p1fV.push_back(p1f);
         p2fV.push_back(p2f);
+
+       
     }
     // Change the linear impulse by the retrieved impulse
     for(int i=0;i<p1fV.size();i++){
-        (*obj1).linImp[i]+=p1fV[i];
-        (*obj2).linImp[i]+=p2fV[i];
+        obj1->linImp[i]+=p1fV[i];
+        obj2->linImp[i]+=p2fV[i];
+        obj1->p[i]+=p1fV[i]*deltaTime;
+        obj2->p[i]+=p2fV[i]*deltaTime;
     }
 }
 
+
+// deltaTime is not here -6/7/2023
 void elasticCollide(ObjectNd* obj1, ObjectNd* obj2){
-    collide(obj1,obj2,1.0f);
+    collide(obj1,obj2,1.0f,0.01);
 }
 
 void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2){
-    collide(obj1,obj2,0.0f);
+    collide(obj1,obj2,0.0f,0.01);
 }
 

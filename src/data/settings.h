@@ -23,6 +23,7 @@ public:
     std::string modelPath;
     double G;
     double restitution;
+    double objectSpawnMargin;
 
     // 6/1/2023
     // constructor
