@@ -21,6 +21,7 @@ public:
     std::string shaderPath;
     std::string texturePath;
     std::string modelPath;
+    double G;
 
     // 6/1/2023
     // constructor

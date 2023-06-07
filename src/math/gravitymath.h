@@ -12,7 +12,7 @@
 
 #include "../data/objectnd.h"
 
-void gravity(ObjectNd* obj1, ObjectNd* obj2, float G);
+void gravity(ObjectNd* obj1, ObjectNd* obj2, double G);
 //void gravity(ObjectNd obj1, ObjectNd obj2);
 
 void mathTest2(float n);

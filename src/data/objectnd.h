@@ -19,28 +19,31 @@ class Data;
 class ObjectNd{
 public:
     int modelID;
-    std::vector<float> p;
-    std::vector<float> v;
+    std::vector<double> p;
+    std::vector<double> v;
     // mass is better than just m... -5/14/2023 2 months since pi day i guess idk but why isn't there an e day!...
-    float m;
-    std::vector<float> scale;
-    std::vector<float> linMom;
-    std::vector<float> linImp;
+    double m;
+    std::vector<double> scale;
+    std::vector<double> linMom;
+    std::vector<double> linImp;
 
     //rotational mass? -5/11/2023
-    float i;
+    double i;
     //rotational angle?
-    std::vector<float> a;
+    std::vector<double> a;
     //angular velocity?
-    std::vector<float> av;
-    std::vector<float> rotMom;
-    std::vector<float> rotImp;
+    std::vector<double> av;
+    std::vector<double> rotMom;
+    std::vector<double> rotImp;
 
     // 6/1/2023
     // constructor
     // integer d for the number of dimensions
     // 6/6/2023 added pointer to data
     ObjectNd(int d,Data* data);
+
+    // 6/6/2023 update velocity and position and reset impulse
+    void update();
 };
 
 #endif

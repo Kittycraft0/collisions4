@@ -43,12 +43,18 @@ void dataTest3(int n){
 Settings::Settings(){
     this->d=2;
     this->numObjects=7;
+    
+    // constants
+    this->G=1;
+    
+    // window
     this->windowWidth=800;
     this->windowHeight=800;
     // 6/6/2023 - it automatically puts itself back up at the top
     this->windowX=200;
     this->windowY=200;
     this->windowName="Physics simulation";
+    
     this->showWireframe=false;
     this->modelPath="assets/models";
 }

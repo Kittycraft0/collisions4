@@ -36,6 +36,27 @@ int main() {
             // no code goes here really
         }
 
+
+
+        // 6/6/2023 YESS!!!
+        // I FINALLY HAVE THE OBJECTS AT RANDOM PLACES!!!
+        // And now to finally add gravity!
+        for(int i=0;i<data->settings->numObjects;i++){
+            for(int j=i+1;j<data->settings->numObjects;j++){
+                gravity(data->objects[i],data->objects[j],data->settings->G);
+            }
+        }
+
+
+        // 6/6/2023
+        // update the object positions!
+        for(ObjectNd* obj:data->objects){
+            obj->update();
+            std::cout<<"x: "<<obj->p[0]<<" ";
+            std::cout<<"y: "<<obj->p[1]<<" ";
+        }
+
+
         // chatgpt 6/5/2023
         // Create a rectangle shape
         sf::RectangleShape rectangle(sf::Vector2f(200, 100));

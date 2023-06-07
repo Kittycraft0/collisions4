@@ -79,3 +79,30 @@ ObjectNd::ObjectNd(int d,Data* data){
         rotImp.push_back(0);
     }
 }
+
+// 6/6/2023 update object properties
+void ObjectNd::update(){
+    // For linear values
+    for(int j=0;j<this->linImp.size();j++){
+        // Change the linear velocity by the linear impulse
+        this->v[j]+=this->linImp[j]/this->m;
+        // Set the linear impulse to zero
+        this->linImp[j]=0;
+        // Change the linear position by the linear velocity
+        this->p[j]+=this->v[j];
+        // Set the linear momentum to the linear velocity times the mass
+        this->linMom[j]=this->v[j]*this->m;
+    }
+    // For rotational values
+    for(int j=0;j<this->rotImp.size();j++){
+        // Change the angular velocity by the angular impulse
+        this->av[j]+=this->rotImp[j]/this->i;
+        // Set the angular impulse to zero
+        this->rotImp[j]=0;
+        // Change the angular position (the angle) by the angular velocity
+        this->a[j]+=this->av[j];
+        // Set the rotaional momentum to the rotational 
+        // velocity times the rotational mass
+        this->rotMom[j]=this->av[j]*this->i;
+    }
+}

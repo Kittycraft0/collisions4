@@ -58,20 +58,20 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, float restitution){
     // Get coefficient of restitution
     float c=restitution;
     // Get initial velocity vectors
-    std::vector<float> v1iV=(*obj1).v;
-    std::vector<float> v2iV=(*obj2).v;
+    std::vector<double> v1iV=(*obj1).v;
+    std::vector<double> v2iV=(*obj2).v;
     // Initialize the final impulse variable vectors
-    std::vector<float> p1fV;
-    std::vector<float> p2fV;
+    std::vector<double> p1fV;
+    std::vector<double> p2fV;
     // Calculate the final impulses
     // For loops are used here to allow for use for any number of dimensions
     for(int i=0;i<v1iV.size();i++){
         // Get the initial vectors
-        float v1i=v1iV[i];
-        float v2i=v2iV[i];
+        double v1i=v1iV[i];
+        double v2i=v2iV[i];
         // Set the impulse variables
-        float p1f=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
-        float p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
+        double p1f=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
+        double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
         // Set them in the final returned vector
         p1fV.push_back(p1f);
         p2fV.push_back(p2f);
