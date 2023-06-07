@@ -50,6 +50,36 @@ int main() {
             }
         }
 
+        // 6/7/2023
+        // Collisions
+        for(int i=0;i<data->settings->numObjects;i++){
+            for(int j=i+1;j<data->settings->numObjects;j++){
+                //float dist=sqrt(pow(2,2)+pow(2,2));
+
+                // copied from graviyMath.cpp at 6/7/2023
+                // distance vector
+                std::vector<double> dv;
+                // squared sum for inverse rooting
+                double sqSum=0;
+                for(int k=0;k<(data->objects[i])->p.size();k++){
+                    dv.push_back((data->objects[j])->p[k]-(data->objects[i])->p[k]);
+                    sqSum+=dv.at(k)*dv.at(k);
+                }
+                double dist=sqrt(sqSum);
+                // abs for magnitude is not needed due to squaring
+                if(dist<data->objects[i]->radius/2+data->objects[j]->radius/2){
+                    //std::cout<<"Required distance: "<<data->objects[i]->radius/2+data->objects[j]->radius/2;
+                    //std::cout<<" Distance: "<<dist;
+                    //std::cout<<" Collide between "<<i<<" and "<<j<<"!\n";
+                    collide(
+                        data->objects[i],
+                        data->objects[j],
+                        data->settings->restitution
+                    );
+                }
+            }
+        }
+
 
         // 6/6/2023
         // update the object positions!

@@ -46,6 +46,7 @@ Settings::Settings(){
     
     // constants
     this->G=100;
+    this->restitution=1;
     
     // window
     this->windowWidth=800;

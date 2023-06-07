@@ -4,9 +4,9 @@
 
 #include "../data/objectnd.h"
 
-void collide(float n);
-void elasticCollide(float n);
-void inelasticCollide(float n);
+void collide(ObjectNd* obj1, ObjectNd* obj2,double restitution);
+void elasticCollide(ObjectNd* obj1, ObjectNd* obj2);
+void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2);
 
 
 #endif

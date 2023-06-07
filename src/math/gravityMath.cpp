@@ -13,12 +13,9 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, double G){
         dv.push_back((*obj2).p.at(i)-(*obj1).p.at(i));
         sqSum+=dv.at(i)*dv.at(i);
     }
-    //inverted root of the sum of the d's squared
-    // I wonder what happens if this is zero? Testing time!
-    // It's 1.98178e+19. Interesting... Alright...
-    // Eh, I'll put in an edge case anyways. 
-    // Like it even really matters with floats & doubles...
+    
     if(sqSum!=0){
+    // Inverted root of the sum of the d's squared
         double d=invSqrt(sqSum);
         
         // 5/14/2023
