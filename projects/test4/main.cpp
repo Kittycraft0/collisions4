@@ -19,7 +19,9 @@ int main() {
     // what?
     data->window->clear(sf::Color::Black);
     
-
+    // 6/7/2023 start the clock
+    double timeMultiplier=1;
+    sf::Clock clock;
     
     while (data->window->isOpen())
     {
@@ -36,11 +38,13 @@ int main() {
             // no code goes here really
         }
 
+        // 6/7/2023 get deltaTime
+        float spf=clock.restart().asSeconds();
+        double deltaTime=spf*timeMultiplier;
 
+        std::cout<<"deltaTime: "<<deltaTime<<" ";
 
-        // 6/6/2023 YESS!!!
-        // I FINALLY HAVE THE OBJECTS AT RANDOM PLACES!!!
-        // And now to finally add gravity!
+        // 6/6/2023 Gravity
         for(int i=0;i<data->settings->numObjects;i++){
             for(int j=i+1;j<data->settings->numObjects;j++){
                 gravity(data->objects[i],data->objects[j],data->settings->G);
@@ -51,20 +55,15 @@ int main() {
         // 6/6/2023
         // update the object positions!
         for(ObjectNd* obj:data->objects){
-            obj->update();
-            std::cout<<"x: "<<obj->p[0]<<" ";
-            std::cout<<"y: "<<obj->p[1]<<" ";
+            obj->update(deltaTime);
+            //std::cout<<"x: "<<obj->p[0]<<" ";
+            //std::cout<<"y: "<<obj->p[1]<<" ";
         }
 
 
-        // chatgpt 6/5/2023
-        // Create a rectangle shape
-        sf::RectangleShape rectangle(sf::Vector2f(200, 100));
-        rectangle.setFillColor(sf::Color::Red);
-        rectangle.setPosition(300, 250);
-        data->window->draw(rectangle);
-
-
+        // Clear the window
+        data->window->clear();
+        
         // Render the circles
         render2dAsCircles(data);
 

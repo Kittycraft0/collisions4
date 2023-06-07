@@ -45,7 +45,7 @@ Settings::Settings(){
     this->numObjects=7;
     
     // constants
-    this->G=1;
+    this->G=100;
     
     // window
     this->windowWidth=800;

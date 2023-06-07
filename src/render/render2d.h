@@ -13,6 +13,7 @@
 class Data;
 
 void render2dAsCircles(Data* data);
-
+// squares 6/7/2023
+void render2dAsSquares(Data* data);
 
 #endif //RENDER_2D

@@ -35,6 +35,7 @@ public:
     std::vector<double> av;
     std::vector<double> rotMom;
     std::vector<double> rotImp;
+    double radius;
 
     // 6/1/2023
     // constructor
@@ -43,7 +44,7 @@ public:
     ObjectNd(int d,Data* data);
 
     // 6/6/2023 update velocity and position and reset impulse
-    void update();
+    void update(double deltaTime);
 };
 
 #endif
