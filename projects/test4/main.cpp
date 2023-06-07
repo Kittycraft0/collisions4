@@ -42,7 +42,6 @@ int main() {
         float spf=clock.restart().asSeconds();
         double deltaTime=spf*timeMultiplier;
 
-        std::cout<<"deltaTime: "<<deltaTime<<" ";
 
         // 6/6/2023 Gravity
         for(int i=0;i<data->settings->numObjects;i++){

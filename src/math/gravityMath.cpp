@@ -14,18 +14,24 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, double G){
         sqSum+=dv.at(i)*dv.at(i);
     }
     //inverted root of the sum of the d's squared
-    double d=invSqrt(sqSum);
-    
-    // 5/14/2023
-    // magnitude of impulse
-    double m=(*obj1).m*(*obj2).m*d*d*G;
+    // I wonder what happens if this is zero? Testing time!
+    // It's 1.98178e+19. Interesting... Alright...
+    // Eh, I'll put in an edge case anyways. 
+    // Like it even really matters with floats & doubles...
+    if(sqSum!=0){
+        double d=invSqrt(sqSum);
+        
+        // 5/14/2023
+        // magnitude of impulse
+        double m=(*obj1).m*(*obj2).m*d*d*G;
 
-    // add to the impulse
-    for(int i=0;i<(*obj1).p.size();i++){
-        // 6/7/2023 changed division to multiplication
-        double impulse=dv.at(i)*m;
-        (*obj1).linImp.at(i)+=impulse;
-        (*obj2).linImp.at(i)-=impulse;
+        // add to the impulse
+        for(int i=0;i<(*obj1).p.size();i++){
+            // 6/7/2023 changed division to multiplication
+            double impulse=dv.at(i)*m;
+            (*obj1).linImp.at(i)+=impulse;
+            (*obj2).linImp.at(i)-=impulse;
+        }
     }
 };
 #include <iostream>
