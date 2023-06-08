@@ -12,9 +12,7 @@ int main() {
     //data->objects[1]->p[0]+=30;
     //data->objects[1]->p[1]+=30;
 
-    std::cout<<"\nsecond object's first coordinate: "<<(data->objects[1]->p[0]);
-    std::cout<<"\nsecond object's second coordinate: "<<(data->objects[1]->p[1]);
-    std::cout<<"\nnumber of objects: "<<(data->objects.size())<<"\n";
+    std::cout<<"\nStarted!";
 
     // what?
     data->window->clear(sf::Color::Black);
@@ -22,6 +20,9 @@ int main() {
     // 6/7/2023 start the clock
     double timeMultiplier=1;
     sf::Clock clock;
+    
+    // 6/8/2023 n
+    int n=0;
     
     while (data->window->isOpen())
     {
@@ -38,21 +39,37 @@ int main() {
             // no code goes here really
         }
 
+        bool doMove=true;
+        bool doGravity=false;
+        bool doCollide=true;
+
         // 6/7/2023 get deltaTime
         float spf=clock.restart().asSeconds();
         double deltaTime=spf*timeMultiplier;
 
 
         // 6/6/2023 Gravity
+        if(doGravity)
         for(int i=0;i<data->settings->numObjects;i++){
             for(int j=i+1;j<data->settings->numObjects;j++){
                 gravity(data->objects[i],data->objects[j],data->settings->G);
             }
         }
 
+        // 6/8/2023 test of the rendering speed
+        if(doMove)
+        if(n==1){
+            for(ObjectNd* obj:data->objects){
+                for(int i=0;i<obj->v.size();i++){
+                    obj->v[i]+=10;
+                }
+            }
+        }
+
         // 6/7/2023
         // Collisions
-        /*for(int i=0;i<data->settings->numObjects;i++){
+        if(doCollide)
+        for(int i=0;i<data->settings->numObjects;i++){
             for(int j=i+1;j<data->settings->numObjects;j++){
                 //float dist=sqrt(pow(2,2)+pow(2,2));
 
@@ -76,8 +93,8 @@ int main() {
                     );
                 }
             }
-        }*/
-
+        }
+        
 
         // 6/6/2023
         // update the object positions!
@@ -95,22 +112,29 @@ int main() {
         
         // Render the circles
         render2dAsCircles(data);
+        //render2dAsSquares(data);
 
 
 
         // 6/7/2023 Calculate center of mass of systemfd
         std::vector<double> centerOfMass;
+        double totalMass=0;
         for(int i=0;i<data->objects[0]->p.size();i++){
             centerOfMass.push_back(0);
         }
         for(ObjectNd* obj:data->objects){
             for(int i=0;i<obj->p.size();i++){
-                centerOfMass[i]+=obj->p[i];
+                centerOfMass[i]+=obj->p[i]*obj->m;
             }
+            // 6/8/2023 - last day of school - remember its just m!
+            totalMass+=obj->m;
         }
+        //std::cout<<centerOfMass[0]<<" "<<centerOfMass[1]<<" "<<data->objects.size()*totalMass<<"\n";
         for(int i=0;i<centerOfMass.size();i++){
-            centerOfMass[i]/=data->objects.size();
+            // 6/8/2023 the number of objects was already accounted for!
+            centerOfMass[i]/=totalMass;//data->objects.size()*totalMass; <--
         }
+        //std::cout<<centerOfMass[0]<<" "<<centerOfMass[1]<<" "<<data->objects.size()*totalMass<<"\n";
         // Draw the center of mass of the system
         // Copied and modified from render/render2d.cpp
         // Initialize the rendered object
@@ -130,7 +154,8 @@ int main() {
         // Draw the object
         data->window->draw(com);
 
-
+        // n.
+        n++;
 
         // Display changes
         data->window->display();

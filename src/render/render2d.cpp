@@ -32,7 +32,7 @@ void render2dAsSquares(Data* data){
         // Initialize the rendered object
         sf::RectangleShape sfModel;
         // Set the size
-        sfModel.setSize(sf::Vector2f(10.f,10.f));
+        sfModel.setSize(sf::Vector2f(2.f,2.f));
         // Set the color
         sfModel.setFillColor(sf::Color::Green);
         // Set the position

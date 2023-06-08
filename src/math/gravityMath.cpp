@@ -20,7 +20,7 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, double G){
         
         // 5/14/2023
         // magnitude of impulse
-        double m=obj1->m*obj2->m*d*d*G;
+        double m=obj1->m*obj2->m*d*d*G; // multiply a third d in there for more accurate results
 
         // add to the impulse
         for(int i=0;i<obj1->p.size();i++){

@@ -49,19 +49,28 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-100.f, 100.f);
+    //std::uniform_real_distribution<> velDist(-100.f, 100.f);
+    // the mass randomizer
+    std::uniform_real_distribution<> massRandomizer(1.0f,10.0f);
     
     // 0 as a placeholder
     int modelID=0;
 
-    // mass
-    m=1;
+    // Linear mass
+    m=massRandomizer(gen);
     
-    // rotational mass 5/11/2023
+
+    // 6/8/2023 moved to here...
+    // 6/7/2023 Set the circular radius in base pixels
+    this->radius=10;
+    
+    // Rotational mass 5/11/2023
+    // 6/8/2023 changed to maybe a more accurate value
+    // 6/8/2023 or not - there is so much math behind the moment of inertia!!!
     i=1;
-    
+
     for(int j=0;j<d;j++){
-        std::cout<<j;
+        //std::cout<<j;
         p.push_back(posDistD[j](gen));
         v.push_back(0);
         scale.push_back(1);
@@ -105,7 +114,4 @@ void ObjectNd::update(double deltaTime){
         // Set the angular impulse to zero
         this->rotImp[j]=0;
     }
-
-    // 6/7/2023 Set the circular radius in base pixels
-    this->radius=10;
 }

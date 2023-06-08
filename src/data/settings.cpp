@@ -40,13 +40,14 @@ void dataTest3(int n){
 // Set all the settings! Sorry for the lack of a text file.
 // Feeling pressured on time, even though I have like a week of school left.
 // I sure hope I work on this next year!
+#include <cmath>
 Settings::Settings(){
     this->d=2;
-    this->numObjects=17;
+    this->numObjects=100;
     this->objectSpawnMargin=200;
 
     // constants
-    this->G=1000;
+    this->G=1000*7/(this->numObjects*sqrt(this->numObjects))*100;
     this->restitution=1;
     
 
