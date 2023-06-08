@@ -42,7 +42,7 @@ void dataTest3(int n){
 // I sure hope I work on this next year!
 Settings::Settings(){
     this->d=2;
-    this->numObjects=7;
+    this->numObjects=17;
     this->objectSpawnMargin=200;
 
     // constants

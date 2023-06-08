@@ -52,7 +52,7 @@ int main() {
 
         // 6/7/2023
         // Collisions
-        for(int i=0;i<data->settings->numObjects;i++){
+        /*for(int i=0;i<data->settings->numObjects;i++){
             for(int j=i+1;j<data->settings->numObjects;j++){
                 //float dist=sqrt(pow(2,2)+pow(2,2));
 
@@ -76,7 +76,7 @@ int main() {
                     );
                 }
             }
-        }
+        }*/
 
 
         // 6/6/2023
@@ -88,11 +88,49 @@ int main() {
         }
 
 
+
+
         // Clear the window
         data->window->clear();
         
         // Render the circles
         render2dAsCircles(data);
+
+
+
+        // 6/7/2023 Calculate center of mass of systemfd
+        std::vector<double> centerOfMass;
+        for(int i=0;i<data->objects[0]->p.size();i++){
+            centerOfMass.push_back(0);
+        }
+        for(ObjectNd* obj:data->objects){
+            for(int i=0;i<obj->p.size();i++){
+                centerOfMass[i]+=obj->p[i];
+            }
+        }
+        for(int i=0;i<centerOfMass.size();i++){
+            centerOfMass[i]/=data->objects.size();
+        }
+        // Draw the center of mass of the system
+        // Copied and modified from render/render2d.cpp
+        // Initialize the rendered object
+        sf::CircleShape com;
+        // Set the size
+        com.setRadius(10);
+        // Set the color
+        com.setFillColor(sf::Color::Red);
+        // Set the position
+        com.setPosition(sf::Vector2f(centerOfMass[0],centerOfMass[1]));
+        // Set the origin
+        com.setOrigin(
+            -(int)data->window->getSize().x/2,
+            -(int)data->window->getSize().y/2
+        );
+        //std::cout<<centerOfMass[0]<<" ";
+        // Draw the object
+        data->window->draw(com);
+
+
 
         // Display changes
         data->window->display();

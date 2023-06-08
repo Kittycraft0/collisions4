@@ -74,27 +74,30 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
         //double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
         // Set them in the final returned vector
 
-        double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
-        double v2f=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i);
+        //double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
+        //double v2f=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i);
+        double vf=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i);
         
         //double v1f=m1i*m21+m1f*m2f+m2f*restitution*(v2f-v2i)
         //double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
 
         // Calculate the final impulses
-        double p1f=m1i*(v1f-v1i);
-        double p2f=m2i*(v2f-v2i);
+        double p1f=m1i*(vf-v1i);
+        double p2f=m2i*(-vf-v2i);
 
         p1fV.push_back(p1f);
         p2fV.push_back(p2f);
 
        
     }
+
     // Change the linear impulse by the retrieved impulse
+    // Using Euler method because simplicity
     for(int i=0;i<p1fV.size();i++){
         obj1->linImp[i]+=p1fV[i];
         obj2->linImp[i]+=p2fV[i];
-        obj1->p[i]+=p1fV[i]*deltaTime;
-        obj2->p[i]+=p2fV[i]*deltaTime;
+        //obj1->p[i]+=p1fV[i]*deltaTime;
+        //obj2->p[i]+=p2fV[i]*deltaTime;
     }
 }
 
