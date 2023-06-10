@@ -47,7 +47,7 @@ Settings::Settings(){
     this->objectSpawnMargin=200;
 
     // constants
-    this->G=1000*7/(this->numObjects*sqrt(this->numObjects))*100;
+    this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;
     
 

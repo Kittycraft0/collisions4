@@ -41,6 +41,8 @@
     7. .size() returns the number of components of the vector
 */
 
+#include <iostream>
+
 // 5/15/2023
 // (the coefficient of) restitution should be between 0 and 1, 
 // 0 is inelastic, 1 is elastic
@@ -60,44 +62,58 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     // Get initial velocity vectors
     std::vector<double> v1iV=obj1->v;
     std::vector<double> v2iV=obj2->v;
-    // Initialize the final impulse variable vectors
-    std::vector<double> p1fV;
-    std::vector<double> p2fV;
-    // Calculate the final impulses
-    // For loops are used here to allow for use for any number of dimensions
-    for(int i=0;i<v1iV.size();i++){
-        // Get the initial vectors
-        double v1i=v1iV[i];
-        double v2i=v2iV[i];
-        // Set the impulse variables
-        //double p1f=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
-        //double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
-        // Set them in the final returned vector
 
-        //double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
-        //double v2f=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i);
-        double vf=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i);
-        
-        //double v1f=m1i*m21+m1f*m2f+m2f*restitution*(v2f-v2i)
-        //double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m1i+m2i);
+    // 6/8/2023 - Get the sum of the velocity components squared for square rooting
+    double v1Squared=0;
+    double v2Squared=0;
+    // 6/8/2023 - Get the direction vector from the first to the second
+    std::vector<double> dV;
+    double dVSquared=0;
 
-        // Calculate the final impulses
-        double p1f=m1i*(vf-v1i);
-        double p2f=m2i*(-vf-v2i);
+    // Calculate the initial velocities and the squared distance magnitude
+    for(int i=0;i<obj1->v.size();i++){
+        v1Squared+=obj1->v[i];
+        v2Squared+=obj2->v[i];
 
-        p1fV.push_back(p1f);
-        p2fV.push_back(p2f);
-
-       
+        dV.push_back(obj2->v[i]-obj1->v[i]);
+        dVSquared+=dV[i]*dV[i];
     }
+    // 6/8/2023 - Get the inital velocity magnitudes
+    double v1i=sqrt(v1Squared);
+    double v2i=sqrt(v2Squared);
+
+    // 6/8/2023 - Normalize the direction vector
+    for(int i=0;i<dV.size();i++){
+        dV[i]/=dVSquared;
+    }
+
+    // 6/8/2023 - Get the inital impulse vectors
+    //double p1i=v1i*obj1->m;
+    //double p2i=v2i*obj2->m;
+
+    // Initialize the final impulse variable vectors
+    // NOPE - multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
+    //std::vector<double> p1fV;
+    //std::vector<double> p2fV;
+
+    // Set the impulse variables
+    // 6/8/2023 - do it OUTSIDE - ONLY ONCE.
+    //double pf=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
+    //double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
+    double pf=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*m1f;
+
 
     // Change the linear impulse by the retrieved impulse
     // Using Euler method because simplicity
-    for(int i=0;i<p1fV.size();i++){
-        obj1->linImp[i]+=p1fV[i];
-        obj2->linImp[i]+=p2fV[i];
+    for(int i=0;i<dV.size();i++){
+        //obj1->linImp[i]+=p1fV[i];
+        //obj2->linImp[i]+=p2fV[i];
         //obj1->p[i]+=p1fV[i]*deltaTime;
         //obj2->p[i]+=p2fV[i]*deltaTime;
+        //std::cout<<" "<<dV[i]*pf;
+        obj1->linImp[i]+=dV[i]*pf;
+        obj2->linImp[i]-=dV[i]*pf;
+        //std::cout<<obj1
     }
 }
 

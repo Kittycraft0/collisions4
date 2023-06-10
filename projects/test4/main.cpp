@@ -39,7 +39,7 @@ int main() {
             // no code goes here really
         }
 
-        bool doMove=true;
+        bool doMove=false;
         bool doGravity=false;
         bool doCollide=true;
 
@@ -85,6 +85,7 @@ int main() {
                 double dist=sqrt(sqSum);
                 // abs for magnitude is not needed due to squaring
                 if(dist<data->objects[i]->radius+data->objects[j]->radius){
+                    std::cout<<"Collision between "<<i<<" and "<<j<<"\n";
                     collide(
                         data->objects[i],
                         data->objects[j],
@@ -129,12 +130,9 @@ int main() {
             // 6/8/2023 - last day of school - remember its just m!
             totalMass+=obj->m;
         }
-        //std::cout<<centerOfMass[0]<<" "<<centerOfMass[1]<<" "<<data->objects.size()*totalMass<<"\n";
         for(int i=0;i<centerOfMass.size();i++){
-            // 6/8/2023 the number of objects was already accounted for!
-            centerOfMass[i]/=totalMass;//data->objects.size()*totalMass; <--
+            centerOfMass[i]/=totalMass;
         }
-        //std::cout<<centerOfMass[0]<<" "<<centerOfMass[1]<<" "<<data->objects.size()*totalMass<<"\n";
         // Draw the center of mass of the system
         // Copied and modified from render/render2d.cpp
         // Initialize the rendered object
