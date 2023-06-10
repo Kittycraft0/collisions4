@@ -87,12 +87,12 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     double v1i=sqrt(v1Squared);
     double v2i=sqrt(v2Squared);
 
-    //double InvdVMagnitude=invSqrt(dVSquared);
-    double dVMagnitude=sqrt(dVSquared);
+    //double invDist=invSqrt(dVSquared);
+    double dist=sqrt(dVSquared);
     // 6/8/2023 - Normalize the direction vector
     for(int i=0;i<dV.size();i++){
-        //dV[i]*=InvdVMagnitude;
-        dV[i]/=dVMagnitude;
+        //dV[i]*=invDist;
+        dV[i]/=dist;
     }
 
     // 6/8/2023 - Get the inital impulse vectors
@@ -105,8 +105,10 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     // Set the impulse variables
     // 6/8/2023 - do it OUTSIDE - ONLY ONCE.
     // 6/10/2023 - it's a CHANGE in the impulse variable
-    double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
-
+    //double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
+    double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m2i-m1i);
+    //double pf=((((m1i*v1i+m2i*v2i)+(m1i*restitution*(v2i-v1i)))/(m2i+m1i))-v1i)*m1i;
+    double pf=(v1f-v1i)*m1i;
 
     // Change the linear impulse by the retrieved impulse
     // Using Euler method because simplicity

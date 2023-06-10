@@ -9,7 +9,7 @@ but what is wrong? that is the big, large, magnificient question that yearns to 
 - add BOUNDARY WALLS
 - implement PROPER COLLISIONS
 - fix the collisions
-- add/remove gravity - experiment with gravity???
+- add/remove gravity - experiment with gravity??? - DONE - 6/10/2023
 - experiment with masses
 
 5/4/2023
@@ -20,4 +20,4 @@ I can then write all of the code afterwards. Great for planning ahead, I guess!
 tungsten is cool
 
 5/25/2023
-TODO: add CMakeLists.txt files to all folders and subfolders in the src folders
+TODO: add CMakeLists.txt files to all folders and subfolders in the src folders - DONE - 6/10/2023
