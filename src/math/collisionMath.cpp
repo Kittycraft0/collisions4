@@ -1,6 +1,4 @@
-#include "collisionmath.h"
-//collisionMath.cpp 5/8/2023
-#include "../data/objectnd.h"
+
 
 
 /*
@@ -41,7 +39,15 @@
     7. .size() returns the number of components of the vector
 */
 
+// The header file works -6/10/2023
+#include "collisionmath.h"
+//collisionMath.cpp 5/8/2023
+#include "../data/objectnd.h"
+
+
 #include <iostream>
+// Include the double invSqrt(double n); method -6/10/20923
+#include "invsqrt.h"
 
 // 5/15/2023
 // (the coefficient of) restitution should be between 0 and 1, 
@@ -52,13 +58,11 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     // pointers are really nice
     // looks at the memory address (pointer) of both objects
     // and gets the masses from them
-    float m1i=obj1->m;
-    float m2i=obj2->m;
+    double m1i=obj1->m;
+    double m2i=obj2->m;
     // The final mass is equal to the starting mass.
-    float m1f=m1i;
-    float m2f=m2i;
-    // Get coefficient of restitution
-    float c=restitution;
+    //double m1f=m1i;
+    //double m2f=m2i;
     // Get initial velocity vectors
     std::vector<double> v1iV=obj1->v;
     std::vector<double> v2iV=obj2->v;
@@ -66,25 +70,29 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     // 6/8/2023 - Get the sum of the velocity components squared for square rooting
     double v1Squared=0;
     double v2Squared=0;
-    // 6/8/2023 - Get the direction vector from the first to the second
+    // 6/8/2023 - Get the direction vector from the first object to the second object
     std::vector<double> dV;
     double dVSquared=0;
 
     // Calculate the initial velocities and the squared distance magnitude
     for(int i=0;i<obj1->v.size();i++){
-        v1Squared+=obj1->v[i];
-        v2Squared+=obj2->v[i];
-
-        dV.push_back(obj2->v[i]-obj1->v[i]);
+        // The sqared magnitude is the sum of the SQUARED components.
+        v1Squared+=obj1->v[i]*obj1->v[i];
+        v2Squared+=obj2->v[i]*obj2->v[i];
+        
+        dV.push_back(obj2->p[i]-obj1->p[i]);
         dVSquared+=dV[i]*dV[i];
     }
     // 6/8/2023 - Get the inital velocity magnitudes
     double v1i=sqrt(v1Squared);
     double v2i=sqrt(v2Squared);
 
+    //double InvdVMagnitude=invSqrt(dVSquared);
+    double dVMagnitude=sqrt(dVSquared);
     // 6/8/2023 - Normalize the direction vector
     for(int i=0;i<dV.size();i++){
-        dV[i]/=dVSquared;
+        //dV[i]*=InvdVMagnitude;
+        dV[i]/=dVMagnitude;
     }
 
     // 6/8/2023 - Get the inital impulse vectors
@@ -93,27 +101,23 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
 
     // Initialize the final impulse variable vectors
     // NOPE - multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
-    //std::vector<double> p1fV;
-    //std::vector<double> p2fV;
 
     // Set the impulse variables
     // 6/8/2023 - do it OUTSIDE - ONLY ONCE.
-    //double pf=(((((m1i*v1i+m2i*v2i)/m2f)+(v2i-v1i)*c)/(1+(m1f/m2f)))-v1i)*m1f;
-    //double p2f=(((((m2i*v2i+m1i*v1i)/m1f)+(v1i-v2i)*c)/(1+(m2f/m1f)))-v2i)*m2f;
-    double pf=((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*m1f;
+    // 6/10/2023 - it's a CHANGE in the impulse variable
+    double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
 
 
     // Change the linear impulse by the retrieved impulse
     // Using Euler method because simplicity
+    // Velocities are updated outside this method using the object's linear impulse variables
+    // by doing linImp*mass for each component and adding that to the velocities. 
+    // The velocities are then added to the positions. This is done every frame.
     for(int i=0;i<dV.size();i++){
-        //obj1->linImp[i]+=p1fV[i];
-        //obj2->linImp[i]+=p2fV[i];
-        //obj1->p[i]+=p1fV[i]*deltaTime;
-        //obj2->p[i]+=p2fV[i]*deltaTime;
-        //std::cout<<" "<<dV[i]*pf;
-        obj1->linImp[i]+=dV[i]*pf;
-        obj2->linImp[i]-=dV[i]*pf;
-        //std::cout<<obj1
+        // Multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
+        double newImp=dV[i]*pf;
+        obj1->linImp[i]+=newImp;
+        obj2->linImp[i]-=newImp;
     }
 }
 
