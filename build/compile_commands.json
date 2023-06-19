@@ -1,7 +1,67 @@
 [
 {
-  "directory": "/home/user2/vscodeprojects/collisions3/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/thefirsttry.dir/main.cpp.o -c /home/user2/vscodeprojects/collisions3/main.cpp",
-  "file": "/home/user2/vscodeprojects/collisions3/main.cpp"
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/game.dir/src/game/script.cpp.o -c /home/user2/vscodeprojects/collisions4/src/game/script.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/game/script.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/game.dir/src/game/loop.cpp.o -c /home/user2/vscodeprojects/collisions4/src/game/loop.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/game/loop.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/daata.dir/src/data/initData.cpp.o -c /home/user2/vscodeprojects/collisions4/src/data/initData.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/data/initData.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/daata.dir/src/data/modeldata.cpp.o -c /home/user2/vscodeprojects/collisions4/src/data/modeldata.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/data/modeldata.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/daata.dir/src/data/modelnd.cpp.o -c /home/user2/vscodeprojects/collisions4/src/data/modelnd.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/data/modelnd.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/daata.dir/src/data/objectnd.cpp.o -c /home/user2/vscodeprojects/collisions4/src/data/objectnd.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/data/objectnd.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/daata.dir/src/data/settings.cpp.o -c /home/user2/vscodeprojects/collisions4/src/data/settings.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/data/settings.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/render.dir/src/render/initWindow.cpp.o -c /home/user2/vscodeprojects/collisions4/src/render/initWindow.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/render/initWindow.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/render.dir/src/render/render2d.cpp.o -c /home/user2/vscodeprojects/collisions4/src/render/render2d.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/render/render2d.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/maath.dir/src/math/collisionMath.cpp.o -c /home/user2/vscodeprojects/collisions4/src/math/collisionMath.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/math/collisionMath.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/maath.dir/src/math/gravityMath.cpp.o -c /home/user2/vscodeprojects/collisions4/src/math/gravityMath.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/math/gravityMath.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4 -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -g -o CMakeFiles/maath.dir/src/math/invsqrt.cpp.o -c /home/user2/vscodeprojects/collisions4/src/math/invsqrt.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/src/math/invsqrt.cpp"
+},
+{
+  "directory": "/home/user2/vscodeprojects/collisions4/build",
+  "command": "/usr/bin/c++  -I/home/user2/vscodeprojects/collisions4/{CMAKE_CURRENT_SOURCE_DIR}/src -I/home/user2/vscodeprojects/collisions4/include -I/home/user2/vscodeprojects/collisions4 -g -o CMakeFiles/test4.dir/projects/test4/main.cpp.o -c /home/user2/vscodeprojects/collisions4/projects/test4/main.cpp",
+  "file": "/home/user2/vscodeprojects/collisions4/projects/test4/main.cpp"
 }
 ]

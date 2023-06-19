@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/user2/vscodeprojects/collisions3
-BuildDirectory: /home/user2/vscodeprojects/collisions3/build
+SourceDirectory: /home/user2/vscodeprojects/collisions4
+BuildDirectory: /home/user2/vscodeprojects/collisions4/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -14,7 +14,7 @@ CostDataFile:
 Site: c40-05-theubuntucomputer
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-g++
+BuildName: Linux-c++
 
 # Subprojects
 LabelsForSubprojects: 
@@ -26,7 +26,7 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/user2/vscodeprojects/collisions3"
+ConfigureCommand: "/usr/bin/cmake" "/home/user2/vscodeprojects/collisions4"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -62,7 +62,7 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/g++
+Compiler: /usr/bin/c++
 CompilerVersion: 11.3.0
 
 # Dynamic analysis (MemCheck)
