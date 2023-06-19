@@ -20,7 +20,7 @@ include(projects/test4/CMakeLists.txt)
 
 
 
-# 6/19/2023 copied over from collisions3 folder to collisions4 folder
+# 6/19/2023 copied over from collisions3 folder to collisions4 folder in case something goes horribly wrong...
 
 
 
@@ -50,8 +50,43 @@ enable_testing()
 # ChatGPT:
 # CMakeLists.txt in the root directory
 
+# 6/19/2023 set sfml directory environment variable
+set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(THE_SFML_LIBRARY_DIR ${THE_SFML_INCLUDE_DIR}/SFML-2.5.1/lib)
+#add_subdirectory(include/SFML-2.5.1)
+include_directories(${THE_SFML_INCLUDE_DIR})
+include_directories(${THE_SFML_LIBRARY_DIR})
+
 # Find the SFML package
-find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+# Commented out because this requires outside-the-project-folder dependancies
+#find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+
+
+
+# 6/19/2023 - Failed attempt at copy/paste from the render MakeLists.txt file
+#set(THE_SFML_LIB_DIR ${THE_SFML_INCLUDE_DIR}/SFML-2.5.1/include/SFML)
+#message(STATUS ${SRC_DIR} AAAAA)
+#message(STATUS ${RENDER_DIR})
+
+# Add the source files for the data library
+#set(SOURCES_THE_SFML
+    # Add more source files if needed
+#    ${THE_SFML_LIB_DIR}/initWindow.cpp
+#    ${THE_SFML_LIB_DIR}/render2d.cpp
+#)
+#message(STATUS ${SOURCES_RENDER})
+# Create the render library
+#add_library(thesfml ${SOURCES_THE_SFML})
+
+# Set the include directories for the render library
+#target_include_directories(thesfml PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+# Link the library
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+#thesfml
+    # Add any dependencies if needed
+#)
+
 
 
 
@@ -64,8 +99,14 @@ find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 # connect executable (first parameter, collisions3) 
 # with all following libraries (all parameters 
 # following the first, the names following)
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC sfml-graphics sfml-audio)
-
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC sfml-graphics sfml-audio)
+# 6/19/2023 - updated
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC 
+    ${THE_SFML_LIBRARY_DIR}/libsfmlgraphics.so
+    ${THE_SFML_LIBRARY_DIR}/libsfmlaudio.so
+    #${THE_SFML_INCLUDE_DIR}/libsfml-graphics.a
+)
+message("Files location: " ${THE_SFML_LIBRARY_DIR})
 
 
 # 5/14/2023
