@@ -71,8 +71,8 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     double v1Squared=0;
     double v2Squared=0;
     // 6/8/2023 - Get the direction vector from the first object to the second object
-    std::vector<double> dV;
-    double dVSquared=0;
+    std::vector<double> distV;
+    double distSquared=0;
 
     // Calculate the initial velocities and the squared distance magnitude
     for(int i=0;i<obj1->v.size();i++){
@@ -80,19 +80,19 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
         v1Squared+=obj1->v[i]*obj1->v[i];
         v2Squared+=obj2->v[i]*obj2->v[i];
         
-        dV.push_back(obj2->p[i]-obj1->p[i]);
-        dVSquared+=dV[i]*dV[i];
+        distV.push_back(obj2->p[i]-obj1->p[i]);
+        distSquared+=distV[i]*distV[i];
     }
     // 6/8/2023 - Get the inital velocity magnitudes
     double v1i=sqrt(v1Squared);
     double v2i=sqrt(v2Squared);
 
-    //double invDist=invSqrt(dVSquared);
-    double dist=sqrt(dVSquared);
+    //double invDist=invSqrt(distSquared);
+    double dist=sqrt(distSquared);
     // 6/8/2023 - Normalize the direction vector
-    for(int i=0;i<dV.size();i++){
+    for(int i=0;i<distV.size();i++){
         //dV[i]*=invDist;
-        dV[i]/=dist;
+        distV[i]/=dist;
     }
 
     // 6/8/2023 - Get the inital impulse vectors
@@ -108,18 +108,18 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     //double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
     double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m2i-m1i);
     //double pf=((((m1i*v1i+m2i*v2i)+(m1i*restitution*(v2i-v1i)))/(m2i+m1i))-v1i)*m1i;
-    double pf=(v1f-v1i)*m1i;
+    double pf=abs((v1f-v1i)*m1i);
 
     // Change the linear impulse by the retrieved impulse
     // Using Euler method because simplicity
     // Velocities are updated outside this method using the object's linear impulse variables
     // by doing linImp*mass for each component and adding that to the velocities. 
     // The velocities are then added to the positions. This is done every frame.
-    for(int i=0;i<dV.size();i++){
+    for(int i=0;i<distV.size();i++){
         // Multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
-        double newImp=dV[i]*pf;
-        obj1->linImp[i]+=newImp;
-        obj2->linImp[i]-=newImp;
+        double newImp=distV[i]*pf;
+        obj1->linImp[i]-=newImp;
+        obj2->linImp[i]+=newImp;
     }
 }
 
