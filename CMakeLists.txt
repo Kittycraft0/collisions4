@@ -91,7 +91,7 @@ target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
 )
 message("Files location: " ${THE_SFML_LIBRARY_DIR})
 
-
+# what
 # 5/14/2023
 # Setting the executable location
 # "bin" both stands for "binaries" and also seems like a 
