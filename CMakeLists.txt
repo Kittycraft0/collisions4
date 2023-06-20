@@ -9,9 +9,9 @@ set(INCLUDED_LIBRARIES "")
 #endif(COMMAND cmake_policy)
 
 # Remember: only allow ONE!!!
-#include(projects/helloworld/CMakeLists.txt)
+include(projects/helloworld/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
-include(projects/test1/CMakeLists.txt)
+#include(projects/test1/CMakeLists.txt)
 #include(projects/test2/CMakeLists.txt)
 #include(projects/test3/CMakeLists.txt)
 #include(projects/test4/CMakeLists.txt)
@@ -23,8 +23,8 @@ include(projects/test1/CMakeLists.txt)
 # Or maybe turning all add_subdirectory()s into include()s might work.
 
 
-# 6/19/2023 either LINUX, GCC, or LIB
-set(THE_OS LIB)
+# 6/19/2023 either LINUX, GCC, or LIB, or vc15-32, or vc15-64
+set(THE_OS GCC)
 
 
 
@@ -65,6 +65,43 @@ set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+
+
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include/SFML)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/lib)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+
+
+# Set the path to the SFML library files
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include/SFML)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/lib)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+
+#target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include/SFML)
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/lib)
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+
+# Link SFML libraries to your target
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include/SFML)
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/lib)
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC sfml-graphics sfml-window sfml-system)  # Adjust the SFML libraries as per your needs
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC sfml-graphics sfml-window sfml-system)  # Adjust the SFML libraries as per your needs
+
 
 
 
@@ -73,15 +110,15 @@ target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_
 if(${THE_OS} STREQUAL "LIB")
     message("running LIB")
     set(SFML_LIBS
-        ${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
-        ${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
         # 6/20/2023 bin bin bin...
         ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
         ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
@@ -125,14 +162,14 @@ elseif(${THE_OS} STREQUAL "LINUX")
 elseif(${THE_OS} STREQUAL "GCC")
     message("running GCC")
     set(SFML_LIBS
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
-        ${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
+        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
         # 6/20/2023 bin bin bin...
         ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
         ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
@@ -155,6 +192,46 @@ elseif(${THE_OS} STREQUAL "GCC")
     else()
         message("Test file does not exist: ${FILE_TEST_LIB2}")
     endif()
+elseif(${THE_OS} STREQUAL "vc15-32")
+    message("running vc15-32")
+    set(SFML_LIBS
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
+        # 6/20/2023 bin bin bin...
+        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+    )
+elseif(${THE_OS} STREQUAL "vc15-64")
+    message("running vc15-64")
+    set(SFML_LIBS
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
+        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
+        # 6/20/2023 bin bin bin...
+        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+    )
 endif()
 
 
@@ -181,7 +258,8 @@ target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
 # YESS!!! IT WORKS!!!
 
 set_target_properties(${AWESOME_PROJECT_EXECUTABLE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-
+# 6/20/2023
+message("Compiled files will be saved in " ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 
 
