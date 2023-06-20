@@ -3,7 +3,9 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++.exe build active file",
+            // 6/20/2023 set the compiler - the top one is the original one
             "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+            //"command": "C:\\msys64\\mingw64\\bin\\gcc.exe",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
