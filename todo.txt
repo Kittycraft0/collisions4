@@ -1,0 +1,23 @@
+4/20/2023
+wow day
+birthday in 5 days
+turning 18 niceee
+
+TODO:
+- make it work
+but what is wrong? that is the big, large, magnificient question that yearns to be answered...
+- add BOUNDARY WALLS
+- implement PROPER COLLISIONS
+- fix the collisions
+- add/remove gravity - experiment with gravity??? - DONE - 6/10/2023
+- experiment with masses
+
+5/4/2023
+It has come to my attention that making all of the header files first may actually be a good idea!
+I can then write all of the code afterwards. Great for planning ahead, I guess!
+
+5/8/2023
+tungsten is cool
+
+5/25/2023
+TODO: add CMakeLists.txt files to all folders and subfolders in the src folders - DONE - 6/10/2023

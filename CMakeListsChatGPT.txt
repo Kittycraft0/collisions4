@@ -1,0 +1,52 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(cppProject VERSION 0.1.0)
+
+# Set the path to the SFML library directory
+set(THE_OS GCC)
+set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/lib)
+
+# Set the path to the SFML include directory
+set(SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+
+# Include SFML headers
+include_directories(${SFML_INCLUDE_DIR})
+
+add_library(sfml-graphics SHARED IMPORTED)
+set_target_properties(sfml-graphics PROPERTIES
+    IMPORTED_LOCATION ${THE_SFML_LIBRARY_DIR}/sfml-graphics.a
+    IMPORTED_IMPLIB ${THE_SFML_LIBRARY_DIR}/sfml-graphics.a
+)
+
+add_library(sfml-window SHARED IMPORTED)
+set_target_properties(sfml-window PROPERTIES
+    IMPORTED_LOCATION ${THE_SFML_LIBRARY_DIR}/sfml-window.a
+    IMPORTED_IMPLIB ${THE_SFML_LIBRARY_DIR}/sfml-window.a
+)
+
+add_library(sfml-system SHARED IMPORTED)
+set_target_properties(sfml-system PROPERTIES
+    IMPORTED_LOCATION ${THE_SFML_LIBRARY_DIR}/sfml-system.a
+    IMPORTED_IMPLIB ${THE_SFML_LIBRARY_DIR}/sfml-system.a
+)
+
+# Add your executable and link against SFML libraries
+# Remember: only allow ONE!!!
+#include(projects/helloworld/CMakeLists.txt)
+#include(projects/invSqrtTest/CMakeLists.txt)
+include(projects/test1/CMakeLists.txt)
+#include(projects/test2/CMakeLists.txt)
+#include(projects/test4/CMakeLists.txt)
+#add_subdirectory(projects/test3)
+
+#add_executable(${PROJECT_NAME} main.cpp)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} sfml-graphics sfml-window sfml-system)
+
+# Set the output directory for the executable
+set_target_properties(${AWESOME_PROJECT_EXECUTABLE} PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin
+)
+
+# Set CPack properties
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
