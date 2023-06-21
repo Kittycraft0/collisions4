@@ -10,9 +10,9 @@ set(INCLUDED_LIBRARIES "")
 #endif(COMMAND cmake_policy)
 
 # Remember: only allow ONE!!!
-include(projects/helloworld/CMakeLists.txt)
+#include(projects/helloworld/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
-#include(projects/test1/CMakeLists.txt)
+include(projects/test1/CMakeLists.txt)
 #include(projects/test2/CMakeLists.txt)
 #include(projects/test3/CMakeLists.txt)
 #include(projects/test4/CMakeLists.txt)
