@@ -25,7 +25,8 @@ include(projects/test1/CMakeLists.txt)
 
 
 # 6/19/2023 either LINUX, GCC, LIB, vc15-32, vc15-64, gcc-7.3.0-mingw-32, or gcc-7.3.0-mingw-64
-set(THE_OS vc15-64)
+# 6/20/2023 8:36 PM CST:
+set(THE_OS vc15-32)
 
 
 
