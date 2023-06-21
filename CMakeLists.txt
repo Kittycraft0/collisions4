@@ -26,7 +26,7 @@ include(projects/test1/CMakeLists.txt)
 
 # 6/19/2023 either LINUX, GCC, LIB, vc15-32, vc15-64, gcc-7.3.0-mingw-32, or gcc-7.3.0-mingw-64
 # 6/20/2023 8:36 PM CST:
-set(THE_OS vc15-32)
+set(THE_OS GCC)
 
 
 
@@ -59,30 +59,71 @@ enable_testing()
 
 # 5/26/2023
 # 6/19/2023
+if(${THE_OS} STREQUAL "GCC")
+    # 6/19/2023 set sfml directory environment variable
+    set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    # 6/20/2023 REMEMBER THE "-" AAAAAAAAAAAAAAAAAAAAAA
+    set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
 
-# 6/19/2023 set sfml directory environment variable
-set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-# 6/20/2023 REMEMBER THE "-" AAAAAAAAAAAAAAAAAAAAAA
-set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+    #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+    #target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+    #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
 
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
-#target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
-#link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+    # Add the SFML include directories
+    target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
 
-# Add the SFML include directories
-target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/include)
+    # Add the SFML library directories
+    target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
 
-# Add the SFML library directories
-target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/bin)
+    # Link SFML libraries to the executable
+    target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+        sfml-system-2
+        sfml-window-2
+        sfml-graphics-2
+        sfml-audio-2
+        sfml-network-2
+    )
 
-# Link SFML libraries to the executable
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-    sfml-system-2
-    sfml-window-2
-    sfml-graphics-2
-    sfml-audio-2
-    sfml-network-2
-)
+elseif(${THE_OS} STREQUAL "LINUX")
+#if(${THE_OS} STREQUAL "LINUX")
+    ############
+    # 6/19/2023 set sfml directory environment variable
+    set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    set(THE_SFML_LIBRARY_DIR ${THE_SFML_INCLUDE_DIR}/SFML-2.5.1/lib)
+    #add_subdirectory(include/SFML-2.5.1)
+    include_directories(${THE_SFML_INCLUDE_DIR})
+    #include_directories(${THE_SFML_LIBRARY_DIR})
+
+    # Find the SFML package
+
+
+    # I just want to code and not have to deal with CMakeLists.txt files...
+    # Eh, they seem to be working now though, so it's not all that bad anymore.
+
+    # Link against the SFML libraries
+    #target_link_libraries(collisions3 sfml-graphics sfml-audio)
+    # 5/10/2023 explanation:
+    # connect executable (first parameter, collisions3) 
+    # with all following libraries (all parameters 
+    # following the first, the names following)
+    #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC sfml-graphics sfml-audio)
+
+    # Replaced by - 6/19/2023
+
+    # 6/19/2023 - updated
+    target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC 
+        ${THE_SFML_LIBRARY_DIR}/libsfml-graphics.so
+        ${THE_SFML_LIBRARY_DIR}/libsfml-audio.so
+        ${THE_SFML_LIBRARY_DIR}/libsfml-network.so
+        ${THE_SFML_LIBRARY_DIR}/libsfml-system.so
+        ${THE_SFML_LIBRARY_DIR}/libsfml-window.so
+        #${THE_SFML_INCLUDE_DIR}/libsfml-graphics.a
+    )
+    message("Files location: " ${THE_SFML_LIBRARY_DIR})
+endif()
+
+
+
 
 
 

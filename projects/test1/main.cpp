@@ -21,7 +21,9 @@ struct Obj{
 int main()
 {
     // added 6/19/2023
-    std::cout<<"RUNNING THE MAIN.CPP OF THE 1!!!";
+    std::cout<<"RUNNING THE MAIN.CPP OF THE 1!!!\n";
+    // added 6/20/2023 to suppress "Failed to set DirectInput device axis mode: 1"
+    sf::err().rdbuf(NULL);
     
     // the normal G
     // const double G = 6.67430e-11; // gravitational constant in m^3 kg^-1 s^-2
