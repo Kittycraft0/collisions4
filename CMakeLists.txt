@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0.0)
 
 # 6/21/2023
 # Options: helloworld, invSqrtTest, test1, test2, test3, test4
-set(EXE_NAME test2)
+set(EXE_NAME test1)
 
 # 6/19/2023 why
 set(INCLUDED_LIBRARIES "")
@@ -15,7 +15,7 @@ set(INCLUDED_LIBRARIES "")
 
 # 6/21/2023 set the project root directory
 set(PROJECT_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
-message("Project root: " ${PROJECT_ROOT})
+message("!!! Project root: " ${PROJECT_ROOT})
 
 
 # 5/31/2023
@@ -73,21 +73,23 @@ include(projects/${EXE_NAME}/CMakeLists.txt)
 # 5/26/2023
 # 6/19/2023
 if(${THE_OS} STREQUAL "GCC")
-    message("Using GCC SFML fetching")
+    message("!!! Using GCC SFML fetching")
     # 6/19/2023 set sfml directory environment variable
-    set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    #set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
     # 6/20/2023 REMEMBER THE "-" AAAAAAAAAAAAAAAAAAAAAA
-    set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+    #set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
 
     #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
     #target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
     #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
 
     # Add the SFML include directories
-    target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
+    target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${PROJECT_ROOT}/include/${THE_OS}-SFML-2.5.1/include)
+    #include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
 
     # Add the SFML library directories
-    target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
+    target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${PROJECT_ROOT}/include/${THE_OS}-SFML-2.5.1/bin)
+    #link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
 
     # Link SFML libraries to the executable
     #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
@@ -101,7 +103,7 @@ if(${THE_OS} STREQUAL "GCC")
 
 elseif(${THE_OS} STREQUAL "LINUX")
 #if(${THE_OS} STREQUAL "LINUX")
-    message("Using LINUX SFML fetching")
+    message("!!! Using LINUX SFML fetching")
     ############
     # 6/19/2023 set sfml directory environment variable
     set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -143,7 +145,7 @@ elseif(${THE_OS} STREQUAL "LINUX")
         sfml-audio
         sfml-network
     )
-    message("Files location: " ${THE_SFML_LIBRARY_DIR})
+    message("!!! Files location: " ${THE_SFML_LIBRARY_DIR})
 endif()
 
 
@@ -170,7 +172,7 @@ target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
 
 set_target_properties(${AWESOME_PROJECT_EXECUTABLE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 # 6/20/2023
-message("Compiled files will be saved in " ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+message("!!! Compiled files will be saved in " ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 
 

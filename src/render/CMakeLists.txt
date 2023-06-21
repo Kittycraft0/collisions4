@@ -19,6 +19,12 @@ add_library(render ${SOURCES_RENDER})
 # Set the include directories for the render library
 target_include_directories(render PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
+    # Add the SFML include directories
+    target_include_directories(render PUBLIC ${PROJECT_ROOT}/include/${THE_OS}-SFML-2.5.1/include)
+
+    # Add the SFML library directories
+    target_link_directories(render PUBLIC ${PROJECT_ROOT}/include/${THE_OS}-SFML-2.5.1/bin)
+
 # Link any dependencies for the data library
 #target_link_libraries(render
 #    # Add any dependencies if needed
@@ -28,6 +34,7 @@ target_link_libraries(render
     # Add any dependencies if needed
     ${SFML_LIBS}
 )
+
 
 #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
 #    render

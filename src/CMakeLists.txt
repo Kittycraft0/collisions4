@@ -26,7 +26,7 @@ project(MyProject)
 #endif()
 
 set(SRC_DIR ${PROJECT_ROOT}/src)
-message("SRC directory: " ${SRC_DIR})
+message("!!0 SRC directory: " ${SRC_DIR})
 
 # Include subdirectories
 #add_subdirectory({SRC_DIRECTORY}/data)
