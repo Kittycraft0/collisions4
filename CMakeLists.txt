@@ -63,234 +63,224 @@ enable_testing()
 set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 # 6/20/2023 REMEMBER THE "-" AAAAAAAAAAAAAAAAAAAAAA
 set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1)
+
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 #target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/include)
 #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}-SFML-2.5.1/bin)
 
-
-
-# chatgpt 6/20/2023
-
-
-# Set the include directories for SFML headers
-set(SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/include)
-
-# Set the library directories for SFML DLL files
-set(SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/bin)
-
 # Add the SFML include directories
-target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${SFML_INCLUDE_DIR})
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/include)
 
 # Add the SFML library directories
-target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${SFML_LIBRARY_DIR})
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/bin)
 
 # Link SFML libraries to the executable
 target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-    sfml-system
-    sfml-window
-    sfml-graphics
-    sfml-audio
-    sfml-network
+    sfml-system-2
+    sfml-window-2
+    sfml-graphics-2
+    sfml-audio-2
+    sfml-network-2
 )
 
 
 
-#set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
-#find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
-
-# 6/19/2023 - file structures with if statement things
-if(${THE_OS} STREQUAL "LIB")
-    message("running LIB")
-    set(SFML_LIBS
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
-        # 6/20/2023 bin bin bin...
-        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
-    )
-
-    # 6/20/2023 - File existance check
-    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib")
-    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
-    # Check if the file exists
-    if (EXISTS ${FILE_TEST_LIB1})
-        message("Test file exists: ${FILE_TEST_LIB1}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB1}")
-    endif()
-    if (EXISTS ${FILE_TEST_LIB2})
-        message("Test file exists: ${FILE_TEST_LIB2}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB2}")
-    endif()
-elseif(${THE_OS} STREQUAL "LINUX")
-    message("running LINUX")
-    set(SFML_LIBS
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.so
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.so
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.so
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.so
-        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.so
-    )
-    # 6/20/2023 - File existance check
-    set(FILE_TEST_LIB "${THE_SFML_LIBRARY_DIR}/libsfml-audio.so")
-    # Check if the file exists
-    if (EXISTS ${FILE_TEST_LIB})
-        message("Test file exists: ${FILE_TEST_LIB}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB}")
-    endif()
-elseif(${THE_OS} STREQUAL "GCC")
-    message("running GCC")
-    set(SFML_LIBS
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
-        # 6/20/2023 bin bin bin...
-        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
-    )
-    # 6/20/2023 - File existance check
-    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a")
-    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
-    # Check if the file exists
-    if (EXISTS ${FILE_TEST_LIB1})
-        message("Test file exists: ${FILE_TEST_LIB1}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB1}")
-    endif()
-    if (EXISTS ${FILE_TEST_LIB2})
-        message("Test file exists: ${FILE_TEST_LIB2}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB2}")
-    endif()
-elseif(${THE_OS} STREQUAL "vc15-32")
-    message("running vc15-32")
-    set(SFML_LIBS
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
-        # 6/20/2023 bin bin bin...
-        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
-    )
-elseif(${THE_OS} STREQUAL "vc15-64")
-    message("running vc15-64")
-    set(SFML_LIBS
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
-        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
-        # 6/20/2023 bin bin bin...
-        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
-    )
-elseif(${THE_OS} STREQUAL "gcc-7.3.0-mingw-32")
-    message("running GCC")
-    set(SFML_LIBS
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
-        # 6/20/2023 bin bin bin...
-        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
-    )
-    # 6/20/2023 - File existance check
-    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a")
-    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
-    # Check if the file exists
-    if (EXISTS ${FILE_TEST_LIB1})
-        message("Test file exists: ${FILE_TEST_LIB1}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB1}")
-    endif()
-    if (EXISTS ${FILE_TEST_LIB2})
-        message("Test file exists: ${FILE_TEST_LIB2}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB2}")
-    endif()
-elseif(${THE_OS} STREQUAL "gcc-7.3.0-mingw-64")
-    message("running GCC")
-    set(SFML_LIBS
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
-        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
-        # 6/20/2023 bin bin bin...
-        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
-        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
-    )
-    # 6/20/2023 - File existance check
-    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a")
-    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
-    # Check if the file exists
-    if (EXISTS ${FILE_TEST_LIB1})
-        message("Test file exists: ${FILE_TEST_LIB1}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB1}")
-    endif()
-    if (EXISTS ${FILE_TEST_LIB2})
-        message("Test file exists: ${FILE_TEST_LIB2}")
-    else()
-        message("Test file does not exist: ${FILE_TEST_LIB2}")
-    endif()
-endif()
+##set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
+##find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+#
+## 6/19/2023 - file structures with if statement things
+#if(${THE_OS} STREQUAL "LIB")
+#    message("running LIB")
+#    set(SFML_LIBS
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
+#        # 6/20/2023 bin bin bin...
+#        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+#    )
+#
+#    # 6/20/2023 - File existance check
+#    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib")
+#    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
+#    # Check if the file exists
+#    if (EXISTS ${FILE_TEST_LIB1})
+#        message("Test file exists: ${FILE_TEST_LIB1}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB1}")
+#    endif()
+#    if (EXISTS ${FILE_TEST_LIB2})
+#        message("Test file exists: ${FILE_TEST_LIB2}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB2}")
+#    endif()
+#elseif(${THE_OS} STREQUAL "LINUX")
+#    message("running LINUX")
+#    set(SFML_LIBS
+#        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.so
+#        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.so
+#        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.so
+#        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.so
+#        ${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.so
+#    )
+#    # 6/20/2023 - File existance check
+#    set(FILE_TEST_LIB "${THE_SFML_LIBRARY_DIR}/libsfml-audio.so")
+#    # Check if the file exists
+#    if (EXISTS ${FILE_TEST_LIB})
+#        message("Test file exists: ${FILE_TEST_LIB}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB}")
+#    endif()
+#elseif(${THE_OS} STREQUAL "GCC")
+#    message("running GCC")
+#    set(SFML_LIBS
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
+#        # 6/20/2023 bin bin bin...
+#        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+#    )
+#    # 6/20/2023 - File existance check
+#    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a")
+#    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
+#    # Check if the file exists
+#    if (EXISTS ${FILE_TEST_LIB1})
+#        message("Test file exists: ${FILE_TEST_LIB1}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB1}")
+#    endif()
+#    if (EXISTS ${FILE_TEST_LIB2})
+#        message("Test file exists: ${FILE_TEST_LIB2}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB2}")
+#    endif()
+#elseif(${THE_OS} STREQUAL "vc15-32")
+#    message("running vc15-32")
+#    set(SFML_LIBS
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
+#        # 6/20/2023 bin bin bin...
+#        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+#    )
+#elseif(${THE_OS} STREQUAL "vc15-64")
+#    message("running vc15-64")
+#    set(SFML_LIBS
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-audio.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-graphics.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-main.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-network.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-system.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/sfml-window.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbis.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbisenc.lib
+#        #${THE_SFML_LIBRARY_DIR}/lib/vorbisfile.lib
+#        # 6/20/2023 bin bin bin...
+#        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+#    )
+#elseif(${THE_OS} STREQUAL "gcc-7.3.0-mingw-32")
+#    message("running GCC")
+#    set(SFML_LIBS
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
+#        # 6/20/2023 bin bin bin...
+#        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+#    )
+#    # 6/20/2023 - File existance check
+#    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a")
+#    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
+#    # Check if the file exists
+#    if (EXISTS ${FILE_TEST_LIB1})
+#        message("Test file exists: ${FILE_TEST_LIB1}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB1}")
+#    endif()
+#    if (EXISTS ${FILE_TEST_LIB2})
+#        message("Test file exists: ${FILE_TEST_LIB2}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB2}")
+#    endif()
+#elseif(${THE_OS} STREQUAL "gcc-7.3.0-mingw-64")
+#    message("running GCC")
+#    set(SFML_LIBS
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-graphics.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-main.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-network.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-system.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libsfml-window.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libvorbis.a
+#        #${THE_SFML_LIBRARY_DIR}/lib/libvorbisfile.a
+#        # 6/20/2023 bin bin bin...
+#        ${THE_SFML_LIBRARY_DIR}/bin/openal32.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-graphics-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-network-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-system-2.dll
+#        ${THE_SFML_LIBRARY_DIR}/bin/sfml-window-2.dll
+#    )
+#    # 6/20/2023 - File existance check
+#    set(FILE_TEST_LIB1 "${THE_SFML_LIBRARY_DIR}/lib/libsfml-audio.a")
+#    set(FILE_TEST_LIB2 "${THE_SFML_LIBRARY_DIR}/bin/sfml-audio-2.dll")
+#    # Check if the file exists
+#    if (EXISTS ${FILE_TEST_LIB1})
+#        message("Test file exists: ${FILE_TEST_LIB1}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB1}")
+#    endif()
+#    if (EXISTS ${FILE_TEST_LIB2})
+#        message("Test file exists: ${FILE_TEST_LIB2}")
+#    else()
+#        message("Test file does not exist: ${FILE_TEST_LIB2}")
+#    endif()
+#endif()
 
 
 #message("Files location: " ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}SFML-2.5.1/lib)
