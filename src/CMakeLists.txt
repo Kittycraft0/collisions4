@@ -8,19 +8,36 @@ project(MyProject)
 
 # Include something -5/30/2023
 # include_directories({CMAKE_CURRENT_SOURCE_DIR})
-set(SRC_DIR src)
+
+#if(${THE_OS} STREQUAL "LINUX")
+#    message("Using LINUX src directories")
+#    set(SRC_DIR src)
+#else()
+#    message("Using WINDOWS src directories")
+#    set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+#endif()
+# 6/21/2023 why does this one work and not the other!? ok whatver i have my own thing then
+#if(NOT ${THE_OS} STREQUAL "LINUX")
+#    message("Using WINDOWS src directories")
+#    set(SRC_DIR src)
+#else()
+#    message("Using LINUX src directories")
+#    set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+#endif()
+
+set(SRC_DIR ${PROJECT_ROOT}/src)
+message("SRC directory: " ${SRC_DIR})
+
 # Include subdirectories
 #add_subdirectory({SRC_DIRECTORY}/data)
 #add_subdirectory(game)
 #add_subdirectory(math)
 #add_subdirectory(render)
-
 # INCLUDE subdirectories
 include(${SRC_DIR}/game/CMakeLists.txt)
 include(${SRC_DIR}/data/CMakeLists.txt)
 include(${SRC_DIR}/render/CMakeLists.txt)
 include(${SRC_DIR}/math/CMakeLists.txt)
-
 # Add them to an src libary -5/31/2023
 #add_library(src INTERFACE)
 
