@@ -5,6 +5,7 @@ cmake_minimum_required(VERSION 3.0.0)
 # 6/21/2023
 # Options: helloworld, invSqrtTest, test1, test2, test3, test4
 set(EXE_NAME test1)
+set(AWESOME_PROJECT_EXECUTABLE ${EXE_NAME})
 
 # 6/19/2023 why
 set(INCLUDED_LIBRARIES "")
@@ -57,6 +58,19 @@ include(CTest)
 # ???
 enable_testing()
 
+# 6/22/2023 - Define the main executable
+if(EXISTS ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
+    message("!!! FOUND MAIN FILE: [PROJECT_ROOT]/projects/${EXE_NAME}/main.cpp")
+    add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
+elseif(EXISTS ${PROJECT_ROOT}/projects/${EXE_NAME}/${EXE_NAME}.cpp)
+    message("!!! FOUND MAIN FILE: [PROJECT_ROOT]/projects/${EXE_NAME}/${EXE_NAME}.cpp")
+    add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/${EXE_NAME}.cpp)
+else()
+    message(FATAL_ERROR "!!! MAIN FILE NOT FOUND: not found in ${EXE_NAME} directory!")
+endif()
+
+# 6/22/2023 - Remember to have awesome_project_executable defined first!!!!!!!!
+#add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
 
 # Get the project files
 # Remember: only allow ONE!!!
@@ -72,6 +86,7 @@ include(projects/${EXE_NAME}/CMakeLists.txt)
 
 # 5/26/2023
 # 6/19/2023
+# Set the SFML_LIBS environment variable and maybe try to actually link SFML to the executable and maybe hopefully libraries as well
 if(${THE_OS} STREQUAL "GCC")
     message("!!! Using GCC SFML fetching")
     # 6/19/2023 set sfml directory environment variable
