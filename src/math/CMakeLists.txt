@@ -15,18 +15,19 @@ set(SOURCES_MATH
 add_library(maath ${SOURCES_MATH})
 
 # Set the include directories for the data library
-target_include_directories(maath PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+#target_include_directories(maath PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #Link any dependencies for the data library
-target_link_libraries(maath
-    # Add any dependencies if needed
-    ${SFML_LIBS}
-)
-
-#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-#    maath
+#target_link_libraries(maath
 #    # Add any dependencies if needed
+#    ${SFML_LIBS}
 #)
 
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+    maath
+    # Add any dependencies if needed
+)
+message("!!M Math loaded!")
+
 # 6/19/2023 concatenate???
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} maath)
+#set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} maath)

@@ -1,9 +1,9 @@
 # 5/30/2023
 # set the project name
-set(AWESOME_PROJECT_EXECUTABLE test3)
+#set(AWESOME_PROJECT_EXECUTABLE test3)
 # Add the project executable
 #add_executable(${AWESOME_PROJECT_EXECUTABLE} main.cpp)
-add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test3/main.cpp)
+#add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test3/main.cpp)
 
 # add the src libary
 #add_library(src ../src)

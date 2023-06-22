@@ -91,22 +91,23 @@ set(SOURCES_DATA
 add_library(daata ${SOURCES_DATA})
 
 # Set the include directories for the data library
-target_include_directories(daata PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+#target_include_directories(daata PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #Link any dependencies for the data library
-target_link_libraries(daata
-    # Add any dependencies if needed
-    ${SFML_LIBS}
-)
-
-#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-#    daata
+#target_link_libraries(daata
 #    # Add any dependencies if needed
+#    ${SFML_LIBS}
 #)
+
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+    daata
+    # Add any dependencies if needed
+)
+message("!!D Data loaded!")
 
 # 6/19/2023 concatenate???
 
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} daata)
+#set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} daata)
 
 #add_library(data SHARED ${SOURCES})
 

@@ -1,9 +1,9 @@
 # 5/30/2023
 # set the project name
-set(AWESOME_PROJECT_EXECUTABLE test4)
+#set(AWESOME_PROJECT_EXECUTABLE test4)
 # Add the project executable
 #add_executable(${AWESOME_PROJECT_EXECUTABLE} main.cpp)
-add_executable(${AWESOME_PROJECT_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/projects/test4/main.cpp)
+#add_executable(${AWESOME_PROJECT_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/projects/test4/main.cpp)
 # add the src libary
 #add_library(src ../src)
 

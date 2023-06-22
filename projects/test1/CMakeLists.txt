@@ -20,10 +20,11 @@
 # 5/9/2023
 # The below like sets the variable thing of "invsqrt" to the 
 # library (.cpp with .h) for use in the cmake file here
-add_library(invsqrt ../src/math/invsqrt.cpp)
+#add_library(invsqrt ../src/math/invsqrt.cpp)
+add_library(invsqrt ${PROJECT_ROOT}/src/math/invsqrt.cpp)
 
 # 5/9/2023
 # The below connects the executable (first) 
 # to the library (second and any more following)
-#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} invsqrt)
-set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} invsqrt)
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
+#set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} invsqrt)

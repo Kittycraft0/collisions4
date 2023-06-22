@@ -14,20 +14,22 @@ set(SOURCES_GAME
 add_library(game ${SOURCES_GAME})
 
 # Set the include directories for the data library
-target_include_directories(game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+#target_include_directories(game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
 #add_library(invsqrt ../src/math/invsqrt.cpp)
 #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
 
 # Link any dependencies for the data library
-target_link_libraries(game
-    # Add any dependencies if needed
-    ${SFML_LIBS}
-)
-
-#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-#    game
+#target_link_libraries(game
 #    # Add any dependencies if needed
+#    ${SFML_LIBS}
 #)
 
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+    game
+    # Add any dependencies if needed
+)
+message("!!G Game loaded!")
+
 # 6/19/2023 concatenate???
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} game)
+#set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} game)
