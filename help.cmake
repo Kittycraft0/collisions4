@@ -62,10 +62,7 @@ add_subdirectory(subdirectory)
 
 
 # 6/22/2023
-# Makes target files available elsewhere.
-# For example, when run in a subdirectory, it can make
-# a library defined in said folder's CMakeLists.txt file
-# available to the CMakeLists.txt file in another folder.
+# Sets target header files to be read?
 
 # "The SYSTEM keyword can be used to indicate that the 
 # specified directories are system directories. 
@@ -78,4 +75,9 @@ add_subdirectory(subdirectory)
 
 target_include_directories(target_name [SYSTEM] [BEFORE]
     <INTERFACE|PUBLIC|PRIVATE> [header_dir1] [header_dir2 ...])
-# ... or not?
+
+# 6/22/2023
+# Link DLL libraries and to-be-compiled libraries to your target
+target_link_libraries(MyTarget PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/path/to/dll_file.dll
+)

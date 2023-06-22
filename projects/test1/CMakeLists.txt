@@ -4,7 +4,7 @@
 # and I want to know that I made it immediately when I look at it in the future
 # due to the slight unprofessionality of the variable name
 # oh wait it's the executable not the name...
-#set(AWESOME_PROJECT_EXECUTABLE test1)
+set(AWESOME_PROJECT_EXECUTABLE test1)
 # YESSS IT WORKS!!! 
 # THE EXECUTABLE NAME IS SET HERE AND IS ON A PER-PROJECT BASIS!!!
 
@@ -14,7 +14,7 @@
 # this (the first parameter thing) is 
 # also probably the name of the created .exe file thing
 #add_executable(collisions3 main.cpp)
-#add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test1/main.cpp)
+add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test1/main.cpp)
 #add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
 
 # 5/9/2023

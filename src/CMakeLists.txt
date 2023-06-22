@@ -29,15 +29,15 @@ set(SRC_DIR ${PROJECT_ROOT}/src)
 message("!!0 SRC directory: " ${SRC_DIR})
 
 # Include subdirectories
-#add_subdirectory({SRC_DIRECTORY}/data)
-#add_subdirectory(game)
-#add_subdirectory(math)
-#add_subdirectory(render)
+add_subdirectory(${SRC_DIR}/data)
+add_subdirectory(${SRC_DIR}/game)
+add_subdirectory(${SRC_DIR}/math)
+add_subdirectory(${SRC_DIR}/render)
 # INCLUDE subdirectories
-include(${SRC_DIR}/game/CMakeLists.txt)
-include(${SRC_DIR}/data/CMakeLists.txt)
-include(${SRC_DIR}/render/CMakeLists.txt)
-include(${SRC_DIR}/math/CMakeLists.txt)
+#include(${SRC_DIR}/game/CMakeLists.txt)
+#include(${SRC_DIR}/data/CMakeLists.txt)
+#include(${SRC_DIR}/render/CMakeLists.txt)
+#include(${SRC_DIR}/math/CMakeLists.txt)
 # Add them to an src libary -5/31/2023
 #add_library(src INTERFACE)
 

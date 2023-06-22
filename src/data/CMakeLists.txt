@@ -73,9 +73,9 @@
 #)
 
 # 5/30/2023
-# CMakeLists.txt file for src/data
+# !!! CMakeLists.txt file for src/data
 set(DATA_DIR ${SRC_DIR}/data)
-# Add the source files for the data library
+# !!! Add the source files for the data library
 set(SOURCES_DATA
     #data.cpp
     # Add more source files if needed
@@ -86,28 +86,28 @@ set(SOURCES_DATA
     ${DATA_DIR}/settings.cpp
 )
 
-# Create the data library
+# !!! Create the data library
 # "No SOURCES" - Why are you yelling at me!?
 add_library(daata ${SOURCES_DATA})
 
-# Set the include directories for the data library
+# !!! Set the include directories for the data library
 #target_include_directories(daata PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(daata PUBLIC ${DATA_DIR})
 
-#Link any dependencies for the data library
-#target_link_libraries(daata
+# !!! Link any dependencies for the data library
+target_link_libraries(daata
+    # Add any dependencies if needed
+    ${SFML_LIBS}
+)
+
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+#    daata
 #    # Add any dependencies if needed
-#    ${SFML_LIBS}
 #)
 
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-    daata
-    # Add any dependencies if needed
-)
+# !!! 6/19/2023 concatenate???
+set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} daata)
 message("!!D Data loaded!")
-
-# 6/19/2023 concatenate???
-
-#set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} daata)
 
 #add_library(data SHARED ${SOURCES})
 

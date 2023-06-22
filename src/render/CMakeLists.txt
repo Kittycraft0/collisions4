@@ -17,7 +17,7 @@ set(SOURCES_RENDER
 add_library(render ${SOURCES_RENDER})
 
 ## Set the include directories for the render library
-#target_include_directories(render PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(render PUBLIC ${RENDER_DIR})
 #
 #    # Add the SFML include directories
 #    target_include_directories(render PUBLIC ${PROJECT_ROOT}/include/${THE_OS}-SFML-2.5.1/include)
@@ -29,18 +29,18 @@ add_library(render ${SOURCES_RENDER})
 #target_link_libraries(render
 #    # Add any dependencies if needed
 #)
-# Link any dependencies for the data library
-#target_link_libraries(render
+# !!! Link any dependencies for the data library
+target_link_libraries(render
+    # Add any dependencies if needed
+    ${SFML_LIBS}
+)
+message(${SFML_LIBS})
+
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+#    render
 #    # Add any dependencies if needed
-#    ${SFML_LIBS}
 #)
 
-
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
-    render
-    # Add any dependencies if needed
-)
-message("!!R Render loaded!")
-
 # 6/19/2023 concatenate???
-#set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} render)
+set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} render)
+message("!!R Render loaded!")

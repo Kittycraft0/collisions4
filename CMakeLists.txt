@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0.0)
 
 # 6/21/2023
 # Options: helloworld, invSqrtTest, test1, test2, test3, test4
-set(EXE_NAME test4)
+set(EXE_NAME test1)
 set(AWESOME_PROJECT_EXECUTABLE ${EXE_NAME})
 
 # 6/19/2023 why
@@ -57,31 +57,21 @@ include(CTest)
 enable_testing()
 
 # 6/22/2023 - Define the main executable
-if(EXISTS ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
-    message("!!! FOUND MAIN FILE: [PROJECT_ROOT]/projects/${EXE_NAME}/main.cpp")
-    add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
-elseif(EXISTS ${PROJECT_ROOT}/projects/${EXE_NAME}/${EXE_NAME}.cpp)
-    message("!!! FOUND MAIN FILE: [PROJECT_ROOT]/projects/${EXE_NAME}/${EXE_NAME}.cpp")
-    add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/${EXE_NAME}.cpp)
-else()
-    message(FATAL_ERROR "!!! MAIN FILE NOT FOUND: not found in ${EXE_NAME} directory!")
-endif()
+#if(EXISTS ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
+#    message("!!! FOUND MAIN FILE: [PROJECT_ROOT]/projects/${EXE_NAME}/main.cpp")
+#    add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
+#elseif(EXISTS ${PROJECT_ROOT}/projects/${EXE_NAME}/${EXE_NAME}.cpp)
+#    message("!!! FOUND MAIN FILE: [PROJECT_ROOT]/projects/${EXE_NAME}/${EXE_NAME}.cpp")
+#    add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/${EXE_NAME}.cpp)
+#else()
+#    message(FATAL_ERROR "!!! MAIN FILE NOT FOUND: not found in ${EXE_NAME} directory!")
+#endif()
 
 # 6/22/2023 - Remember to have awesome_project_executable defined first!!!!!!!!
 #add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
 
-# Get the project files
-# Remember: only allow ONE!!!
-#include(projects/helloworld/CMakeLists.txt)
-#include(projects/invSqrtTest/CMakeLists.txt)
-#include(projects/test1/CMakeLists.txt)
-#include(projects/test2/CMakeLists.txt)
-#include(projects/test3/CMakeLists.txt)
-#include(projects/test4/CMakeLists.txt)
-#add_subdirectory(projects/test3)
-# 6/22/2023
-include(projects/${EXE_NAME}/CMakeLists.txt)
 
+include(projects/${EXE_NAME}/CMakeLists.txt)
 
 # 5/26/2023
 # 6/19/2023
@@ -149,15 +139,29 @@ elseif(${THE_OS} STREQUAL "LINUX")
     message("!!! Files location: " ${THE_SFML_LIBRARY_DIR})
 endif()
 
+# Get the project files
+# Remember: only allow ONE!!!
+#include(projects/helloworld/CMakeLists.txt)
+#include(projects/invSqrtTest/CMakeLists.txt)
+#include(projects/test1/CMakeLists.txt)
+#include(projects/test2/CMakeLists.txt)
+#include(projects/test3/CMakeLists.txt)
+#include(projects/test4/CMakeLists.txt)
+#add_subdirectory(projects/test3)
+# 6/22/2023
+#include(projects/${EXE_NAME}/CMakeLists.txt)
+#add_subdirectory(${PROJECT_ROOT}/src)
 
 #message("Files location: " ${CMAKE_CURRENT_SOURCE_DIR}/include/${THE_OS}SFML-2.5.1/lib)
 
 # 6/19/2023 - updated
-# 6/22/2023 Link libraries to the main executable
+# !!! 6/22/2023 Link libraries to the main executable
 # However, the SFML library things are supposedly pre-compiled (only on GCC, but not on LINUX), while my own library files are not.
-# Is this what is causing all of my issues here!?
+# Is this what is causing all of my issues here!? Nope!?
 target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC 
+    # !!! Include the DLL files
     ${SFML_LIBS}
+    # !!! Include the src files
     ${INCLUDED_LIBRARIES}
 )
 #message("Files location: " ${THE_SFML_LIBRARY_DIR})
