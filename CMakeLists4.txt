@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.0.0)
 # Include the renamed CMakeListsRoot.txt file
 # Set the project to use by commenting every line except the one to use
 
+# 6/22/2023 what
+set(EXE_NAME test1)
+set(AWESOME_PROJECT_EXECUTABLE ${EXE_NAME})
+
 # 6/19/2023 why
 set(INCLUDED_LIBRARIES "")
 # 6/19/2023 WHY? NO.
@@ -9,15 +13,17 @@ set(INCLUDED_LIBRARIES "")
 #    cmake_policy(SET CMP0003 NEW)
 #endif(COMMAND cmake_policy)
 
+set(PROJECT_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+
 # Remember: only allow ONE!!!
 #include(projects/helloworld/CMakeLists.txt)
 #include(projects/invSqrtTest/CMakeLists.txt)
-#include(projects/test1/CMakeLists.txt)
+include(projects/test1/CMakeLists.txt)
 #include(projects/test2/CMakeLists.txt)
 #include(projects/test3/CMakeLists.txt)
 #include(projects/test4/CMakeLists.txt)
 #add_subdirectory(projects/test3)
-add_subdirectory(projects/test1)
+#add_subdirectory(projects/${EXE_NAME})
 
 # 5/31/2023
 # According to ChatGPT, the include() basically acts as inputting the file

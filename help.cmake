@@ -1,7 +1,8 @@
 
 
 
-
+# 6/22/2023
+# USE COMPILER GCC 12.2.0 x86_64-w64-mingw32 (mingw64)
 
 
 

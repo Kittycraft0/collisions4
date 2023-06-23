@@ -1,0 +1,38 @@
+cmake_minimum_required(VERSION 3.0.0)
+
+project(cppProject VERSION 0.1.0)
+
+# ???
+include(CTest)
+# ???
+enable_testing()
+
+
+# Define the executable
+add_executable(test1 ${CMAKE_CURRENT_SOURCE_DIR}/projects/test1/main.cpp)
+# Define the library
+add_library(invsqrt ${CMAKE_CURRENT_SOURCE_DIR}/src/math/invsqrt.cpp)
+# Link the executable and the library
+target_link_libraries(test1 invsqrt)
+
+
+# Add the SFML .hpp's
+target_include_directories(test1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/include)
+# Add the SFML .dll's
+target_link_directories(test1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/bin)
+
+# Link SFML libraries to the executable
+target_link_libraries(test1
+    sfml-system-2
+    sfml-window-2
+    sfml-graphics-2
+    sfml-audio-2
+    sfml-network-2
+)
+# Set the project executable directory
+set_target_properties(test1 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
