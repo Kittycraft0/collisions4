@@ -1,0 +1,48 @@
+# 6/22/2023 stupid errors...
+cmake_minimum_required(VERSION 3.0.0)
+# Include the renamed CMakeListsRoot.txt file
+# Set the project to use by commenting every line except the one to use
+
+# 6/19/2023 why
+set(INCLUDED_LIBRARIES "")
+set(AWESOME_PROJECT_EXECUTABLE test1)
+add_executable(${AWESOME_PROJECT_EXECUTABLE} main.cpp)
+set(THE_OS vc15-64)
+project(cppProject VERSION 0.1.0)
+include(CTest)
+enable_testing()
+set(THE_SFML_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../include)
+set(THE_SFML_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../include/${THE_OS}-SFML-2.5.1)
+# Add the SFML include directories
+target_include_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../include/GCC-SFML-2.5.1/include)
+
+# Add the SFML library directories
+target_link_directories(${AWESOME_PROJECT_EXECUTABLE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../include/GCC-SFML-2.5.1/bin)
+
+# Link SFML libraries to the executable
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
+    sfml-system-2
+    sfml-window-2
+    sfml-graphics-2
+    sfml-audio-2
+    sfml-network-2
+)
+
+
+
+# 6/19/2023 - updated
+target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC 
+    ${SFML_LIBS}
+    ${INCLUDED_LIBRARIES}
+)
+
+set_target_properties(${AWESOME_PROJECT_EXECUTABLE} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+# 6/20/2023
+message("Compiled files will be saved in " ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
+
+
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
