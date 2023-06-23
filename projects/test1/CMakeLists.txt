@@ -31,7 +31,15 @@ add_library(invsqrt ${ROOT_DIR}/src/math/invsqrt.cpp)
 #set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} ${DEPENDENCIES})
 
 # 6/22/2023 Append the library target to the INCLUDED_LIBRARIES list
+# 6/23/2023 Redundancy here to allow for the current value to be read here as well, for whever reason that may be
+# 6/23/2023 Change the variable in the local scope
 list(APPEND INCLUDED_LIBRARIES invsqrt)
+# 6/23/2023 what??? ok, so "PARENT_SCOPE" is always needed here I guess...
+# 6/23/2023 Update the variable in the global scope by replacing it with the newer variant in the local scope
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} PARENT_SCOPE)
+# 6/22/2023 THE LIST ISN'T WORKING. WORK ON THIS!!!!! done ok i guess what
+
+set(testwhat what PARENT_SCOPE)
 
 # 6/22/2023 wow ok case doesn't matter aparently
 MeSsAgE("!!1 test1 CMakeLists.txt ran!")

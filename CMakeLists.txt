@@ -62,5 +62,6 @@ target_link_libraries(${EXE_NAME} PUBLIC
     ${INCLUDED_LIBRARIES}
 )
 
-message("!!! Included libraries: ${INCLUDED_LIBRARIES}")
-message("!!! SFML DLLs: ${SFML_DLLS}")
+message("!!! INCLUDED_LIBRARIES: ${INCLUDED_LIBRARIES}")
+message("!!! SFML_DLLs: ${SFML_DLLS}")
+message("!!! testwhat: " ${testwhat})
