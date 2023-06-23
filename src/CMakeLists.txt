@@ -25,14 +25,25 @@ project(MyProject)
 #    set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 #endif()
 
-set(SRC_DIR ${PROJECT_ROOT}/src)
+set(SRC_DIR ${ROOT_DIR}/src)
 message("!!0 SRC directory: " ${SRC_DIR})
+
+# 6/23/2023
+message("!!0 INCLUDED_LIBRARIES: " ${INCLUDED_LIBRARIES})
+
 
 # Include subdirectories
 add_subdirectory(${SRC_DIR}/data)
 add_subdirectory(${SRC_DIR}/game)
 add_subdirectory(${SRC_DIR}/math)
 add_subdirectory(${SRC_DIR}/render)
+
+# 6/23/2023
+message("!!0 INCLUDED_LIBRARIES: " ${INCLUDED_LIBRARIES})
+
+# 6/23/2023 Update the variable in the global scope by replacing it with the newer variant in the local scope
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} PARENT_SCOPE)
+
 # INCLUDE subdirectories
 #include(${SRC_DIR}/game/CMakeLists.txt)
 #include(${SRC_DIR}/data/CMakeLists.txt)

@@ -13,6 +13,13 @@ set(SOURCES_GAME
 # "No SOURCES" - Why are you yelling at me!?
 add_library(game ${SOURCES_GAME})
 
+# 6/22/2023 Link the SFML .hpp's to the library's "include path"
+target_include_directories(game PUBLIC ${ROOT_DIR}/include/GCC-SFML-2.5.1/include)
+
+# 6/22/2023 Link the SFML .dll's to the library's "include path"
+target_link_directories(game PUBLIC ${ROOT_DIR}/include/GCC-SFML-2.5.1/bin)
+
+
 # !!! Set the include directories for the data library
 target_include_directories(game PUBLIC ${GAME_DIR})
 
@@ -22,7 +29,7 @@ target_include_directories(game PUBLIC ${GAME_DIR})
 # !!! Link any dependencies for the data library
 target_link_libraries(game
     # Add any dependencies if needed
-    ${SFML_LIBS}
+    ${SFML_DLLS}
 )
 
 #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC
@@ -31,5 +38,9 @@ target_link_libraries(game
 #)
 
 # !!! 6/19/2023 concatenate???
-set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} game)
+# 6/23/2023 Change the variable in the local scope
+list(APPEND INCLUDED_LIBRARIES game)
+# 6/23/2023 Update the variable in the global scope by replacing it with the newer variant in the local scope
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} PARENT_SCOPE)
+
 message("!!G Game loaded!")

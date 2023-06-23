@@ -11,7 +11,9 @@
 
 # Revised 6/22/2023
 #add_subdirectory(src)
-add_subdirectory(${PROJECT_ROOT}/src)
+#message("!!2 ROOT_DIR: " ${ROOT_DIR})
+#add_subdirectory(${ROOT_DIR})
+#add_subdirectory(${ROOT_DIR}/src)
 #include_directories({CMAKE_CURRENT_SOURCE_DIR}/src) #6/22/2023 what!? why!??
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
-include_directories(${PROJECT_ROOT}/src)
+#include_directories(${ROOT_DIR}/src)

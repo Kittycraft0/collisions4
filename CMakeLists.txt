@@ -5,7 +5,7 @@
 # 6/22/2023 Set project variables - change these!
 
 # 6/22/2023 Name of the executable & project directory name
-set(EXE_NAME test1)
+set(EXE_NAME test2)
 # 6/22/2023 Compiler used, or something - either LINUX or GCC
 set(COMPILER GCC)
 
@@ -29,11 +29,11 @@ include(CTest)
 enable_testing()
 
 # 6/22/2023 Add the main executable
-add_executable(${EXE_NAME} projects/test1/main.cpp)
+add_executable(${EXE_NAME} projects/${EXE_NAME}/main.cpp)
 #add_library(invsqrt ../src/math/invsqrt.cpp)
 #target_link_libraries(${EXE_NAME} PUBLIC invsqrt)
 
-# 6/22/2023 Link the SFML .hpp'sto the executable's "include path"
+# 6/22/2023 Link the SFML .hpp's to the executable's "include path"
 target_include_directories(${EXE_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/include)
 
 # 6/22/2023 Link the SFML .dll's to the executable's "include path"
@@ -51,8 +51,9 @@ set(SFML_DLLS
 # 6/22/2023 Define the included libraries variable
 set(INCLUDED_LIBRARIES "")
 
-# 6/22/2023 Add the project subdirectory, adding dependencies to the INCLUDED_LIBRARIES variable defined above
-add_subdirectory(projects/${EXE_NAME})
+# 6/22/2023 Add the project subdirectory, reading the root CMakeListst.txt of the file adding dependencies to the INCLUDED_LIBRARIES variable defined above
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/projects/${EXE_NAME})
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # 6/19/2023 - updated
 target_link_libraries(${EXE_NAME} PUBLIC 
