@@ -113,8 +113,6 @@ int main() {
         // update the object positions!
         for(ObjectNd* obj:data->objects){
             obj->update(deltaTime);
-            //std::cout<<"x: "<<obj->p[0]<<" ";
-            //std::cout<<"y: "<<obj->p[1]<<" ";
         }
 
 
@@ -129,7 +127,7 @@ int main() {
 
 
 
-        // 6/7/2023 Calculate center of mass of systemfd
+        // 6/7/2023 Calculate center of mass of the system*?
         std::vector<double> centerOfMass;
         double totalMass=0;
         for(int i=0;i<data->objects[0]->p.size();i++){

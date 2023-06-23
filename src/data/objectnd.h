@@ -24,6 +24,8 @@ public:
     // mass is better than just m... -5/14/2023 2 months since pi day i guess idk but why isn't there an e day!...
     double m;
     std::vector<double> scale;
+    // 6/23/2023 displacement - BEWARE that it can maybe break some laws of physics and break conservation of energy
+    std::vector<double> linDisp;
     std::vector<double> linMom;
     std::vector<double> linImp;
 
@@ -33,6 +35,8 @@ public:
     std::vector<double> a;
     //angular velocity?
     std::vector<double> av;
+    // 6/23/2023 displacement - BEWARE that it can maybe break some laws of physics and break conservation of energy
+    std::vector<double> rotDisp;
     std::vector<double> rotMom;
     std::vector<double> rotImp;
     double radius;

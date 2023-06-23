@@ -121,6 +121,23 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
         obj1->linImp[i]-=newImp;
         obj2->linImp[i]+=newImp;
     }
+
+    // 6/23/2023 displace them so they are no longer colliding
+    // 6/23/2023 redundant collision check because you never know???
+    if(dist<obj1->radius+obj2->radius){
+        double adjust=obj1->radius+obj2->radius-dist;
+        double massSum=obj1->m+obj2->m;
+        for(int i=0;i<obj1->p.size();i++){
+            obj1->linDisp[i]+=-distV[i]*((massSum-obj1->m)/massSum);
+            obj2->linDisp[i]+=distV[i]*((massSum-obj2->m)/massSum);
+        }
+        // Adjust the position with the amount correlating to it's amount of mass compared to the other because why not maybe
+    }
+
+    // 6/23/2023 what is the size of a long double
+    //std::cout << "Size of long double: " << sizeof(long double) * 8 << " bits" << std::endl;
+    // wow 128 bits that is crazy long wow ok
+    
 }
 
 

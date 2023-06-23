@@ -77,9 +77,9 @@ ObjectNd::ObjectNd(int d,Data* data){
         p.push_back(posDistD[j](*gen));
         v.push_back(velDist(*gen));
         scale.push_back(1);
+        linDisp.push_back(0);
         linMom.push_back(v[i]*m);
         linImp.push_back(0);
-
     }
     // uses number of angular dimensions formula supplied by ChatGPT
     for(int j=0;j<d*(d-1)/2;j++){
@@ -87,6 +87,7 @@ ObjectNd::ObjectNd(int d,Data* data){
         a.push_back(0);
         //angular velocity?
         av.push_back(0);
+        rotDisp.push_back(0);
         rotMom.push_back(av[i]*i);
         rotImp.push_back(0);
     }
@@ -104,6 +105,10 @@ void ObjectNd::update(double deltaTime){
         this->linMom[j]=this->v[j]*this->m;
         // Set the linear impulse to zero
         this->linImp[j]=0;
+        // 6/23/2023 Change the position by the displacement
+        this->p[j]+=this->linDisp[j];
+        // Set the displacement to zero
+        this->linDisp[j]=0;
     }
     // For rotational values
     for(int j=0;j<this->rotImp.size();j++){
@@ -116,5 +121,9 @@ void ObjectNd::update(double deltaTime){
         this->rotMom[j]=this->av[j]*this->i;
         // Set the angular impulse to zero
         this->rotImp[j]=0;
+        // 6/23/2023 Change the position by the displacement
+        this->p[j]+=this->rotDisp[j];
+        // Set the displacement to zero
+        this->rotDisp[j]=0;
     }
 }
