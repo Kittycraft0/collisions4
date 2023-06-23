@@ -42,9 +42,15 @@ void dataTest3(int n){
 // I sure hope I work on this next year!
 #include <cmath>
 Settings::Settings(){
+    // number of dimensions
     this->d=2;
+    // number of objects
     this->numObjects=5;
+    // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=200;
+
+    // 6/23/2023 set the project seed
+    this->seed=69420;
 
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
@@ -61,4 +67,5 @@ Settings::Settings(){
     
     this->showWireframe=false;
     this->modelPath="assets/models";
+
 }

@@ -21,9 +21,13 @@ ObjectNd::ObjectNd(int d,Data* data){
     // randomizers -6/6/2023
     
     // what
-    std::random_device rd;
+    //std::random_device rd;
     // performing black magic
-    std::mt19937 gen(rd());
+    //std::mt19937 gen(rd());
+    // 6/23/2023 get it from data
+    std::mt19937* gen=&data->gen;
+    std::cout<<"";
+
     // Initialize the n-th position component randomizer thing>
     std::vector<std::uniform_int_distribution<>> posDistD;
     // set the initial x- and y- position randomizers
@@ -57,7 +61,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     int modelID=0;
 
     // Linear mass
-    m=massRandomizer(gen);
+    m=massRandomizer(*gen);
     
 
     // 6/8/2023 moved to here...
@@ -71,8 +75,8 @@ ObjectNd::ObjectNd(int d,Data* data){
 
     for(int j=0;j<d;j++){
         //std::cout<<j;
-        p.push_back(posDistD[j](gen));
-        v.push_back(velDist(gen));
+        p.push_back(posDistD[j](*gen));
+        v.push_back(velDist(*gen));
         scale.push_back(1);
         linMom.push_back(v[i]*m);
         linImp.push_back(0);

@@ -28,6 +28,9 @@ public:
     // 6/1/2023
     // constructor
     Settings();
+
+    // 6/23/2023 Long seeds are better maybe??? More options???
+    unsigned long long int seed;
 };
 
 void dataTest3(int n);

@@ -43,6 +43,9 @@ public:
 
     // 6/6/2023 real constructor
     Data();
+
+    // 6/23/2023 random number generator
+    std::mt19937 gen;
 };
 void dataTest1(int num);
 

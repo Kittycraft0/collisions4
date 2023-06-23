@@ -10,6 +10,15 @@
 // this is all confusing here but OKAY!!!?
 Data::Data(){
     this->settings=new Settings();
+
+    // 6/23/2023 set the generator
+    // what
+    //std::random_device rd;
+    // performing black magic
+    //std::mt19937 gen(rd());
+    std::mt19937 gen(this->settings->seed);
+    this->gen=gen;
+
     //window=0;
     //sf::RenderWindow* 
     // keyword cool
