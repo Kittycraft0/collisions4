@@ -45,7 +45,9 @@ public:
     Data();
 
     // 6/23/2023 random number generator
-    std::mt19937 gen;
+    std::mt19937* gen;
+    // 6/23/2023 clock
+    sf::Clock* clock;
 };
 void dataTest1(int num);
 

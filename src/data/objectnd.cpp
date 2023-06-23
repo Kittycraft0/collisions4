@@ -25,8 +25,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     // performing black magic
     //std::mt19937 gen(rd());
     // 6/23/2023 get it from data
-    std::mt19937* gen=&data->gen;
-    std::cout<<"";
+    std::mt19937* gen=data->gen;
 
     // Initialize the n-th position component randomizer thing>
     std::vector<std::uniform_int_distribution<>> posDistD;

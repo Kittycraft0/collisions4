@@ -12,12 +12,10 @@ Data::Data(){
     this->settings=new Settings();
 
     // 6/23/2023 set the generator
-    // what
-    //std::random_device rd;
-    // performing black magic
-    //std::mt19937 gen(rd());
-    std::mt19937 gen(this->settings->seed);
-    this->gen=gen;
+    this->gen=new std::mt19937(this->settings->seed);
+
+    // 6/23/2023 Set the clock
+    this->clock=new sf::Clock();
 
     //window=0;
     //sf::RenderWindow* 
