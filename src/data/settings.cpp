@@ -43,7 +43,7 @@ void dataTest3(int n){
 #include <cmath>
 Settings::Settings(){
     this->d=2;
-    this->numObjects=100;
+    this->numObjects=5;
     this->objectSpawnMargin=200;
 
     // constants

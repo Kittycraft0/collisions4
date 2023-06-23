@@ -12,6 +12,13 @@ int main() {
 
     // Initialize data 6/5/2023
     Data* data=new Data();
+    
+    std::cout<<"\nObject positions:\n";
+    // 6/23/2023
+    for(ObjectNd* obj:data->objects){
+        std::cout<<obj->p[0]<<", ";
+        std::cout<<obj->p[1]<<"\n";
+    }
 
     //data->objects[1]->p[0]+=30;
     //data->objects[1]->p[1]+=30;

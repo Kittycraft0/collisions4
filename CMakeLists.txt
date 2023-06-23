@@ -25,8 +25,8 @@ project(cppProject VERSION 0.1.0)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 # 6/22/2023 Enable test help
-include(CTest)
-enable_testing()
+#include(CTest)
+#enable_testing()
 
 # 6/22/2023 Add the main executable
 add_executable(${EXE_NAME} projects/${EXE_NAME}/main.cpp)
