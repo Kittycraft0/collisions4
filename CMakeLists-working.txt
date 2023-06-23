@@ -1,56 +1,28 @@
 # 6/22/2023 This works!
-# Use compiler GCC 7.3.0 x86_64-w64-mingw32
-
-
-# Set project variables - change these!
-
-# Name of the executable & project directory name
-set(EXE_NAME test1)
-# Compiler used, or something - either LINUX or GCC
-set(COMPILER GCC)
-
-
-
-
-
-
-
-
-
-
-# Initialize project details
 cmake_minimum_required(VERSION 3.0.0)
 project(cppProject VERSION 0.1.0)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-
-# 6/22/2023 Enable test help
-include(CTest)
-enable_testing()
-
 
 add_executable(test1 projects/test1/main.cpp)
 add_library(invsqrt ../src/math/invsqrt.cpp)
 target_link_libraries(test1 PUBLIC invsqrt)
 
-# Link the SFML .hpp'sto the executable's "include path"
+# Add the SFML .hpp's
 target_include_directories(test1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/include)
 
-# Link the SFML .dll's to the executable's "include path"
+# Add the SFML .dll's
 target_link_directories(test1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/bin)
 
-# Link SFML .dll's to the executable's code
-set(SFML_DLLS
+# Link SFML .dll's to the executable
+target_link_libraries(test1 PUBLIC
     sfml-system-2
     sfml-window-2
     sfml-graphics-2
     sfml-audio-2
     sfml-network-2
 )
-
 # 6/19/2023 - updated
 target_link_libraries(test1 PUBLIC 
-    # Link SFML .dll's to the executable's code
-    ${SFML_DLLS}
-    # Link the SRC libraries to the executable's code
+    ${SFML_LIBS}
     ${INCLUDED_LIBRARIES}
 )
