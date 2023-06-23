@@ -7,6 +7,7 @@
 #include <list>
 #include <random>
 #include <cmath>
+#include "../../src/math/invsqrt.h"
 //#include "../../src/src.h"
 
 struct Obj{
@@ -253,7 +254,7 @@ int main()
                     // get the distance
                     float vx=orbs[i].vel.x-orbs[j].vel.x;
                     float vy=orbs[i].vel.y-orbs[j].vel.y;
-                    float invV=1/sqrt(vx*vx+vy*vy);
+                    float invV=invSqrt(vx*vx+vy*vy);
                     //float invV=1/sqrt(vx*vx+vy*vy);
                     float vSquared=1/(vx*vx+vy*vy);
                     
