@@ -106,7 +106,7 @@ target_link_libraries(daata
 #)
 
 # !!! 6/19/2023 concatenate???
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} daata)
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} daata)
 message("!!D Data loaded!")
 
 #add_library(data SHARED ${SOURCES})

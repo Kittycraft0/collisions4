@@ -42,5 +42,5 @@ message(${SFML_LIBS})
 #)
 
 # 6/19/2023 concatenate???
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} render)
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} render)
 message("!!R Render loaded!")

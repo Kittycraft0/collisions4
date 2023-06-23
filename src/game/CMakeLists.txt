@@ -31,5 +31,5 @@ target_link_libraries(game
 #)
 
 # !!! 6/19/2023 concatenate???
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} game)
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} game)
 message("!!G Game loaded!")

@@ -4,7 +4,7 @@
 # and I want to know that I made it immediately when I look at it in the future
 # due to the slight unprofessionality of the variable name
 # oh wait it's the executable not the name...
-set(AWESOME_PROJECT_EXECUTABLE test1)
+#set(AWESOME_PROJECT_EXECUTABLE test1)
 # YESSS IT WORKS!!! 
 # THE EXECUTABLE NAME IS SET HERE AND IS ON A PER-PROJECT BASIS!!!
 
@@ -14,17 +14,25 @@ set(AWESOME_PROJECT_EXECUTABLE test1)
 # this (the first parameter thing) is 
 # also probably the name of the created .exe file thing
 #add_executable(collisions3 main.cpp)
-add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test1/main.cpp)
+#add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/test1/main.cpp)
 #add_executable(${AWESOME_PROJECT_EXECUTABLE} ${PROJECT_ROOT}/projects/${EXE_NAME}/main.cpp)
 
 # 5/9/2023
 # The below like sets the variable thing of "invsqrt" to the 
 # library (.cpp with .h) for use in the cmake file here
 #add_library(invsqrt ../src/math/invsqrt.cpp)
-add_library(invsqrt ${PROJECT_ROOT}/src/math/invsqrt.cpp)
+
+add_library(invsqrt ${ROOT_DIR}/src/math/invsqrt.cpp)
 
 # 5/9/2023
 # The below connects the executable (first) 
 # to the library (second and any more following)
-target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
-#set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} invsqrt)
+#target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
+#set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} ${DEPENDENCIES})
+
+# 6/22/2023 Append the library target to the INCLUDED_LIBRARIES list
+list(APPEND INCLUDED_LIBRARIES invsqrt)
+
+# 6/22/2023 wow ok case doesn't matter aparently
+MeSsAgE("!!1 test1 CMakeLists.txt ran!")
+message("!!1 INCLUDED_LIBRARIES: ${INCLUDED_LIBRARIES}")

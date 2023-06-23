@@ -28,6 +28,6 @@ target_link_libraries(maath
 #)
 
 # !!! 6/19/2023 Concatenate
-set(INCLUDED_DIRECTORIES ${INCLUDED_LIBRARIES} maath)
+set(INCLUDED_LIBRARIES ${INCLUDED_LIBRARIES} maath)
 
 message("!!M Math loaded!")
