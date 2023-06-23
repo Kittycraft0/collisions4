@@ -38,6 +38,11 @@ void Data::initObjects(int num, int d){
     }
 };
 
+// 6/23/2023
+void Data::initObjects(int num){
+    initObjects(num,this->settings->d);
+};
+
 void dataTest1(int num){
     std::cout<<num;
 }

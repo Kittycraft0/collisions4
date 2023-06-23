@@ -39,6 +39,7 @@ public:
     // unused
     void initObjects(int num, int d);
     void dataTest2(int num);
+    void initObjects(int num);
 
     // 6/6/2023 real constructor
     Data();
