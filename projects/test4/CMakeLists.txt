@@ -14,6 +14,6 @@
 #target_link_libraries(${AWESOME_PROJECT_EXECUTABLE} PUBLIC invsqrt)
 
 #add_subdirectory(src)
-include(src/CMakeLists.txt)
+#include(src/CMakeLists.txt)
 #add_subdirectory({CMAKE_CURRENT_SOURCE_DIR}/src)
-include_directories({CMAKE_CURRENT_SOURCE_DIR}/src)
+#include_directories({CMAKE_CURRENT_SOURCE_DIR}/src)

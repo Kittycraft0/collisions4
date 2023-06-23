@@ -5,7 +5,7 @@
 # 6/22/2023 Set project variables - change these!
 
 # 6/22/2023 Name of the executable & project directory name
-set(EXE_NAME test3)
+set(EXE_NAME test4)
 # 6/22/2023 Compiler used, or something - either LINUX or GCC
 set(COMPILER GCC)
 

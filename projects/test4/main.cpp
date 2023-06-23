@@ -6,6 +6,10 @@
 
 
 int main() {
+    
+    // added 6/23/2023 to suppress "Failed to set DirectInput device axis mode: 1"
+    sf::err().rdbuf(NULL);
+
     // Initialize data 6/5/2023
     Data* data=new Data();
 
