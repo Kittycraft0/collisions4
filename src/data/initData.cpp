@@ -16,6 +16,9 @@ Data::Data(){
 
     // 6/23/2023 Set the clock
     this->clock=new sf::Clock();
+    
+    // 6/23/2023 Set the fonts
+    this->fonts=new Fonts();
 
     //window=0;
     //sf::RenderWindow* 

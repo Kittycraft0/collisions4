@@ -8,6 +8,7 @@
 #include "objectnd.h"
 #include "modeldata.h"
 #include "settings.h"
+#include "fonts.h"
 
 //6/2/2023
 #include "../render/initWindow.h"
@@ -16,10 +17,6 @@
 //constructed here 4/5/2023
 #include <vector>
 #include <string>
-
-#include "modeldata.h"
-#include "objectnd.h"
-#include "settings.h"
 
 // 5/30/2023
 #include <iostream>
@@ -48,6 +45,8 @@ public:
     std::mt19937* gen;
     // 6/23/2023 clock
     sf::Clock* clock;
+    // 6/23/2023 fonts
+    Fonts* fonts;
 };
 void dataTest1(int num);
 

@@ -8,5 +8,6 @@
 #include "modelnd.h"
 #include "objectnd.h"
 #include "settings.h"
+#include "fonts.h"
 
 #endif //DATA_ALL_H

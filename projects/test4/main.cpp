@@ -30,7 +30,8 @@ int main() {
     
     // 6/7/2023 start the clock
     double timeMultiplier=1;
-    sf::Clock clock;
+    // 6/23/2023 - now in data
+    //sf::Clock clock;
     
     // 6/8/2023 n
     int n=0;
@@ -55,7 +56,7 @@ int main() {
         bool doCollide=true;
 
         // 6/7/2023 get deltaTime
-        float spf=clock.restart().asSeconds();
+        float spf=data->clock->restart().asSeconds();
         double deltaTime=spf*timeMultiplier;
 
 
@@ -162,6 +163,31 @@ int main() {
         //std::cout<<centerOfMass[0]<<" ";
         // Draw the object
         data->window->draw(com);
+
+
+
+
+
+
+        // Text on screen
+        // FPS
+        // 4/18/2023 - copy/pasted/modified on 6/23/2023
+        // draw the fps text
+        sf::Text fpsText;
+        
+        char temp[256];
+        //temp[256];RedRed
+        sprintf(temp, "%f", 1/spf);
+        fpsText.setString(temp);
+        fpsText.setFont(data->fonts->comicMono);
+        fpsText.setCharacterSize(24);
+        fpsText.setFillColor(sf::Color::Red);
+        // right align text from ChatGPT -4/6/2023
+        // Set the origin to the right side of the text
+        fpsText.setOrigin(fpsText.getLocalBounds().width,-24);
+        // Set the position to the right side of the window
+        fpsText.setPosition(data->window->getSize().x, 0);
+        data->window->draw(fpsText);
 
         // n.
         n++;

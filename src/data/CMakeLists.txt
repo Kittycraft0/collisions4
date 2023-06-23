@@ -84,6 +84,7 @@ set(SOURCES_DATA
     ${DATA_DIR}/modelnd.cpp
     ${DATA_DIR}/objectnd.cpp
     ${DATA_DIR}/settings.cpp
+    ${DATA_DIR}/fonts.cpp
 )
 
 # !!! Create the data library
