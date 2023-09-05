@@ -5,7 +5,7 @@
 # 6/22/2023 Set project variables - change these!
 
 # 6/22/2023 Name of the executable & project directory name
-set(EXE_NAME test1)
+set(EXE_NAME test4)
 # 6/22/2023 Compiler used, or something - either LINUX or GCC
 set(COMPILER LINUX)
 
@@ -53,7 +53,7 @@ set(SFML_DLLS
     sfml-network-2
 )
 ELSEIF(${COMPILER} STREQUAL LINUX)
-set(SFML_DIR include/LINUX-SFML-2.5.1/lib)
+#set(SFML_DIR include/LINUX-SFML-2.5.1/lib)
 set(SFML_DLLS
     sfml-system
     sfml-window
