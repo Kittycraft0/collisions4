@@ -5,13 +5,16 @@
 # 6/22/2023 Set project variables - change these!
 
 # 6/22/2023 Name of the executable & project directory name
-set(EXE_NAME test4)
+set(EXE_NAME test1)
 # 6/22/2023 Compiler used, or something - either LINUX or GCC
-set(COMPILER GCC)
+set(COMPILER LINUX)
 
 
-
-
+# 9/5/2023
+#IF(what STREQUAL what)
+#message(WHAT)
+#endif()
+#message(OH)
 
 
 # 6/22/2023 Set project root
@@ -39,6 +42,8 @@ target_include_directories(${EXE_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includ
 # 6/22/2023 Link the SFML .dll's to the executable's "include path"
 target_link_directories(${EXE_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/GCC-SFML-2.5.1/bin)
 
+# 9/05/2023 Check "compiler"
+IF(${COMPILER} STREQUAL GCC)
 # 6/22/2023 Set the SFML .dll file names
 set(SFML_DLLS
     sfml-system-2
@@ -47,6 +52,16 @@ set(SFML_DLLS
     sfml-audio-2
     sfml-network-2
 )
+ELSEIF(${COMPILER} STREQUAL LINUX)
+set(SFML_DIR include/LINUX-SFML-2.5.1/lib)
+set(SFML_DLLS
+    sfml-system
+    sfml-window
+    sfml-graphics
+    sfml-audio
+    sfml-network
+)
+ENDIF()
 
 # 6/22/2023 Define the included libraries variable
 set(INCLUDED_LIBRARIES "")
