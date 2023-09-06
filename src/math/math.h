@@ -6,5 +6,6 @@
 #include "collisionmath.h"
 #include "gravitymath.h"
 #include "invsqrt.h"
+#include "wallCollide.h"
 
 #endif //MATH_ALL_H

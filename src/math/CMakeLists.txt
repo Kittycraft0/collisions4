@@ -8,6 +8,7 @@ set(SOURCES_MATH
     ${MATH_DIR}/collisionMath.cpp
     ${MATH_DIR}/gravityMath.cpp
     ${MATH_DIR}/invsqrt.cpp
+    ${MATH_DIR}/wallCollide.cpp
 )
 
 # !!! Create the data library

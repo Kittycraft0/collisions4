@@ -54,6 +54,7 @@ int main() {
         bool doMove=false;
         bool doGravity=false;
         bool doCollide=true;
+        bool doWallCollide=true;
 
         // 6/7/2023 get deltaTime
         float spf=data->clock->restart().asSeconds();
@@ -77,6 +78,14 @@ int main() {
                 }
             }
         }
+        
+        // 9/5/2023
+        // Wall collisions
+        if(doWallCollide){
+            for(ObjectNd* obj:data->objects){
+                wallCollide(obj,data->settings->windowWidth,data->settings->windowHeight);
+            }
+        }
 
         // 6/7/2023
         // Collisions
@@ -97,7 +106,7 @@ int main() {
                 double dist=sqrt(sqSum);
                 // abs for magnitude is not needed due to squaring
                 if(dist<data->objects[i]->radius+data->objects[j]->radius){
-                    std::cout<<"Collision between "<<i<<" and "<<j<<"\n";
+                    //std::cout<<"Collision between "<<i<<" and "<<j<<"\n";
                     collide(
                         data->objects[i],
                         data->objects[j],
@@ -107,7 +116,6 @@ int main() {
                 }
             }
         }
-        
 
         // 6/6/2023
         // update the object positions!

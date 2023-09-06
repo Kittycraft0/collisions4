@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=100;
+    this->numObjects=10;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=200;
 
