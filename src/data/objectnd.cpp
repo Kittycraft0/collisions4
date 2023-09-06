@@ -61,7 +61,9 @@ ObjectNd::ObjectNd(int d,Data* data){
 
     // Linear mass
     m=massRandomizer(*gen);
-    
+    //m=5.76185f;
+    //std::cout<<" "<<m;
+    //m=2;
 
     // 6/8/2023 moved to here...
     // 6/7/2023 Set the circular radius in base pixels
