@@ -52,7 +52,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-10.f, 10.f);
+    std::uniform_real_distribution<> velDist(-10.f, 100.f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,10.0f);
     
@@ -60,14 +60,15 @@ ObjectNd::ObjectNd(int d,Data* data){
     int modelID=0;
 
     // Linear mass
-    m=massRandomizer(*gen);
+    // for some reason two objects of equal mass freak out on collision
+    m=massRandomizer(*gen)*1000;
     //m=5.76185f;
     //std::cout<<" "<<m;
     //m=2;
 
     // 6/8/2023 moved to here...
     // 6/7/2023 Set the circular radius in base pixels
-    this->radius=10;
+    this->radius=50;
     
     // Rotational mass 5/11/2023
     // 6/8/2023 changed to maybe a more accurate value

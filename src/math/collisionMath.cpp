@@ -150,3 +150,77 @@ void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2){
     collide(obj1,obj2,0.0f,0.01);
 }
 
+// 9/18/2023 what
+void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+    // 5/24/2023
+    // the initial masses
+    double m1i=obj1->m;
+    double m2i=obj2->m;
+    // Get initial velocity vectors
+    std::vector<double> v1iV=obj1->v;
+    std::vector<double> v2iV=obj2->v;
+
+    // 6/8/2023 - Get the sum of the velocity components squared for square rooting
+    // Calculate the initial velocities and the squared distance magnitude
+    // The sqared magnitude is the sum of the SQUARED components.
+    double v1Squared=obj1->v[0]*obj1->v[0]+obj1->v[1]*obj1->v[1];
+    double v2Squared=obj2->v[0]*obj2->v[0]+obj2->v[1]*obj2->v[1];
+    // 6/8/2023 - Get the direction vector from the first object to the second object
+    std::vector<double> distV={(obj2->p[0]-obj1->p[0]),(obj2->p[1]-obj1->p[1])};
+    double distSquared=distV[0]+distV[1];
+
+    // 6/8/2023 - Get the inital velocity magnitudes
+    double v1i=sqrt(v1Squared);
+    double v2i=sqrt(v2Squared);
+
+    //double invDist=invSqrt(distSquared);
+    double dist=sqrt(distSquared);
+    
+    // 6/8/2023 - Normalize the direction vector
+    // (delta x over distance, delta y over distance, a better word for distance here might be magnitude)
+    distV={(obj2->p[0]-obj1->p[0])/dist,(obj2->p[1]-obj1->p[1])/dist};
+
+    // 6/8/2023 - Get the inital impulse vectors
+    //double p1i=v1i*obj1->m;
+    //double p2i=v2i*obj2->m;
+
+    // Initialize the final impulse variable vectors
+    // NOPE - multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
+
+    // Set the impulse variables
+    // 6/8/2023 - do it OUTSIDE - ONLY ONCE.
+    // 6/10/2023 - it's a CHANGE in the impulse variable
+    //double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
+    double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m2i-m1i);
+    //double pf=((((m1i*v1i+m2i*v2i)+(m1i*restitution*(v2i-v1i)))/(m2i+m1i))-v1i)*m1i;
+    double pf=abs((v1f-v1i)*m1i);
+
+    // Change the linear impulse by the retrieved impulse
+    // Using Euler method because simplicity
+    // Velocities are updated outside this method using the object's linear impulse variables
+    // by doing linImp*mass for each component and adding that to the velocities. 
+    // The velocities are then added to the positions. This is done every frame.
+    for(int i=0;i<distV.size();i++){
+        // Multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
+        double newImp=distV[i]*pf;
+        obj1->linImp[i]-=newImp;
+        obj2->linImp[i]+=newImp;
+    }
+
+    // 6/23/2023 displace them so they are no longer colliding
+    // 6/23/2023 redundant collision check because you never know???
+    /*if(dist<obj1->radius+obj2->radius){
+        double adjust=obj1->radius+obj2->radius-dist;
+        double massSum=obj1->m+obj2->m;
+        for(int i=0;i<obj1->p.size();i++){
+            obj1->linDisp[i]+=-distV[i]*((massSum-obj1->m)/massSum);
+            obj2->linDisp[i]+=distV[i]*((massSum-obj2->m)/massSum);
+        }
+        // Adjust the position with the amount correlating to it's amount of mass compared to the other because why not maybe
+    }*/
+
+    // 6/23/2023 what is the size of a long double
+    //std::cout << "Size of long double: " << sizeof(long double) * 8 << " bits" << std::endl;
+    // wow 128 bits that is crazy long wow ok
+    
+}
