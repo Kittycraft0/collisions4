@@ -107,7 +107,7 @@ int main() {
                 // abs for magnitude is not needed due to squaring
                 if(dist<data->objects[i]->radius+data->objects[j]->radius){
                     std::cout<<"Collision between "<<i<<" and "<<j<<"\n";
-                    collide(
+                    collide2(
                         data->objects[i],
                         data->objects[j],
                         data->settings->restitution,

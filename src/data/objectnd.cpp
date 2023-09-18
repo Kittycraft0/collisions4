@@ -54,7 +54,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     // set the velocity randomizer
     std::uniform_real_distribution<> velDist(-10.f, 100.f);
     // the mass randomizer
-    std::uniform_real_distribution<> massRandomizer(1.0f,10.0f);
+    std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     
     // 0 as a placeholder
     int modelID=0;

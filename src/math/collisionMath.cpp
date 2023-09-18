@@ -106,7 +106,7 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
     // 6/8/2023 - do it OUTSIDE - ONLY ONCE.
     // 6/10/2023 - it's a CHANGE in the impulse variable
     //double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
-    double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m2i-m1i);
+    double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m2i+m1i);
     //double pf=((((m1i*v1i+m2i*v2i)+(m1i*restitution*(v2i-v1i)))/(m2i+m1i))-v1i)*m1i;
     double pf=abs((v1f-v1i)*m1i);
 
@@ -167,7 +167,7 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     double v2Squared=obj2->v[0]*obj2->v[0]+obj2->v[1]*obj2->v[1];
     // 6/8/2023 - Get the direction vector from the first object to the second object
     std::vector<double> distV={(obj2->p[0]-obj1->p[0]),(obj2->p[1]-obj1->p[1])};
-    double distSquared=distV[0]+distV[1];
+    double distSquared=distV[0]*distV[0]+distV[1]*distV[1];
 
     // 6/8/2023 - Get the inital velocity magnitudes
     double v1i=sqrt(v1Squared);
@@ -191,21 +191,36 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // 6/8/2023 - do it OUTSIDE - ONLY ONCE.
     // 6/10/2023 - it's a CHANGE in the impulse variable
     //double pf=(((m1i*v1i+m2i*v2i)+(m1i*restitution*(v1i-v2i)))/(m1i+m2i)*-v1i)*m1i;
-    double v1f=((m1i*v1i+m2i*v2i)+(m2i*restitution*(v2i-v1i)))/(m2i-m1i);
+    // 9/18/2023 - changed - to +
+    double v1f=(
+        m1i*v1i+
+        m2i*v2i+
+        m2i*restitution*(v2i-v1i)
+        )/(m2i+m1i);
+    double v2f=(
+        m1i*v1i+
+        m2i*v2i+
+        m1i*restitution*(v1i-v2i)
+        )/(m2i+m1i);
     //double pf=((((m1i*v1i+m2i*v2i)+(m1i*restitution*(v2i-v1i)))/(m2i+m1i))-v1i)*m1i;
-    double pf=abs((v1f-v1i)*m1i);
+    double pf1=abs((v1f-v1i)*m1i);
+    double pf2=abs((v2f-v2i)*m2i);
 
     // Change the linear impulse by the retrieved impulse
     // Using Euler method because simplicity
     // Velocities are updated outside this method using the object's linear impulse variables
     // by doing linImp*mass for each component and adding that to the velocities. 
-    // The velocities are then added to the positions. This is done every frame.
-    for(int i=0;i<distV.size();i++){
-        // Multiply the MAGNITUDE of the impulse by the normalized DIRECTION vector.
-        double newImp=distV[i]*pf;
-        obj1->linImp[i]-=newImp;
-        obj2->linImp[i]+=newImp;
-    }
+    // The velocities are then added to the positions. This is done once per collision.
+    // 9/18/2023 DIVIDED BY DELTATIME.
+    obj1->linImp[0]-=distV[0]*pf1/deltaTime;
+    obj1->linImp[1]-=distV[1]*pf1/deltaTime;
+
+    obj2->linImp[0]+=distV[0]*pf2/deltaTime;
+    obj2->linImp[1]+=distV[1]*pf2/deltaTime;
+    std::cout<<
+    m1i<<" "<<m2i<<" "<<(obj1->linImp[0])<<" "<<(obj1->linImp[1])<<" "
+    <<(obj2->linImp[0])<<" "<<(obj2->linImp[1]);
+    std::cout<<"\n";
 
     // 6/23/2023 displace them so they are no longer colliding
     // 6/23/2023 redundant collision check because you never know???
