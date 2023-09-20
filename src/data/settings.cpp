@@ -54,7 +54,7 @@ Settings::Settings(){
 
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
-    this->restitution=1;
+    this->restitution=0.5;
     
 
     // window

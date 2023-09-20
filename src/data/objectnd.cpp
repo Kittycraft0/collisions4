@@ -101,7 +101,8 @@ void ObjectNd::update(double deltaTime){
     // For linear values
     for(int j=0;j<this->linImp.size();j++){
         // Change the linear velocity by the linear impulse
-        this->v[j]+=this->linImp[j]/this->m*deltaTime;
+        // IMPULSE SHOULD NOT BE MULTIPLIED BY DELTATIME
+        this->v[j]+=this->linImp[j]/this->m;
         // Change the linear position by the linear velocity
         this->p[j]+=this->v[j]*deltaTime;
         // Set the linear momentum to the linear velocity times the mass
@@ -116,7 +117,7 @@ void ObjectNd::update(double deltaTime){
     // For rotational values
     for(int j=0;j<this->rotImp.size();j++){
         // Change the angular velocity by the angular impulse
-        this->av[j]+=this->rotImp[j]/this->i*deltaTime;
+        this->av[j]+=this->rotImp[j]/this->i;
         // Change the angular position (the angle) by the angular velocity
         this->a[j]+=this->av[j]*deltaTime;
         // Set the rotaional momentum to the rotational 

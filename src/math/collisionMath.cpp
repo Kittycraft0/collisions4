@@ -203,8 +203,10 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         m1i*restitution*(v1i-v2i)
         )/(m2i+m1i);
     //double pf=((((m1i*v1i+m2i*v2i)+(m1i*restitution*(v2i-v1i)))/(m2i+m1i))-v1i)*m1i;
-    double pf1=abs((v1f-v1i)*m1i);
-    double pf2=abs((v2f-v2i)*m2i);
+    //double pf1=abs((v1f-v1i)*m1i);
+    //double pf2=abs((v2f-v2i)*m2i);
+    double pf1=(v1f-v1i)*m1i;
+    double pf2=(v2f-v2i)*m2i;
 
     // Change the linear impulse by the retrieved impulse
     // Using Euler method because simplicity
@@ -212,13 +214,19 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // by doing linImp*mass for each component and adding that to the velocities. 
     // The velocities are then added to the positions. This is done once per collision.
     // 9/18/2023 DIVIDED BY DELTATIME.
-    obj1->linImp[0]-=distV[0]*pf1/deltaTime;
-    obj1->linImp[1]-=distV[1]*pf1/deltaTime;
+    //obj1->linImp[0]-=distV[0]*pf1;
+    //obj1->linImp[1]-=distV[1]*pf1;
 
-    obj2->linImp[0]+=distV[0]*pf2/deltaTime;
-    obj2->linImp[1]+=distV[1]*pf2/deltaTime;
+    //obj2->linImp[0]+=distV[0]*pf2;
+    //obj2->linImp[1]+=distV[1]*pf2;
+    
+    obj1->v[0]=distV[0]*v1f;
+    obj1->v[1]=distV[1]*v1f;
+
+    obj2->v[0]=distV[0]*v2f;
+    obj2->v[1]=distV[1]*v2f;
     std::cout<<
-    m1i<<" "<<m2i<<" "<<(obj1->linImp[0])<<" "<<(obj1->linImp[1])<<" "
+    v1i-v1f<<" "<<v2i-v2f<<" "<<(obj1->linImp[0])<<" "<<(obj1->linImp[1])<<" "
     <<(obj2->linImp[0])<<" "<<(obj2->linImp[1]);
     std::cout<<"\n";
 
