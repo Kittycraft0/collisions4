@@ -68,7 +68,7 @@ ObjectNd::ObjectNd(int d,Data* data){
 
     // 6/8/2023 moved to here...
     // 6/7/2023 Set the circular radius in base pixels
-    this->radius=50;
+    this->radius=10;
     
     // Rotational mass 5/11/2023
     // 6/8/2023 changed to maybe a more accurate value
