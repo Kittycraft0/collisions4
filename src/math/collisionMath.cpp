@@ -220,8 +220,8 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     //obj2->linImp[0]+=distV[0]*pf2;
     //obj2->linImp[1]+=distV[1]*pf2;
     
-    obj1->v[0]=distV[0]*v1f;
-    obj1->v[1]=distV[1]*v1f;
+    obj1->v[0]=-distV[0]*v1f;
+    obj1->v[1]=-distV[1]*v1f;
 
     obj2->v[0]=distV[0]*v2f;
     obj2->v[1]=distV[1]*v2f;
