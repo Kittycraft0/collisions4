@@ -117,6 +117,8 @@ int main() {
                     //std::cout<<"nope";
                 }
             }
+            // acceleration of 1 "meter" per second squared?
+            data->objects[i]->linImp[1]+=1*data->objects[i]->m;
         }
 
         // 6/6/2023

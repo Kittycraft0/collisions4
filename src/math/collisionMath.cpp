@@ -167,12 +167,14 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     double v2Squared=obj2->v[0]*obj2->v[0]+obj2->v[1]*obj2->v[1];
     // 6/8/2023 - Get the direction vector from the first object to the second object
     std::vector<double> distV={(obj2->p[0]-obj1->p[0]),(obj2->p[1]-obj1->p[1])};
-    double distSquared=distV[0]*distV[0]+distV[1]*distV[1];
+    //double distSquared=distV[0]*distV[0]+distV[1]*distV[1];
+    double velSquared=pow(obj2->v[0]-obj1->v[0],2)+pow(obj2->v[1]-obj1->v[1],2);
+    double distSquared=pow(obj2->p[0]-obj1->p[0],2)+pow(obj2->p[1]-obj1->p[1],2);
 
     // 6/8/2023 - Get the inital velocity magnitudes
     double v1i=sqrt(v1Squared);
     double v2i=sqrt(v2Squared);
-
+    
     //double invDist=invSqrt(distSquared);
     double dist=sqrt(distSquared);
     
