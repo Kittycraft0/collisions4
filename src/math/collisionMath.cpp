@@ -249,3 +249,8 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // wow 128 bits that is crazy long wow ok
     
 }
+
+// 10/09/2023 I DID THE MATHEMATICS NOW FOR MULTIPLE DIMENSIONS.
+void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+    
+}
