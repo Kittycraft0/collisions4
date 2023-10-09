@@ -252,5 +252,52 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
 // 10/09/2023 I DID THE MATHEMATICS NOW FOR MULTIPLE DIMENSIONS.
 void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+    // The normal between the two objects is the difference between their components (obj2.v-obj1.v)
+    std::vector<double> normal;
     
+    // The momentum vectors of the two objects
+    std::vector<double> p1;
+    std::vector<double> p2;
+
+    // The dot products of both momentums on the normal
+    double dotProduct1=0;
+    double dotProduct2=0;
+
+    // Get the magnitude of the normal
+    double normalComponentSquareSum=0;
+
+    // Assemble the normal and the normal magnitude and the momentum vectors
+    for(int i=0;i<obj1->v.size();i++){
+        // Get the momentum components by multiplying the velocity components by the mass
+        p1.push_back(obj1->v[i]*obj1->m);
+        p2.push_back(obj2->v[i]*obj2->m);
+        // Push back the components to the normal vector
+        normal.push_back(p2[i]-p1[i]);
+        // Push back the sum of the produt of the normal 
+        // and the momentums to the respective dot products
+        dotProduct1+=p1[i]*normal[i];
+        dotProduct2+=p2[i]*normal[i];
+
+        normalComponentSquareSum+=normal[i]*normal[i];
+    }
+
+    // Get the inverse of the normal's magnitude (or distance), 
+    // because that is the only one really used here
+    double invNormalMagnitude=invSqrt(normalComponentSquareSum);
+    
+    // Amount of momentum from the first object in the direction of the normal vector
+    // Taking the dot product of the first momentum and dividing it by only the magnitude of the normal
+    double p1xi=dotProduct1*invNormalMagnitude;
+    double p2xi=-dotProduct2*invNormalMagnitude;
+
+    //The magnitudes of the initial velocities in the normal direction
+    double v1xi=p1xi/obj1->m;
+    double v2xi=p2xi/obj2->m;
+
+    // The extreme equation; the change in momentum (in the normal direction)
+    double p1dx=obj1->m*(p1xi+p2xi+obj2->m*restitution*(v2xi-v1xi))/(obj1->m+obj2->m)-p1xi;
+
+
+
+    //std::vector<double> normal=obj2->v-obj1->v;
 }
