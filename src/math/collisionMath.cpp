@@ -131,7 +131,8 @@ void collide(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTim
             obj1->linDisp[i]+=-distV[i]*((massSum-obj1->m)/massSum);
             obj2->linDisp[i]+=distV[i]*((massSum-obj2->m)/massSum);
         }
-        // Adjust the position with the amount correlating to it's amount of mass compared to the other because why not maybe
+        // Adjust the position with the amount correlating 
+        // to it's amount of mass compared to the other because why not maybe
     }*/
 
     // 6/23/2023 what is the size of a long double
@@ -241,7 +242,8 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
             obj1->linDisp[i]+=-distV[i]*((massSum-obj1->m)/massSum);
             obj2->linDisp[i]+=distV[i]*((massSum-obj2->m)/massSum);
         }
-        // Adjust the position with the amount correlating to it's amount of mass compared to the other because why not maybe
+        // Adjust the position with the amount correlating 
+        //  to it's amount of mass compared to the other because why not maybe
     }*/
 
     // 6/23/2023 what is the size of a long double
@@ -319,4 +321,25 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     }
 
     //std::vector<double> normal=obj2->v-obj1->v;
+
+    // 10/10/2023 copy/paste then modified
+    // because i guess it's actually REALLY WRONG!? very strange
+    // 6/23/2023 displace them so they are no longer colliding
+    // 6/23/2023 redundant collision check because you never know???
+    double dist=1/invNormalMagnitude;
+    if(dist<obj1->radius+obj2->radius){
+        // the distance to adjust outwards by - r1+r2-distance
+        double adjust=obj1->radius+obj2->radius-dist;
+        // the sum of the masses for allocating which object gets displaced more
+        double massSum=obj1->m+obj2->m;
+        for(int i=0;i<obj1->p.size();i++){
+            double distV=obj2->v[i]-obj1->v[i];
+            //obj1->linDisp[i]+=-distV*((massSum-obj1->m)/massSum);
+            obj1->linDisp[i]+=-unitNormal[i]*adjust*(massSum-obj1->m)/massSum;
+            //obj2->linDisp[i]+=distV*((massSum-obj2->m)/massSum);
+            obj1->linDisp[i]+=unitNormal[i]*adjust*(massSum-obj2->m)/massSum;
+        }
+        // Adjust the position with the amount correlating to it's 
+        // amount of mass compared to the other because why not maybe
+    }
 }
