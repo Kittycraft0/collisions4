@@ -252,6 +252,8 @@ void collide2(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
 // 10/09/2023 I DID THE MATHEMATICS NOW FOR MULTIPLE DIMENSIONS.
 void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+    // Desmos graph: https://www.desmos.com/calculator/pwb0tfbmwe
+
     // The normal between the two objects is the difference between their components (obj2.v-obj1.v)
     std::vector<double> normal;
     
@@ -284,6 +286,14 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // Get the inverse of the normal's magnitude (or distance), 
     // because that is the only one really used here
     double invNormalMagnitude=invSqrt(normalComponentSquareSum);
+
+
+    // The unit vector of the normal vector
+    std::vector<double> unitNormal;
+    // Get the unit vector of the normal vector
+    for(int i=0;i<obj1->v.size();i++){
+        unitNormal.push_back(normal[i]*invNormalMagnitude);
+    }
     
     // Amount of momentum from the first object in the direction of the normal vector
     // Taking the dot product of the first momentum and dividing it by only the magnitude of the normal
@@ -297,7 +307,16 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // The extreme equation; the change in momentum (in the normal direction)
     double p1dx=obj1->m*(p1xi+p2xi+obj2->m*restitution*(v2xi-v1xi))/(obj1->m+obj2->m)-p1xi;
 
-
+    // bector lol
+    // The final changes in momentum (momentum  change final 1/2)
+    std::vector<double> pcf1;
+    std::vector<double> pcf2;
+    for(int i=0;i<obj1->v.size();i++){
+        pcf1.push_back(-unitNormal[i]*(2*p1xi+p1dx));
+        pcf2.push_back(unitNormal[i]*(2*p2xi-p1dx));
+        obj1->linImp[i]+=pcf1[i];
+        obj2->linImp[i]+=pcf2[i];
+    }
 
     //std::vector<double> normal=obj2->v-obj1->v;
 }
