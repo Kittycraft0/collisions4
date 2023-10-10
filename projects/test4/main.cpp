@@ -91,6 +91,7 @@ int main() {
         // Collisions
         if(doCollide)
         for(int i=0;i<data->settings->numObjects;i++){
+            //data->objects[i]->linDisp[0]+=1;
             for(int j=i+1;j<data->settings->numObjects;j++){
                 //float dist=sqrt(pow(2,2)+pow(2,2));
 

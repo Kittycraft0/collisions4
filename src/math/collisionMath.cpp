@@ -276,7 +276,9 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         p1.push_back(obj1->v[i]*obj1->m);
         p2.push_back(obj2->v[i]*obj2->m);
         // Push back the components to the normal vector
-        normal.push_back(p2[i]-p1[i]);
+        //dumb
+        //normal.push_back(p2[i]-p1[i]);
+        normal.push_back(obj2->p[i]-obj1->p[i]);
         // Push back the sum of the produt of the normal 
         // and the momentums to the respective dot products
         dotProduct1+=p1[i]*normal[i];
@@ -287,7 +289,12 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
     // Get the inverse of the normal's magnitude (or distance), 
     // because that is the only one really used here
+    std::cout<<"inverse square root of 4: "<<invSqrt((double)4.0f)<<"\n";
     double invNormalMagnitude=invSqrt(normalComponentSquareSum);
+    std::cout<<"normal components squared sum: "<<
+    normalComponentSquareSum<<"\ninv square root of that: "<<invNormalMagnitude
+    <<"\none over that: "<<1/invNormalMagnitude<<
+    "\nsquare root of the original: "<<sqrt(normalComponentSquareSum)<<"\n";
 
 
     // The unit vector of the normal vector
@@ -318,6 +325,8 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         pcf2.push_back(unitNormal[i]*(2*p2xi-p1dx));
         obj1->linImp[i]+=pcf1[i];
         obj2->linImp[i]+=pcf2[i];
+        //obj1->v[i]=pcf1[i]/obj1->m;
+        //obj2->v[i]=pcf1[i]/obj2->m;
     }
 
     //std::vector<double> normal=obj2->v-obj1->v;
@@ -327,6 +336,8 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // 6/23/2023 displace them so they are no longer colliding
     // 6/23/2023 redundant collision check because you never know???
     double dist=1/invNormalMagnitude;
+    std::cout<<"distance: "<<dist;
+    std::cout<<"sum of radii: "<<obj1->radius+obj2->radius;
     if(dist<obj1->radius+obj2->radius){
         // the distance to adjust outwards by - r1+r2-distance
         double adjust=obj1->radius+obj2->radius-dist;
@@ -335,9 +346,14 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         for(int i=0;i<obj1->p.size();i++){
             double distV=obj2->v[i]-obj1->v[i];
             //obj1->linDisp[i]+=-distV*((massSum-obj1->m)/massSum);
-            obj1->linDisp[i]+=-unitNormal[i]*adjust*(massSum-obj1->m)/massSum;
+            // reverse the signs for some weird orbiting thing 
+            // where the radius is the sphere of influence idk
+            obj1->linDisp[i]+=+unitNormal[i]*(massSum-obj1->m)/massSum;
             //obj2->linDisp[i]+=distV*((massSum-obj2->m)/massSum);
-            obj1->linDisp[i]+=unitNormal[i]*adjust*(massSum-obj2->m)/massSum;
+            obj2->linDisp[i]+=unitNormal[i]*(massSum-obj2->m)/massSum;
+            //std::cout<<unitNormal[i];
+            //obj1->linDisp[i]+=unitNormal[i]*5;
+            //obj2->linDisp[i]+=-unitNormal[i]*5;
         }
         // Adjust the position with the amount correlating to it's 
         // amount of mass compared to the other because why not maybe
