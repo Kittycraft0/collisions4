@@ -348,9 +348,9 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
             //obj1->linDisp[i]+=-distV*((massSum-obj1->m)/massSum);
             // reverse the signs for some weird orbiting thing 
             // where the radius is the sphere of influence idk
-            obj1->linDisp[i]+=+unitNormal[i]*(massSum-obj1->m)/massSum;
+            obj1->linDisp[i]+=-unitNormal[i]*(massSum-obj1->m)/massSum;
             //obj2->linDisp[i]+=distV*((massSum-obj2->m)/massSum);
-            obj2->linDisp[i]+=unitNormal[i]*(massSum-obj2->m)/massSum;
+            obj2->linDisp[i]+=+unitNormal[i]*(massSum-obj2->m)/massSum;
             //std::cout<<unitNormal[i];
             //obj1->linDisp[i]+=unitNormal[i]*5;
             //obj2->linDisp[i]+=-unitNormal[i]*5;
