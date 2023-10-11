@@ -43,15 +43,14 @@ void dataTest3(int n){
 #include <cmath>
 Settings::Settings(){
     // number of dimensions
-    this->d=2;
+    this->d=1;
     // number of objects
-    this->numObjects=20;
+    this->numObjects=6;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=200;
 
     // 6/23/2023 set the project seed
     this->seed=69420;
-
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=0.5;

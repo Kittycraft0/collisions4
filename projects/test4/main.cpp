@@ -200,6 +200,39 @@ int main() {
         fpsText.setPosition(data->window->getSize().x, 0);
         data->window->draw(fpsText);
 
+        // 10/11/2023
+        // Calculate the total energy in the system
+        double totalKineticEnergy=0;
+        for(int i=0;i<data->objects.size();i++){
+            double speedSquared=0;
+            for(int j=0;j<data->objects[i]->v.size();j++){
+                speedSquared+=data->objects[i]->v[j]*data->objects[i]->v[j];
+            }
+            totalKineticEnergy+=0.5*data->objects[i]->m*speedSquared;
+        }
+        // 10/11/2023
+        // copy/paste from above then modified for my purposes
+        // Text on screen
+        // energy
+        // 4/18/2023 - copy/pasted/modified on 6/23/2023
+        // draw the fps text
+        sf::Text energyText;
+        
+        //char temp2[256];
+        //temp[256];RedRed
+        sprintf(temp, "Total energy: %d", (int)totalKineticEnergy);
+        energyText.setString(temp);
+        energyText.setFont(data->fonts->comicMono);
+        energyText.setCharacterSize(24);
+        energyText.setFillColor(sf::Color::Red);
+        // right align text from ChatGPT -4/6/2023
+        // Set the origin to the right side of the text
+        energyText.setOrigin(energyText.getLocalBounds().width,-48);
+        // Set the position to the right side of the window
+        energyText.setPosition(data->window->getSize().x, 0);
+        data->window->draw(energyText);
+
+
         // n.
         n++;
 

@@ -62,6 +62,9 @@ ObjectNd::ObjectNd(int d,Data* data){
     // Linear mass
     // for some reason two objects of equal mass freak out on collision
     m=massRandomizer(*gen)*1000;
+    // 10/11/2023 test AAAAAAA.
+    int thepow=data->objects.size();
+    m=pow(10,thepow);
     //m=5.76185f;
     //std::cout<<" "<<m;
     //m=2;
