@@ -63,8 +63,8 @@ ObjectNd::ObjectNd(int d,Data* data){
     // for some reason two objects of equal mass freak out on collision
     m=massRandomizer(*gen)*1000;
     // 10/11/2023 test AAAAAAA.
-    int thepow=data->objects.size();
-    m=pow(10,thepow);
+    //int thepow=data->objects.size();
+    //m=pow(10,thepow);
     //m=5.76185f;
     //std::cout<<" "<<m;
     //m=2;
@@ -105,6 +105,7 @@ void ObjectNd::update(double deltaTime){
     for(int j=0;j<this->linImp.size();j++){
         // Change the linear velocity by the linear impulse
         // IMPULSE SHOULD NOT BE MULTIPLIED BY DELTATIME
+        //std::cout<<this->m<<" ";
         this->v[j]+=this->linImp[j]/this->m;
         // Change the linear position by the linear velocity
         this->p[j]+=this->v[j]*deltaTime;

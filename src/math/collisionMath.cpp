@@ -289,12 +289,12 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
     // Get the inverse of the normal's magnitude (or distance), 
     // because that is the only one really used here
-    std::cout<<"inverse square root of 4: "<<invSqrt((double)4.0f)<<"\n";
+    //std::cout<<"inverse square root of 4: "<<invSqrt((double)4.0f)<<"\n";
     double invNormalMagnitude=invSqrt(normalComponentSquareSum);
-    std::cout<<"normal components squared sum: "<<
-    normalComponentSquareSum<<"\ninv square root of that: "<<invNormalMagnitude
-    <<"\none over that: "<<1/invNormalMagnitude<<
-    "\nsquare root of the original: "<<sqrt(normalComponentSquareSum)<<"\n";
+    //std::cout<<"normal components squared sum: "<<
+    //    normalComponentSquareSum<<"\ninv square root of that: "<<invNormalMagnitude
+    //    <<"\none over that: "<<1/invNormalMagnitude<<
+    //    "\nsquare root of the original: "<<sqrt(normalComponentSquareSum)<<"\n";
 
 
     // The unit vector of the normal vector
@@ -316,13 +316,15 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // The extreme equation; the change in momentum (in the normal direction)
     double p1dx=obj1->m*(p1xi+p2xi+obj2->m*restitution*(v2xi-v1xi))/(obj1->m+obj2->m)-p1xi;
 
+    std::cout<<p1dx<<" ";
+
     // bector lol
     // The final changes in momentum (momentum  change final 1/2)
     std::vector<double> pcf1;
     std::vector<double> pcf2;
     for(int i=0;i<obj1->v.size();i++){
-        pcf1.push_back(-unitNormal[i]*(2*p1xi+p1dx));
-        pcf2.push_back(unitNormal[i]*(2*p2xi-p1dx));
+        pcf1.push_back(-unitNormal[i]*(/*2*p1xi*/+p1dx));
+        pcf2.push_back(unitNormal[i]*(/*2*p2xi*/-p1dx));
         obj1->linImp[i]+=pcf1[i];
         obj2->linImp[i]+=pcf2[i];
         //obj1->v[i]=pcf1[i]/obj1->m;
@@ -336,8 +338,8 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // 6/23/2023 displace them so they are no longer colliding
     // 6/23/2023 redundant collision check because you never know???
     double dist=1/invNormalMagnitude;
-    std::cout<<"distance: "<<dist;
-    std::cout<<"sum of radii: "<<obj1->radius+obj2->radius;
+    //std::cout<<"distance: "<<dist;
+    //std::cout<<"sum of radii: "<<obj1->radius+obj2->radius;
     if(dist<obj1->radius+obj2->radius){
         // the distance to adjust outwards by - r1+r2-distance
         double adjust=obj1->radius+obj2->radius-dist;
@@ -358,4 +360,73 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         // Adjust the position with the amount correlating to it's 
         // amount of mass compared to the other because why not maybe
     }
+}
+
+// 10/20/2023 - I did the mathematics once again, but now this time i am near certain that it is accurate
+void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+    // Desmos graph: https://www.desmos.com/calculator/8bnx8zm9yu
+    // The below is partically copy/pasted from the collisions3 method because it is very similar
+
+    // The normal between the two objects is the difference between their components (obj2.v-obj1.v)
+    std::vector<double> normal;
+    
+    // The momentum vectors of the two objects
+    std::vector<double> p1;
+    std::vector<double> p2;
+
+    // The dot products of both momentums on the normal
+    double dotProduct1=0;
+    double dotProduct2=0;
+
+    // Get the magnitude of the normal
+    double normalComponentSquareSum=0;
+
+    // Assemble the normal and the normal magnitude and the momentum vectors
+    for(int i=0;i<obj1->v.size();i++){
+        // Get the momentum components by multiplying the velocity components by the mass
+        p1.push_back(obj1->v[i]*obj1->m);
+        p2.push_back(obj2->v[i]*obj2->m);
+        // Push back the components to the normal vector
+        normal.push_back(obj2->p[i]-obj1->p[i]);
+        // Push back the sum of the produt of the normal 
+        // and the momentums to the respective dot products
+        dotProduct1+=p1[i]*normal[i];
+        dotProduct2+=p2[i]*normal[i];
+
+        normalComponentSquareSum+=normal[i]*normal[i];
+    }
+
+    // Get the inverse of the normal's magnitude (or distance), 
+    // because that is the only one really used here
+    double invNormalMagnitude=invSqrt(normalComponentSquareSum);
+
+    // The unit vector of the normal vector
+    std::vector<double> unitNormal;
+    // Get the unit vector of the normal vector
+    for(int i=0;i<obj1->v.size();i++){
+        unitNormal.push_back(normal[i]*invNormalMagnitude);
+    }
+
+    // Amount of momentum from the first object in the direction of the normal vector
+    // Taking the dot product of the first momentum and dividing it by only the magnitude of the normal
+    double p1xi=dotProduct1*invNormalMagnitude;
+    double p2xi=-dotProduct2*invNormalMagnitude;
+
+    //The magnitudes of the initial velocities in the normal direction
+    double v1xi=p1xi/obj1->m;
+    double v2xi=p2xi/obj2->m;
+
+    // Coefficient of restitution equation
+    double v1xf=(p1xi+p2xi+restitution*obj2->m*(v2xi-v1xi))/(obj1->m+obj2->m);
+
+    // Change in velocity along the normal direction
+    double vdx=v1xf-v1xi;
+    // Change in momentum along the normal direction
+    double pdx=obj1->m*vdx;
+
+    for(int i=0;i<obj1->v.size();i++){
+        obj1->linImp[i]+=unitNormal[i]*pdx;
+        obj2->linImp[i]-=unitNormal[i]*pdx;
+    }
+
 }

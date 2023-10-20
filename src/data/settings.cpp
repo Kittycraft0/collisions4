@@ -43,7 +43,7 @@ void dataTest3(int n){
 #include <cmath>
 Settings::Settings(){
     // number of dimensions
-    this->d=1;
+    this->d=2;
     // number of objects
     this->numObjects=6;
     // minimumn distance from the edge that objects should spawn with
