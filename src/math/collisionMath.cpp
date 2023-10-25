@@ -399,7 +399,7 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         normal.push_back(obj2->p[i]-obj1->p[i]);
 
         // TEST: REMOVE - 10/25/2023
-        std::cout<<"\nNormal: "<<normal[i];
+        //std::cout<<"\nNormal: "<<normal[i];
 
         // Push back the sum of the produt of the normal 
         // and the momentums to the respective dot products
@@ -408,17 +408,17 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
         normalComponentSquareSum+=normal[i]*normal[i];
 
-        v1m+=obj1->v[i]*obj1->v[i];
-        v2m+=obj2->v[i]*obj2->v[i];
-        p1m+=p1[i]*p1[i];
-        p2m+=p2[i]*p2[i];
+        //v1m+=obj1->v[i]*obj1->v[i];
+        //v2m+=obj2->v[i]*obj2->v[i];
+        //p1m+=p1[i]*p1[i];
+        //p2m+=p2[i]*p2[i];
     }
 
     // TEST: REMOVE - 10/25/2023
-    v1m=sqrt(v1m);
-    v2m=sqrt(v2m);
-    p1m=sqrt(p1m);
-    p2m=sqrt(p2m);
+    //v1m=sqrt(v1m);
+    //v2m=sqrt(v2m);
+    //p1m=sqrt(p1m);
+    //p2m=sqrt(p2m);
 
     // Get the inverse of the normal's magnitude (or distance), 
     // because that is the only one really used here
@@ -454,19 +454,19 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     //std::cout
     //    <<"Dot product 1: "<<dotProduct1*invNormalMagnitude/v1m/obj1->m
     //    <<"\nDot product 2: "<<dotProduct2*invNormalMagnitude/v2m/obj2->m;
-    std::cout
+    //std::cout
         //<<"\nMomentum 1: "<<v1m*obj1->m<<" "<<p1xi<<" "<<p1m
         //<<"\nMomentum 2: "<<v2m*obj2->m<<" "<<p2xi<<" "<<p2m
-        <<"\nMomentum 1: "<<p1xi
-        <<"\nMomentum 2: "<<p2xi
-        <<"\n";
+    //    <<"\nMomentum 1: "<<p1xi
+    //    <<"\nMomentum 2: "<<p2xi
+    //    <<"\n";
 
 
     // The magnitudes of the initial velocities in the normal direction
     double v1xi=p1xi/obj1->m;
     double v2xi=p2xi/obj2->m;
-    std::cout<<"Velocity 1: real: "<<obj1->v[0]<<" normal direction: "<<v1xi<<"\n";
-    std::cout<<"Velocity 2: real: "<<obj2->v[0]<<" normal direction: "<<v2xi<<"\n";
+    //std::cout<<"Velocity 1: real: "<<obj1->v[0]<<" normal direction: "<<v1xi<<"\n";
+    //std::cout<<"Velocity 2: real: "<<obj2->v[0]<<" normal direction: "<<v2xi<<"\n";
     // two constant positive values
     //std::cout<<"Masses: "<<obj1->m<<" "<<obj2->m<<"\n";
 
@@ -489,14 +489,14 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
     // TEST - DELETE LATER - 10/25/2023
     //std::cout<<"dist: "<<1/invNormalMagnitude<<"\n";
-    std::cout<<"pdx: "<<pdx<<"\n";
+    //std::cout<<"pdx: "<<pdx<<"\n";
     // constant
     //std::cout<<"Mass sum: "<<(obj1->m+obj2->m)<<"\n";
     //std::cout<<"restitution: "<<restitution<<"\n";
-    std::cout<<"Sum of momentums: "<<p1xi+p2xi<<"\n";
-    std::cout<<"vdx: "<<vdx<<"\n";
-    std::cout<<"Sum of intiial velocities: "<<(v2xi-v1xi)<<"\n";
-    std::cout<<"Restitution part of equation: "<<restitution*obj2->m*(v2xi-v1xi)<<"\n";
+    //std::cout<<"Sum of momentums: "<<p1xi+p2xi<<"\n";
+    //std::cout<<"vdx: "<<vdx<<"\n";
+    //std::cout<<"Sum of intiial velocities: "<<(v2xi-v1xi)<<"\n";
+    //std::cout<<"Restitution part of equation: "<<restitution*obj2->m*(v2xi-v1xi)<<"\n";
 
     // Apply the change to the objects' linear impulses
     // 10/25/2023 removable exclamation - JUST CHANGED THE SIGNS AND IT DOES SOMETHING???

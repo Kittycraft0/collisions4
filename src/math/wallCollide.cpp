@@ -6,15 +6,19 @@
 void wallCollide(ObjectNd* obj, int width, int height){
     if(obj->p[0]<=-width/4){
         obj->v[0]=1*abs(obj->v[0]);
+        obj->linDisp[0]+=-width/4+obj->radius-obj->p[0];
     }
     if(obj->p[0]>=width/4){
         obj->v[0]=-1*abs(obj->v[0]);
+        obj->linDisp[0]+=+width/4-obj->radius-obj->p[0];
     }
     if(obj->p[1]<=-height/4){
         obj->v[1]=1*abs(obj->v[1]);
+        obj->linDisp[1]+=-height/4+obj->radius-obj->p[1];
     }
     if(obj->p[1]>=height/4){
         obj->v[1]=-1*abs(obj->v[1]);
+        obj->linDisp[1]+=+height/4-obj->radius-obj->p[1];
     }
 }
 

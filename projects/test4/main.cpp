@@ -113,7 +113,7 @@ int main() {
                 double dist=sqrt(sqSum);
                 // abs for magnitude is not needed due to squaring
                 if(dist<data->objects[i]->radius+data->objects[j]->radius){
-                    std::cout<<"Collision between "<<i<<" and "<<j<<"\n";
+                    //std::cout<<"Collision between "<<i<<" and "<<j<<"\n";
                     collide4(
                         data->objects[i],
                         data->objects[j],
@@ -226,7 +226,9 @@ int main() {
         
         //char temp2[256];
         //temp[256];RedRed
-        sprintf(temp, "Total kinetic energy: %d", (int)totalKineticEnergy);
+        //sprintf(temp, "Total kinetic energy: %d", (int)totalKineticEnergy);
+        // llu unsigned long long (int)? cool
+        sprintf(temp, "Total kinetic energy: %llu", (unsigned long long int)totalKineticEnergy);
         energyText.setString(temp);
         energyText.setFont(data->fonts->comicMono);
         energyText.setCharacterSize(24);
