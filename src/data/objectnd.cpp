@@ -52,7 +52,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-10.f, 100.f);
+    std::uniform_real_distribution<> velDist(-10.f, 20.f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     
@@ -61,7 +61,7 @@ ObjectNd::ObjectNd(int d,Data* data){
 
     // Linear mass
     // for some reason two objects of equal mass freak out on collision
-    m=massRandomizer(*gen)*1000;
+    m=massRandomizer(*gen);
     // 10/11/2023 test AAAAAAA.
     //int thepow=data->objects.size();
     //m=pow(10,thepow);
@@ -80,7 +80,9 @@ ObjectNd::ObjectNd(int d,Data* data){
 
     for(int j=0;j<d;j++){
         //std::cout<<j;
+        // position
         p.push_back(posDistD[j](*gen));
+        // velocity
         v.push_back(velDist(*gen));
         scale.push_back(1);
         linDisp.push_back(0);

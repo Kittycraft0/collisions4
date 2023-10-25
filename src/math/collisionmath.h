@@ -10,6 +10,7 @@ void inelasticCollide(ObjectNd* obj1, ObjectNd* obj2);
 void collide2(ObjectNd* obj1, ObjectNd* obj2,double restitution,double deltaTime);
 void collide3(ObjectNd* obj1, ObjectNd* obj2,double restitution,double deltaTime);
 void collide4(ObjectNd* obj1, ObjectNd* obj2,double restitution,double deltaTime);
+//void collide4(ObjectNd* obj1, ObjectNd* obj2,double restitution);
 
 
 #endif

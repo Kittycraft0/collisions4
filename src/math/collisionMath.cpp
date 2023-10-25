@@ -364,8 +364,10 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
 // 10/20/2023 - I did the mathematics once again, but now this time i am near certain that it is accurate
 void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+//void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution){
     // Desmos graph: https://www.desmos.com/calculator/8bnx8zm9yu
-    // The below is partically copy/pasted from the collisions3 method because it is very similar
+    // The below is partically copy/pasted (then modified) from 
+    // the collisions3 method because it is very similar
 
     // The normal between the two objects is the difference between their components (obj2.v-obj1.v)
     std::vector<double> normal;
@@ -381,24 +383,47 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     // Get the magnitude of the normal
     double normalComponentSquareSum=0;
 
+    // TEST: REMOVE - 10/25/2023 - velocity and momentum magnitudes
+    double v1m=0;
+    double v2m=0;
+    double p1m=0;
+    double p2m=0;
+
     // Assemble the normal and the normal magnitude and the momentum vectors
     for(int i=0;i<obj1->v.size();i++){
         // Get the momentum components by multiplying the velocity components by the mass
         p1.push_back(obj1->v[i]*obj1->m);
         p2.push_back(obj2->v[i]*obj2->m);
         // Push back the components to the normal vector
+        // note: p for position and p for momentum is confusing, very sad, maybe i shoulda used pos idk
         normal.push_back(obj2->p[i]-obj1->p[i]);
+
+        // TEST: REMOVE - 10/25/2023
+        std::cout<<"\nNormal: "<<normal[i];
+
         // Push back the sum of the produt of the normal 
         // and the momentums to the respective dot products
         dotProduct1+=p1[i]*normal[i];
         dotProduct2+=p2[i]*normal[i];
 
         normalComponentSquareSum+=normal[i]*normal[i];
+
+        v1m+=obj1->v[i]*obj1->v[i];
+        v2m+=obj2->v[i]*obj2->v[i];
+        p1m+=p1[i]*p1[i];
+        p2m+=p2[i]*p2[i];
     }
+
+    // TEST: REMOVE - 10/25/2023
+    v1m=sqrt(v1m);
+    v2m=sqrt(v2m);
+    p1m=sqrt(p1m);
+    p2m=sqrt(p2m);
 
     // Get the inverse of the normal's magnitude (or distance), 
     // because that is the only one really used here
-    double invNormalMagnitude=invSqrt(normalComponentSquareSum);
+    //double invNormalMagnitude=invSqrt(normalComponentSquareSum);
+    double invNormalMagnitude=1/sqrt(normalComponentSquareSum);
 
     // The unit vector of the normal vector
     std::vector<double> unitNormal;
@@ -409,21 +434,72 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
     // Amount of momentum from the first object in the direction of the normal vector
     // Taking the dot product of the first momentum and dividing it by only the magnitude of the normal
+    // stop messing with the negative signs; the first 
+    // one should be positive and the second one should be negative
+    // ok now i put a negative in the defition of the dotProduct2
+    // nevermind NO NO NO NO NO negative signs since it is along the SAME, UNMODIFIED normal direction;
+    // the normal vector should NOT be flipped for the opposite vector, since it should be the 
+    // SAME vector to make it along the SAME axis in the SAME coordinate system.
     double p1xi=dotProduct1*invNormalMagnitude;
-    double p2xi=-dotProduct2*invNormalMagnitude;
+    double p2xi=dotProduct2*invNormalMagnitude;
+    
+    // TEST: REMOVE LATER - 10/25/2023
+    // found that the magnitude of p2xi in one dimension is not 
+    // equal to the magnitude of the second momentum!?
+    // but p1xi equals the magnitude of the first momentum 
+    // though so something is worng with only the second one
+    // yay testing
+    // nevermind - i made a typo in the test itself... 
+    // at least i know now that it sort of works i guess
+    //std::cout
+    //    <<"Dot product 1: "<<dotProduct1*invNormalMagnitude/v1m/obj1->m
+    //    <<"\nDot product 2: "<<dotProduct2*invNormalMagnitude/v2m/obj2->m;
+    std::cout
+        //<<"\nMomentum 1: "<<v1m*obj1->m<<" "<<p1xi<<" "<<p1m
+        //<<"\nMomentum 2: "<<v2m*obj2->m<<" "<<p2xi<<" "<<p2m
+        <<"\nMomentum 1: "<<p1xi
+        <<"\nMomentum 2: "<<p2xi
+        <<"\n";
 
-    //The magnitudes of the initial velocities in the normal direction
+
+    // The magnitudes of the initial velocities in the normal direction
     double v1xi=p1xi/obj1->m;
     double v2xi=p2xi/obj2->m;
+    std::cout<<"Velocity 1: real: "<<obj1->v[0]<<" normal direction: "<<v1xi<<"\n";
+    std::cout<<"Velocity 2: real: "<<obj2->v[0]<<" normal direction: "<<v2xi<<"\n";
+    // two constant positive values
+    //std::cout<<"Masses: "<<obj1->m<<" "<<obj2->m<<"\n";
 
     // Coefficient of restitution equation
     double v1xf=(p1xi+p2xi+restitution*obj2->m*(v2xi-v1xi))/(obj1->m+obj2->m);
+    // TEST - REMOVE LATER - inealstic test - 10/25/2023
+    //double v1xf=(p1xi+p2xi)/(obj1->m+obj2->m);
+    //double v1xf=((obj1->m-obj2->m)*v1xi+(obj2->m+obj2->m)*v2xi)/(obj1->m+obj2->m);
+    //double v2xf=((obj2->m+obj1->m)*v1xi+(obj2->m-obj1->m)*v2xi)/(obj1->m+obj2->m);
+    //double v1xf=-1;
+ 
+
+    //double p1dx=obj1->m*(p1xi+p2xi+obj2->m*restitution*(v2xi-v1xi))/(obj1->m+obj2->m)-p1xi;
+    //double v1xf=(p1xi+p2xi+restitution*obj2->m*(v2xi-v1xi))/(obj1->m+obj2->m);
 
     // Change in velocity along the normal direction
     double vdx=v1xf-v1xi;
     // Change in momentum along the normal direction
     double pdx=obj1->m*vdx;
 
+    // TEST - DELETE LATER - 10/25/2023
+    //std::cout<<"dist: "<<1/invNormalMagnitude<<"\n";
+    std::cout<<"pdx: "<<pdx<<"\n";
+    // constant
+    //std::cout<<"Mass sum: "<<(obj1->m+obj2->m)<<"\n";
+    //std::cout<<"restitution: "<<restitution<<"\n";
+    std::cout<<"Sum of momentums: "<<p1xi+p2xi<<"\n";
+    std::cout<<"vdx: "<<vdx<<"\n";
+    std::cout<<"Sum of intiial velocities: "<<(v2xi-v1xi)<<"\n";
+    std::cout<<"Restitution part of equation: "<<restitution*obj2->m*(v2xi-v1xi)<<"\n";
+
+    // Apply the change to the objects' linear impulses
+    // 10/25/2023 removable exclamation - JUST CHANGED THE SIGNS AND IT DOES SOMETHING???
     for(int i=0;i<obj1->v.size();i++){
         obj1->linImp[i]+=unitNormal[i]*pdx;
         obj2->linImp[i]-=unitNormal[i]*pdx;

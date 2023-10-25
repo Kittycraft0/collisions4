@@ -43,9 +43,9 @@ void dataTest3(int n){
 #include <cmath>
 Settings::Settings(){
     // number of dimensions
-    this->d=2;
+    this->d=1;
     // number of objects
-    this->numObjects=6;
+    this->numObjects=2;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=200;
 
@@ -53,15 +53,15 @@ Settings::Settings(){
     this->seed=69420;
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
-    this->restitution=0.5;
+    this->restitution=0;
     
 
     // window
     this->windowWidth=800;
-    this->windowHeight=800;
+    this->windowHeight=400;
     // 6/6/2023 - it automatically puts itself back up at the top
     this->windowX=200;
-    this->windowY=200;
+    this->windowY=50;
     this->windowName="Physics simulation";
     
     this->showWireframe=false;

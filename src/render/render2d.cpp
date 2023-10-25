@@ -12,7 +12,7 @@ void render2dAsCircles(Data* data){
         // Set the size
         sfModel.setRadius(obj->radius);
         // Set the color//9/6/2023 the word "color" looks weird now, why so many 'o's
-        sf::Color color=sf::Color(0,255,255*obj->m/10000);
+        sf::Color color=sf::Color(0,255,255*obj->m/5);
         //sfModel.setFillColor(sf::Color::Green);
         sfModel.setFillColor(color);
         // Set the position

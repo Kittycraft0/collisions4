@@ -13,6 +13,12 @@ int main() {
     // Initialize data 6/5/2023
     Data* data=new Data();
     
+    // TESTING - REMOVE LATER PLEASE - 10/25/2023
+    data->objects[0]->p[0]=20;
+    data->objects[1]->p[0]=-20;
+    data->objects[0]->v[0]=-5;
+    data->objects[1]->v[0]=5;
+
     std::cout<<"\nObject positions:\n";
     // 6/23/2023
     for(ObjectNd* obj:data->objects){
