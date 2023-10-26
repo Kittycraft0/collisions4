@@ -183,7 +183,7 @@ int main() {
         // Set the color
         com.setFillColor(sf::Color::Red);
         // Set the position
-        com.setPosition(sf::Vector2f(centerOfMass[0],centerOfMass[1]));
+        com.setPosition(sf::Vector2f(centerOfMass[0],-centerOfMass[1]));
         // Set the origin
         com.setOrigin(
             -(int)data->window->getSize().x/2,

@@ -52,7 +52,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-10.f, 20.f);
+    std::uniform_real_distribution<> velDist(-100.f, 200.f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     

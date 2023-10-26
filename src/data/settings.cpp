@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=1;
+    this->numObjects=3;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=200;
 
@@ -57,7 +57,8 @@ Settings::Settings(){
 
     // 10/25/2023
     // global gravity in meters per second squared
-    this->globalGravity=1;
+    // ap exam said g is 10, bit slow though
+    this->globalGravity=100;
     
 
     // window
