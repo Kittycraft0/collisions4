@@ -45,12 +45,12 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=2;
+    this->numObjects=3;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
     // 6/23/2023 set the project seed
-    this->seed=60000;
+    this->seed=60002;
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;

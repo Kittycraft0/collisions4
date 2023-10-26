@@ -54,7 +54,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-0.002f, 0.002f);
+    std::uniform_real_distribution<> velDist(-2.0f, 2.0f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     
@@ -78,7 +78,9 @@ ObjectNd::ObjectNd(int d,Data* data){
     // Rotational mass 5/11/2023
     // 6/8/2023 changed to maybe a more accurate value
     // 6/8/2023 or not - there is so much math behind the moment of inertia!!!
-    i=1;
+    // 10/26/2023 
+    // https://math.stackexchange.com/questions/565333/moment-of-inertia-of-a-n-dimensional-sphere
+    i=m*radius*radius*(d-1)/(d+2);
 
     for(int j=0;j<d;j++){
         //std::cout<<j;
