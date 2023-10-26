@@ -103,7 +103,8 @@ int main() {
         if(doWallCollide){
             for(ObjectNd* obj:data->objects){
                 //wallCollide(obj,data->settings->windowWidth,data->settings->windowHeight);
-                wallCollide(obj,data->settings->border1,data->settings->border2);
+                wallCollide(obj,data->settings->border1,
+                    data->settings->border2,data->settings->globalGravity);
             }
         }
 
