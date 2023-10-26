@@ -228,7 +228,11 @@ int main() {
                 totalPotentialEnergy+=
                     data->objects[i]->m // m
                     *data->settings->globalGravity // g
-                    *(data->settings->windowHeight-data->objects[i]->p[1]); // h
+                    *(data->objects[i]->p[1]
+                    -data->settings->border1[1]-data->objects[i]->radius); // h from hitting ground
+                //std::cout
+                //    <<"Object y: "<<data->objects[1]->p[1]
+                //    <<"\nBorder2 position: "<<data->settings->border1[1]<<"\n";
             }
         }
         // 10/11/2023
