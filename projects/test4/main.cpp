@@ -14,10 +14,10 @@ int main() {
     Data* data=new Data();
     
     // TESTING - REMOVE LATER PLEASE - 10/25/2023
-    data->objects[0]->p[0]=20;
-    data->objects[1]->p[0]=-20;
-    data->objects[0]->v[0]=-5;
-    data->objects[1]->v[0]=5;
+    //data->objects[0]->p[0]=20;
+    //data->objects[1]->p[0]=-20;
+    //data->objects[0]->v[0]=-5;
+    //data->objects[1]->v[0]=5;
 
     std::cout<<"\nObject positions:\n";
     // 6/23/2023
@@ -63,17 +63,16 @@ int main() {
         bool doCollide=true;
         bool doWallCollide=true;
 
+        // 6/7/2023 get deltaTime
+        float spf=data->clock->restart().asSeconds();
+        double deltaTime=spf*timeMultiplier;
+
         if(doGlobalGravity){
             for(int i=0;i<data->objects.size();i++){
                 // acceleration of 1 "meter" per second squared?
                 data->objects[i]->linImp[1]+=-1*data->objects[i]->m*data->settings->globalGravity;
             }
         }
-
-        // 6/7/2023 get deltaTime
-        float spf=data->clock->restart().asSeconds();
-        double deltaTime=spf*timeMultiplier;
-
 
         // 6/6/2023 Gravity
         if(doGravity)

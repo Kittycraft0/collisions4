@@ -38,11 +38,11 @@ void wallCollide(ObjectNd* obj,std::vector<int> border1,std::vector<int> border2
     for(int i=0;i<obj->p.size();i++){
         //std::cout<<i;
         if(obj->p[i]-obj->radius<=border1[i]){
-            obj->v[i]=1*abs(obj->v[0]);
+            obj->v[i]=1*abs(obj->v[i]);
             obj->linDisp[i]+=border1[i]+obj->radius-obj->p[i];
         }
         if(obj->p[i]+obj->radius>=border2[i]){
-            obj->v[i]=-1*abs(obj->v[0]);
+            obj->v[i]=-1*abs(obj->v[i]);
             obj->linDisp[i]+=border2[i]-obj->radius-obj->p[i];
         }
     }
