@@ -253,7 +253,7 @@ int main() {
         sf::Text energyText;
         //sprintf(temp, "Total kinetic energy: %d", (int)totalKineticEnergy);
         // llu unsigned long long (int)? cool
-        sprintf(temp, "Total kinetic energy: %llu", (unsigned long long int)totalKineticEnergy);
+        sprintf(temp, "Total kinetic energy: %lli", (long long int)totalKineticEnergy);
         energyText.setString(temp);
         energyText.setFont(data->fonts->comicMono);
         energyText.setCharacterSize(24);
@@ -267,7 +267,7 @@ int main() {
         // 10/26/2023
         // draw potential energy text and total energy text
         // potential global gravitational energy
-        sprintf(temp, "Total potential energy: %llu", (unsigned long long int)totalPotentialEnergy);
+        sprintf(temp, "Total potential energy: %lli", (long long int)totalPotentialEnergy);
         sf::Text potentialEnergyText;
         potentialEnergyText.setString(temp);
         potentialEnergyText.setFont(data->fonts->comicMono);
@@ -282,10 +282,10 @@ int main() {
         //unsigned long long int tke=(unsigned long long int)totalKineticEnergy;
         //unsigned long long int tpe=(unsigned long long int)totalPotentialEnergy;
         //unsigned long long int te=tke+tpe;
-        unsigned long long int totalEnergy=
-            (unsigned long long int)totalKineticEnergy
-            +(unsigned long long int)totalPotentialEnergy;
-        sprintf(temp, "Total energy: %llu", totalEnergy);
+        long long int totalEnergy=
+            (long long int)totalKineticEnergy
+            +(long long int)totalPotentialEnergy;
+        sprintf(temp, "Total energy: %lli", totalEnergy);
         sf::Text totalEnergyText;
         totalEnergyText.setString(temp);
         totalEnergyText.setFont(data->fonts->comicMono);

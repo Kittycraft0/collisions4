@@ -30,19 +30,19 @@ ObjectNd::ObjectNd(int d,Data* data){
     // Initialize the n-th position component randomizer thing>
     std::vector<std::uniform_int_distribution<>> posDistD;
     // set the initial x- and y- position randomizers
-    std::uniform_int_distribution<> posDistX(
-        -(int)(data->settings->windowWidth)/2+data->settings->objectSpawnMargin,
-        (int)(data->settings->windowWidth)/2-data->settings->objectSpawnMargin
-    );
-    std::uniform_int_distribution<> posDistY(
-        -(int)(data->settings->windowHeight)/2+data->settings->objectSpawnMargin,
-        (int)(data->settings->windowHeight)/2-data->settings->objectSpawnMargin
-    );
+    //std::uniform_int_distribution<> posDistX(
+    //    -(int)(data->settings->windowWidth)/2+data->settings->objectSpawnMargin,
+    //    (int)(data->settings->windowWidth)/2-data->settings->objectSpawnMargin
+    //);
+    //std::uniform_int_distribution<> posDistY(
+    //    -(int)(data->settings->windowHeight)/2+data->settings->objectSpawnMargin,
+    //    (int)(data->settings->windowHeight)/2-data->settings->objectSpawnMargin
+    //);
     // push dimensions
-    posDistD.push_back(posDistX);
-    posDistD.push_back(posDistY);
+    //posDistD.push_back(posDistX);
+    //posDistD.push_back(posDistY);
     // push other dimensions
-    for(int j=1;j<d;j++){
+    for(int j=0;j<d;j++){
         // uses width because why not
         std::uniform_int_distribution<> posDistN(
             //-(int)(data->settings->windowWidth)/2,
