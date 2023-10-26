@@ -45,14 +45,16 @@ ObjectNd::ObjectNd(int d,Data* data){
     for(int j=1;j<d;j++){
         // uses width because why not
         std::uniform_int_distribution<> posDistN(
-            -(int)(data->settings->windowWidth)/2,
-            (int)(data->settings->windowWidth)/2
+            //-(int)(data->settings->windowWidth)/2,
+            //(int)(data->settings->windowWidth)/2
+            data->settings->border1[j]/2,
+            data->settings->border2[j]/2
         );
         posDistD.push_back(posDistN);
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-100.f, 200.f);
+    std::uniform_real_distribution<> velDist(-0.002f, 0.002f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     
@@ -83,10 +85,10 @@ ObjectNd::ObjectNd(int d,Data* data){
         // position
         p.push_back(posDistD[j](*gen));
         // velocity
-        v.push_back(velDist(*gen));
+        v.push_back(0);//velDist(*gen));
         scale.push_back(1);
         linDisp.push_back(0);
-        linMom.push_back(v[i]*m);
+        linMom.push_back(0);//v[i]*m);
         linImp.push_back(0);
     }
     // uses number of angular dimensions formula supplied by ChatGPT
@@ -96,7 +98,7 @@ ObjectNd::ObjectNd(int d,Data* data){
         //angular velocity?
         av.push_back(0);
         rotDisp.push_back(0);
-        rotMom.push_back(av[i]*i);
+        rotMom.push_back(0);
         rotImp.push_back(0);
     }
 }

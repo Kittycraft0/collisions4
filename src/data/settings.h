@@ -25,7 +25,7 @@ public:
     double G;
     double restitution;
     double objectSpawnMargin;
-    double globalGravity;
+    std::vector<double> globalGravity;
 
     // 6/1/2023
     // constructor

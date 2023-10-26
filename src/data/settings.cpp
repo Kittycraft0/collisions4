@@ -45,12 +45,12 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=3;
+    this->numObjects=2;
     // minimumn distance from the edge that objects should spawn with
-    this->objectSpawnMargin=200;
+    this->objectSpawnMargin=50;
 
     // 6/23/2023 set the project seed
-    this->seed=69420;
+    this->seed=60000;
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;
@@ -58,7 +58,8 @@ Settings::Settings(){
     // 10/25/2023
     // global gravity in meters per second squared
     // ap exam said g is 10, bit slow though
-    this->globalGravity=100;
+    // this is now a vector
+    this->globalGravity={0,100,0,0};
     
 
     // window

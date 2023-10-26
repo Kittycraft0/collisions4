@@ -8,6 +8,6 @@
 void wallCollide(ObjectNd* obj, int width, int height);
 void wallCollide(ObjectNd* obj, int x1, int y1, int x2, int y2);
 void wallCollide(ObjectNd* obj,std::vector<int> border1,std::vector<int> border2);
-void wallCollide(ObjectNd* obj,std::vector<int> border1,std::vector<int> border2,double g);
+void wallCollide(ObjectNd* obj,std::vector<int> border1,std::vector<int> border2,std::vector<double> g);
 
 #endif // WALLCOLLIDE_H

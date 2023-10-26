@@ -16,8 +16,8 @@ int main() {
     // TESTING - REMOVE LATER PLEASE - 10/25/2023
     //data->objects[0]->p[0]=20;
     //data->objects[1]->p[0]=-20;
-    //data->objects[0]->v[0]=-5;
-    //data->objects[1]->v[0]=5;
+    data->objects[0]->v[0]=0;
+    data->objects[1]->v[0]=0;
 
     std::cout<<"\nObject positions:\n";
     // 6/23/2023
@@ -28,6 +28,7 @@ int main() {
 
     //data->objects[1]->p[0]+=30;
     //data->objects[1]->p[1]+=30;
+    std::cout<<"object 0 initial velociy: "<<data->objects[0]->v[0];
 
     std::cout<<"\nStarted!";
 
@@ -35,7 +36,7 @@ int main() {
     data->window->clear(sf::Color::Black);
     
     // 6/7/2023 start the clock
-    double timeMultiplier=1;
+    double timeMultiplier=0.1;
     // 6/23/2023 - now in data
     //sf::Clock clock;
     
@@ -61,7 +62,7 @@ int main() {
         bool doMove=false;
         bool doGravity=false;
         bool doCollide=true;
-        bool doWallCollide=true;
+        bool doWallCollide=false;
 
         // 6/7/2023 get deltaTime
         float spf=data->clock->restart().asSeconds();
@@ -75,7 +76,7 @@ int main() {
                 data->objects[i]->linImp[1]+=
                     -1 // -1
                     *data->objects[i]->m // m
-                    *data->settings->globalGravity // g
+                    *data->settings->globalGravity[i] // g
                     *deltaTime; // t
             }
         }
@@ -230,15 +231,17 @@ int main() {
             }
             totalKineticEnergy+=0.5*data->objects[i]->m*speedSquared;
             if(doGlobalGravity){
-                // m*g*h
-                totalPotentialEnergy+=
-                    data->objects[i]->m // m
-                    *data->settings->globalGravity // g
-                    *(data->objects[i]->p[1]
-                    -data->settings->border1[1]-data->objects[i]->radius); // h from hitting ground
-                //std::cout
-                //    <<"Object y: "<<data->objects[1]->p[1]
-                //    <<"\nBorder2 position: "<<data->settings->border1[1]<<"\n";
+                for(int j=0;j<data->objects[i]->p.size();j++){
+                    // m*g*h
+                    totalPotentialEnergy+=
+                        data->objects[i]->m // m
+                        *data->settings->globalGravity[j] // g
+                        *(data->objects[i]->p[j]
+                        -data->settings->border1[j]-data->objects[i]->radius); // h from hitting ground
+                    //std::cout
+                    //    <<"Object y: "<<data->objects[1]->p[1]
+                    //    <<"\nBorder2 position: "<<data->settings->border1[1]<<"\n";
+                }
             }
         }
         // 10/11/2023
