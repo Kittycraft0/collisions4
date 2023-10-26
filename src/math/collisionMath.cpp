@@ -396,7 +396,7 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
         p2.push_back(obj2->v[i]*obj2->m);
         // Push back the components to the normal vector
         // note: p for position and p for momentum is confusing, very sad, maybe i shoulda used pos idk
-        normal.push_back(obj2->p[i]-obj1->p[i]);
+        normal.push_back(obj2->p[i]+obj2->linDisp[i]-obj1->p[i]-obj1->linDisp[i]);
 
         // TEST: REMOVE - 10/25/2023
         //std::cout<<"\nNormal: "<<normal[i];
@@ -500,9 +500,14 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
 
     // Apply the change to the objects' linear impulses
     // 10/25/2023 removable exclamation - JUST CHANGED THE SIGNS AND IT DOES SOMETHING???
+    // 10/25/2023 - lol it works now, i simply just needed to change 
+    // the second sign from a positive to a negative
     for(int i=0;i<obj1->v.size();i++){
         obj1->linImp[i]+=unitNormal[i]*pdx;
         obj2->linImp[i]-=unitNormal[i]*pdx;
     }
+
+
+    // 10/25/2023 separate the two colliding objects
 
 }

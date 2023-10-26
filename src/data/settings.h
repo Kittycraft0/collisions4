@@ -4,6 +4,7 @@
 #define SETTINGS_H
 
 #include <string>
+#include <vector>
 
 class Settings{
 public:
@@ -24,6 +25,7 @@ public:
     double G;
     double restitution;
     double objectSpawnMargin;
+    double globalGravity;
 
     // 6/1/2023
     // constructor
@@ -31,6 +33,10 @@ public:
 
     // 6/23/2023 Long seeds are better maybe??? More options???
     unsigned long long int seed;
+
+    // 10/26/2023 border corner coordinates
+    std::vector<int> border1;
+    std::vector<int> border2;
 };
 
 void dataTest3(int n);

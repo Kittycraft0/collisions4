@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=20;
+    this->numObjects=3;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=200;
 
@@ -53,7 +53,11 @@ Settings::Settings(){
     this->seed=69420;
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
-    this->restitution=0;
+    this->restitution=1;
+
+    // 10/25/2023
+    // global gravity in meters per second squared
+    this->globalGravity=1;
     
 
     // window
@@ -63,6 +67,11 @@ Settings::Settings(){
     this->windowX=200;
     this->windowY=50;
     this->windowName="Physics simulation";
+
+    // physics border corners as coordinates
+    // 4 dimensions beecaue why not
+    this->border1={-120,-90,-100,-100};
+    this->border2={120,90,100,100};
     
     this->showWireframe=false;
     this->modelPath="assets/models";

@@ -57,10 +57,18 @@ int main() {
             // no code goes here really
         }
 
+        bool doGlobalGravity=true;
         bool doMove=false;
         bool doGravity=false;
         bool doCollide=true;
         bool doWallCollide=true;
+
+        if(doGlobalGravity){
+            for(int i=0;i<data->objects.size();i++){
+                // acceleration of 1 "meter" per second squared?
+                data->objects[i]->linImp[1]+=-1*data->objects[i]->m*data->settings->globalGravity;
+            }
+        }
 
         // 6/7/2023 get deltaTime
         float spf=data->clock->restart().asSeconds();
@@ -89,7 +97,8 @@ int main() {
         // Wall collisions
         if(doWallCollide){
             for(ObjectNd* obj:data->objects){
-                wallCollide(obj,data->settings->windowWidth,data->settings->windowHeight);
+                //wallCollide(obj,data->settings->windowWidth,data->settings->windowHeight);
+                wallCollide(obj,data->settings->border1,data->settings->border2);
             }
         }
 
@@ -124,8 +133,6 @@ int main() {
                     //std::cout<<"nope";
                 }
             }
-            // acceleration of 1 "meter" per second squared?
-            data->objects[i]->linImp[1]+=1*data->objects[i]->m;
         }
 
         // 6/6/2023
@@ -209,12 +216,20 @@ int main() {
         // 10/11/2023
         // Calculate the total energy in the system
         double totalKineticEnergy=0;
+        double totalPotentialEnergy=0;
         for(int i=0;i<data->objects.size();i++){
             double speedSquared=0;
             for(int j=0;j<data->objects[i]->v.size();j++){
                 speedSquared+=data->objects[i]->v[j]*data->objects[i]->v[j];
             }
             totalKineticEnergy+=0.5*data->objects[i]->m*speedSquared;
+            if(doGlobalGravity){
+                // m*g*h
+                totalPotentialEnergy+=
+                    data->objects[i]->m // m
+                    *data->settings->globalGravity // g
+                    *(data->settings->windowHeight-data->objects[i]->p[1]); // h
+            }
         }
         // 10/11/2023
         // copy/paste from above then modified for my purposes
@@ -223,9 +238,6 @@ int main() {
         // 4/18/2023 - copy/pasted/modified on 6/23/2023
         // draw the fps text
         sf::Text energyText;
-        
-        //char temp2[256];
-        //temp[256];RedRed
         //sprintf(temp, "Total kinetic energy: %d", (int)totalKineticEnergy);
         // llu unsigned long long (int)? cool
         sprintf(temp, "Total kinetic energy: %llu", (unsigned long long int)totalKineticEnergy);
@@ -233,13 +245,44 @@ int main() {
         energyText.setFont(data->fonts->comicMono);
         energyText.setCharacterSize(24);
         energyText.setFillColor(sf::Color::Red);
-        // right align text from ChatGPT -4/6/2023
         // Set the origin to the right side of the text
         energyText.setOrigin(energyText.getLocalBounds().width,-48);
         // Set the position to the right side of the window
         energyText.setPosition(data->window->getSize().x, 0);
         data->window->draw(energyText);
 
+        // 10/26/2023
+        // draw potential energy text and total energy text
+        // potential global gravitational energy
+        sprintf(temp, "Total potential energy: %llu", (unsigned long long int)totalPotentialEnergy);
+        sf::Text potentialEnergyText;
+        potentialEnergyText.setString(temp);
+        potentialEnergyText.setFont(data->fonts->comicMono);
+        potentialEnergyText.setCharacterSize(24);
+        potentialEnergyText.setFillColor(sf::Color::Red);
+        // Set the origin to the right side of the text
+        potentialEnergyText.setOrigin(potentialEnergyText.getLocalBounds().width,-72);
+        // Set the position to the right side of the window
+        potentialEnergyText.setPosition(data->window->getSize().x, 0);
+        data->window->draw(potentialEnergyText);
+        // total energy
+        //unsigned long long int tke=(unsigned long long int)totalKineticEnergy;
+        //unsigned long long int tpe=(unsigned long long int)totalPotentialEnergy;
+        //unsigned long long int te=tke+tpe;
+        unsigned long long int totalEnergy=
+            (unsigned long long int)totalKineticEnergy
+            +(unsigned long long int)totalPotentialEnergy;
+        sprintf(temp, "Total energy: %llu", totalEnergy);
+        sf::Text totalEnergyText;
+        totalEnergyText.setString(temp);
+        totalEnergyText.setFont(data->fonts->comicMono);
+        totalEnergyText.setCharacterSize(24);
+        totalEnergyText.setFillColor(sf::Color::Red);
+        // Set the origin to the right side of the text
+        totalEnergyText.setOrigin(totalEnergyText.getLocalBounds().width,-96);
+        // Set the position to the right side of the window
+        totalEnergyText.setPosition(data->window->getSize().x, 0);
+        data->window->draw(totalEnergyText);
 
         // n.
         n++;
