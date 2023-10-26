@@ -67,10 +67,16 @@ int main() {
         float spf=data->clock->restart().asSeconds();
         double deltaTime=spf*timeMultiplier;
 
+        // 10/25/2023
         if(doGlobalGravity){
             for(int i=0;i<data->objects.size();i++){
                 // acceleration of 1 "meter" per second squared?
-                data->objects[i]->linImp[1]+=-1*data->objects[i]->m*data->settings->globalGravity;
+                // 10/26/2023 mathematically, L=-1*m*g*t
+                data->objects[i]->linImp[1]+=
+                    -1 // -1
+                    *data->objects[i]->m // m
+                    *data->settings->globalGravity // g
+                    *deltaTime; // t
             }
         }
 
