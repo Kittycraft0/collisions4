@@ -508,6 +508,35 @@ void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     }
 
 
-    // 10/25/2023 separate the two colliding objects
+    
+}
 
+
+// new method 10/31/2023
+void separateOrbs(ObjectNd* obj1, ObjectNd* obj2){
+
+    // 10/25/2023 separate the two colliding objects
+    // 10/30/2023 how
+    // The center of mass of the system of the two orbs
+    // Is it needed for calculation, though?
+    std::vector<double> centerOfMass;
+    double componentDistanceSquareSum=0;
+    std::vector<double> normal;
+    // the unit normal is already defined
+    for(int i=0;i<obj1->p.size();i++){
+        // Get the center of mass of the system of the two orbs
+        centerOfMass.push_back((obj1->m*obj1->p[i]+obj2->m*obj2->p[i])/2);
+        normal.push_back(obj2->p[i]-obj1->p[i]);
+        componentDistanceSquareSum+=normal[i]*normal[i];
+    }
+    double massSum=obj1->m+obj2->m;
+    double dist=sqrt(componentDistanceSquareSum);
+    double unitNormal;
+    double radiusSum=obj1->radius+obj2->radius;
+    for(int i=0;i<obj1->p.size();i++){
+        unitNormal=normal[i]/dist;
+        // linearly displace
+        obj1->linDisp[i]+=unitNormal*(dist-radiusSum)*(obj2->m/massSum);
+        obj2->linDisp[i]+=-unitNormal*(dist-radiusSum)*(obj1->m/massSum);
+    }
 }

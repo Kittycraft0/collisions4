@@ -54,7 +54,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-2.0f, 2.0f);
+    std::uniform_real_distribution<> velDist(-20.0f, 20.0f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     
@@ -87,7 +87,7 @@ ObjectNd::ObjectNd(int d,Data* data){
         // position
         p.push_back(posDistD[j](*gen));
         // velocity
-        v.push_back(0);//velDist(*gen));
+        v.push_back(velDist(*gen));
         scale.push_back(1);
         linDisp.push_back(0);
         linMom.push_back(0);//v[i]*m);
