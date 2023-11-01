@@ -10,7 +10,7 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, double G){
     // squared sum for inverse rooting
     double sqSum=0;
     for(int i=0;i<obj1->p.size();i++){
-        dv.push_back(obj2->p[i]-obj1->p[i]);
+        dv.push_back(obj2->p[i]+obj2->linDisp[i]-obj1->p[i]-obj1->linDisp[i]);
         sqSum+=dv[i]*dv[i];
     }
     

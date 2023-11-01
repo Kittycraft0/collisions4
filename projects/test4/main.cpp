@@ -16,8 +16,8 @@ int main() {
     // TESTING - REMOVE LATER PLEASE - 10/25/2023
     //data->objects[0]->p[0]=20;
     //data->objects[1]->p[0]=-20;
-    data->objects[0]->v[0]=0;
-    data->objects[1]->v[0]=0;
+    //data->objects[0]->v[0]=0;
+    //data->objects[1]->v[0]=0;
 
     std::cout<<"\nObject positions:\n";
     // 6/23/2023
@@ -65,7 +65,8 @@ int main() {
         bool doCollide=true;
         bool doWallCollide=true;
         bool forceDeltaTime=false;
-        double forcedDeltaTime=0.01666f;
+        //double forcedDeltaTime=0.01666f;
+        double forcedDeltaTime=0.01f;
 
         // 6/7/2023 get deltaTime
         float spf=data->clock->restart().asSeconds();
@@ -82,21 +83,15 @@ int main() {
                     // acceleration of 1 "meter" per second squared?
                     // 10/26/2023 mathematically, L=-1*m*g*t
                     data->objects[i]->linImp[j]+=
-                        -1 // -1
-                        *data->objects[i]->m // m
+                        //-1 // -1 //no just have it negative in settings
+                        data->objects[i]->m // m
                         *data->settings->globalGravity[j] // g
                         *deltaTime; // t
                 }
             }
         }
 
-        // 6/6/2023 Gravity
-        if(doGravity)
-        for(int i=0;i<data->settings->numObjects;i++){
-            for(int j=i+1;j<data->settings->numObjects;j++){
-                gravity(data->objects[i],data->objects[j],data->settings->G);
-            }
-        }
+        
 
         // 6/8/2023 test of the rendering speed
         if(doMove)
@@ -149,6 +144,15 @@ int main() {
                 }
             }
         }
+        
+        // 6/6/2023 Gravity
+        if(doGravity)
+        for(int i=0;i<data->settings->numObjects;i++){
+            for(int j=i+1;j<data->settings->numObjects;j++){
+                gravity(data->objects[i],data->objects[j],data->settings->G);
+            }
+        }
+
         // 6/7/2023
         // Collisions
         if(doCollide){
@@ -276,6 +280,7 @@ int main() {
                 for(int j=0;j<data->objects[i]->p.size();j++){
                     // m*g*h
                     totalPotentialEnergy+=
+                        -1* //gravity is negative or something
                         data->objects[i]->m // m
                         *data->settings->globalGravity[j] // g
                         *(data->objects[i]->p[j]

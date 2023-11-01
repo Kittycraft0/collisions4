@@ -61,7 +61,7 @@ Settings::Settings(){
     // global gravity in meters per second squared
     // ap exam said g is 10, bit slow though
     // this is now a vector
-    this->globalGravity={0,100,0,0};
+    this->globalGravity={0,-100,0,0};
     
 
     // window
