@@ -16,7 +16,8 @@ void render2dAsCircles(Data* data){
         //sfModel.setFillColor(sf::Color::Green);
         sfModel.setFillColor(color);
         // Set the position
-        sfModel.setPosition(sf::Vector2f(obj->p[0]-obj->radius,-(obj->p[1]-obj->radius)));
+        //sfModel.setPosition(sf::Vector2f(obj->p[0]-obj->radius,-(obj->p[1]-obj->radius)));
+        sfModel.setPosition(sf::Vector2f(obj->p[0]-obj->radius,-obj->p[1]-obj->radius));
         // Set the origin
         sfModel.setOrigin(
             -(int)data->window->getSize().x/2,

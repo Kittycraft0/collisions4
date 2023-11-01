@@ -57,6 +57,8 @@ ObjectNd::ObjectNd(int d,Data* data){
     std::uniform_real_distribution<> velDist(-20.0f, 20.0f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
+    // set the radius randomizer
+    std::uniform_real_distribution<> radiusRandomizer(1.f, 50.0f);
     
     // 0 as a placeholder
     int modelID=0;
@@ -73,7 +75,8 @@ ObjectNd::ObjectNd(int d,Data* data){
 
     // 6/8/2023 moved to here...
     // 6/7/2023 Set the circular radius in base pixels
-    this->radius=10;
+    //this->radius=10;
+    this->radius=radiusRandomizer(*gen);
     
     // Rotational mass 5/11/2023
     // 6/8/2023 changed to maybe a more accurate value

@@ -26,6 +26,7 @@ public:
     double restitution;
     double objectSpawnMargin;
     std::vector<double> globalGravity;
+    double timeMultiplier;
 
     // 6/1/2023
     // constructor

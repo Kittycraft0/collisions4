@@ -36,7 +36,7 @@ int main() {
     data->window->clear(sf::Color::Black);
     
     // 6/7/2023 start the clock
-    double timeMultiplier=1;
+    double timeMultiplier=data->settings->timeMultiplier;
     // 6/23/2023 - now in data
     //sf::Clock clock;
     
@@ -64,10 +64,16 @@ int main() {
         bool doSeparateOrbs=true;
         bool doCollide=true;
         bool doWallCollide=true;
+        bool forceDeltaTime=false;
+        double forcedDeltaTime=0.01666f;
 
         // 6/7/2023 get deltaTime
         float spf=data->clock->restart().asSeconds();
         double deltaTime=spf*timeMultiplier;
+        //std::cout<<spf;
+        if(forceDeltaTime){
+            deltaTime=forcedDeltaTime*timeMultiplier;
+        }
 
         // 10/25/2023
         if(doGlobalGravity){
