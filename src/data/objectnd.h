@@ -11,7 +11,7 @@
 #include <random>
 
 // what
-#include "settings.h"
+//#include "settings.h"
 // Data class - NO INCLUDE STATEMENT FOR DATA, JUST ONLY THIS
 class Data;
 

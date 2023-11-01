@@ -54,7 +54,7 @@ Settings::Settings(){
     // 6/23/2023 set the project seed
     this->seed=60002;
     // constants
-    this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
+    this->G=1*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;
 
     // 10/25/2023

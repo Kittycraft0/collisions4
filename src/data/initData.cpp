@@ -26,6 +26,12 @@ Data::Data(){
     // really? wow I can do that on the start as well? ok nice
     this->window=initWindow(this);
     this->modelData=new ModelData(settings->modelPath);
+
+    // 11/01/2023 Set the drawText
+    this->drawText=new DrawText(this);
+    this->drawText->reset();
+
+
     //initObjects(settings)
     //this->objects=0;
     // 5/11/2023

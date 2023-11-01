@@ -85,6 +85,7 @@ set(SOURCES_DATA
     ${DATA_DIR}/objectnd.cpp
     ${DATA_DIR}/settings.cpp
     ${DATA_DIR}/fonts.cpp
+    ${DATA_DIR}/drawText.cpp
 )
 
 # !!! Create the data library

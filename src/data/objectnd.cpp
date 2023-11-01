@@ -20,7 +20,7 @@
 ObjectNd::ObjectNd(int d,Data* data){
     // randomizers -6/6/2023
     // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-20.0f, 20.0f);
+    std::uniform_real_distribution<> velDist(-0.020f, 0.020f);
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     // set the radius randomizer

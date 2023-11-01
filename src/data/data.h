@@ -9,5 +9,6 @@
 #include "objectnd.h"
 #include "settings.h"
 #include "fonts.h"
+#include "drawText.h"
 
 #endif //DATA_ALL_H

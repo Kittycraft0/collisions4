@@ -9,6 +9,7 @@
 #include "modeldata.h"
 #include "settings.h"
 #include "fonts.h"
+#include "drawText.h"
 
 //6/2/2023
 #include "../render/initWindow.h"
@@ -33,6 +34,9 @@ public:
     Settings* settings;
     sf::RenderWindow* window;
 
+    DrawText* drawText;
+    
+    
     // unused
     void initObjects(int num, int d);
     void dataTest2(int num);

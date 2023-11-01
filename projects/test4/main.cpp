@@ -60,7 +60,7 @@ int main() {
 
         bool doGlobalGravity=true;
         bool doMove=false;
-        bool doGravity=false;
+        bool doGravity=true;
         bool doSeparateOrbs=true;
         bool doCollide=true;
         bool doWallCollide=true;
@@ -248,7 +248,9 @@ int main() {
 
 
 
-
+        data->drawText->reset();
+        data->drawText->write("no");
+        data->drawText->write("noooo");
 
 
         // Text on screen
