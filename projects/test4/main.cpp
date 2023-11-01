@@ -82,11 +82,16 @@ int main() {
                 for(int j=0;j<data->objects[i]->p.size();j++){
                     // acceleration of 1 "meter" per second squared?
                     // 10/26/2023 mathematically, L=-1*m*g*t
-                    data->objects[i]->linImp[j]+=
-                        //-1 // -1 //no just have it negative in settings
+                    //data->objects[i]->linImp[j]+=
+                    //    //-1 // -1 //no just have it negative in settings
+                    //    data->objects[i]->m // m
+                    //    *data->settings->globalGravity[j] // g
+                    //    *deltaTime; // t
+                    // 11/01/2023 - mathematically, F=ma --> F=mg
+                    data->objects[i]->linForce[j]+=
                         data->objects[i]->m // m
-                        *data->settings->globalGravity[j] // g
-                        *deltaTime; // t
+                        *data->settings->globalGravity[j]; // g
+                    
                 }
             }
         }

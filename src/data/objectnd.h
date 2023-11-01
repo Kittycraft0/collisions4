@@ -28,6 +28,8 @@ public:
     std::vector<double> linDisp;
     std::vector<double> linMom;
     std::vector<double> linImp;
+    // force is different from impulse - here, deltatime matters
+    std::vector<double> linForce;
 
     //rotational mass? -5/11/2023
     double i;
@@ -39,6 +41,8 @@ public:
     std::vector<double> rotDisp;
     std::vector<double> rotMom;
     std::vector<double> rotImp;
+    // could also be torque
+    std::vector<double> rotForce;
     double radius;
 
     // 6/1/2023

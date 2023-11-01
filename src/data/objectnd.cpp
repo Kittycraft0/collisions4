@@ -95,6 +95,7 @@ ObjectNd::ObjectNd(int d,Data* data){
         linDisp.push_back(0);
         linMom.push_back(0);//v[i]*m);
         linImp.push_back(0);
+        linForce.push_back(0);
     }
     // uses number of angular dimensions formula supplied by ChatGPT
     for(int j=0;j<d*(d-1)/2;j++){
@@ -105,6 +106,7 @@ ObjectNd::ObjectNd(int d,Data* data){
         rotDisp.push_back(0);
         rotMom.push_back(0);
         rotImp.push_back(0);
+        rotForce.push_back(0);
     }
 }
 
@@ -117,11 +119,24 @@ void ObjectNd::update(double deltaTime){
         //std::cout<<this->m<<" ";
         this->v[j]+=this->linImp[j]/this->m;
         // Change the linear position by the linear velocity
-        this->p[j]+=this->v[j]*deltaTime;
+        this->p[j]+=this->v[j]*deltaTime
+            // 11/01/2023 plus the acceleration part of kinematics
+            +0.5*this->linForce[j]/this->m*deltaTime*deltaTime;
+
+        // 11/01/2023 Change the velocity by force divided by the mass times the deltaTime 
+        this->v[j]+=this->linForce[j]/this->m*deltaTime;
+        
+        //std::cout<<this->linForce[j]<<" ";
+        //std::cout<<0.5*this->linForce[j]/this->m*deltaTime*deltaTime<<" ";
+        
+        // Set the accumulated linear force equal to zero
+        this->linForce[j]=0;
         // Set the linear momentum to the linear velocity times the mass
-        this->linMom[j]=this->v[j]*this->m;
+        // never used
+        //this->linMom[j]=this->v[j]*this->m;
         // Set the linear impulse to zero
         this->linImp[j]=0;
+
         // 6/23/2023 Change the position by the displacement
         this->p[j]+=this->linDisp[j];
         // Set the displacement to zero
@@ -132,15 +147,27 @@ void ObjectNd::update(double deltaTime){
         // Change the angular velocity by the angular impulse
         this->av[j]+=this->rotImp[j]/this->i;
         // Change the angular position (the angle) by the angular velocity
-        this->a[j]+=this->av[j]*deltaTime;
+        this->a[j]+=this->av[j]*deltaTime
+            // plus the acceleration part of rotational kinematics
+            +0.5*this->rotForce[j]/this->i*deltaTime*deltaTime;
+
+        // 11/01/2023 Change the velocity by force divided by the mass times the deltaTime 
+        this->v[j]+=this->linForce[j]/this->m*deltaTime;
+
+        // Set the accumulated rotational force (or torque) equal to zero
+        this->rotForce[j]=0;
         // Set the rotaional momentum to the rotational 
         // velocity times the rotational mass
-        this->rotMom[j]=this->av[j]*this->i;
+        // never used
+        //this->rotMom[j]=this->av[j]*this->i;
+
         // Set the angular impulse to zero
         this->rotImp[j]=0;
-        // 6/23/2023 Change the position by the displacement
+
+
+        // 6/23/2023 Change the angle by the angular displacement
         this->p[j]+=this->rotDisp[j];
-        // Set the displacement to zero
+        // Set the angular displacement to zero
         this->rotDisp[j]=0;
     }
 }
