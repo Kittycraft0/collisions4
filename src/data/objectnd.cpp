@@ -19,6 +19,12 @@
 // constructore
 ObjectNd::ObjectNd(int d,Data* data){
     // randomizers -6/6/2023
+    // set the velocity randomizer
+    std::uniform_real_distribution<> velDist(-20.0f, 20.0f);
+    // the mass randomizer
+    std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
+    // set the radius randomizer
+    std::uniform_real_distribution<> radiusRandomizer(1.f, 30.0f);
     
     // what
     //std::random_device rd;
@@ -53,12 +59,6 @@ ObjectNd::ObjectNd(int d,Data* data){
         posDistD.push_back(posDistN);
     }
 
-    // set the velocity randomizer
-    std::uniform_real_distribution<> velDist(-20.0f, 20.0f);
-    // the mass randomizer
-    std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
-    // set the radius randomizer
-    std::uniform_real_distribution<> radiusRandomizer(1.f, 50.0f);
     
     // 0 as a placeholder
     int modelID=0;

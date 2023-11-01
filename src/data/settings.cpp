@@ -55,13 +55,13 @@ Settings::Settings(){
     this->seed=60002;
     // constants
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
-    this->restitution=5;
+    this->restitution=1;
 
     // 10/25/2023
     // global gravity in meters per second squared
     // ap exam said g is 10, bit slow though
     // this is now a vector
-    this->globalGravity={0,10,0,0};
+    this->globalGravity={0,100,0,0};
     
 
     // window

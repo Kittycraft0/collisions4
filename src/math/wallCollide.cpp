@@ -68,13 +68,13 @@ void wallCollide(ObjectNd* obj,std::vector<int> border1,std::vector<int> border2
             // (final height - initial height)
             // sqrt(obj->v[i]*obj->v[i]+2*g*(h1-h2))
             double pf=border1[i]+obj->radius;
-            obj->v[i]=1*sqrt(abs(obj->v[i]*obj->v[i]+2*g[i]*(obj->p[i]-pf)))*0;
+            obj->v[i]=1*sqrt(abs(obj->v[i]*obj->v[i]+2*g[i]*(obj->p[i]-pf)));//*0;
             obj->linDisp[i]+=border1[i]+obj->radius-obj->p[i];
         }
         if(obj->p[i]+obj->radius>=border2[i]){
             //obj->v[i]=-1*abs(obj->v[i]);
             double pf=border2[i]-obj->radius;
-            obj->v[i]=-1*sqrt(abs(obj->v[i]*obj->v[i]+2*g[i]*(obj->p[i]-pf)))*0;
+            obj->v[i]=-1*sqrt(abs(obj->v[i]*obj->v[i]+2*g[i]*(obj->p[i]-pf)));//*0;
             obj->linDisp[i]+=border2[i]-obj->radius-obj->p[i];
         }
     }
