@@ -130,36 +130,8 @@ int main() {
             // For every object pair
             for(int i=0;i<data->objects.size();i++){
                 for(int j=i+1;j<data->objects.size();j++){
-                    /*// Find the center of mass of the system of the two objects
-                    //std::vector<double> systemCOM;
-                    // Find the line of action (or normal vector)
-                    std::vector<double> normal;
-                    // Find the sum of the normal vector components squared (for distance)
-                    double normalSumSquared;
-                    
-                    // for each component
-                    for(int k=0;k<data->objects[i]->p.size();k++){
-                        // push back the sum of the positions times their respective masses over two
-                        //systemCOM.push_back(
-                        //    data->objects[i]->m*data->objects[i]->p[k]+
-                        //    (data->objects[j]->m*data->objects[j]->p[k])/2
-                        //);
-                        // push back to the normal the vector from the first to the second
-                        normal.push_back(
-                            data->objects[j]->p[k]-data->objects[i]->p[k]
-                        );
-                        normalSumSquared+=normal[k]*normal[k];
-                        //std::cout<<normalSumSquared;
-                    }
-                    // Find the magnitude of the normal vector (or the distance)
-                    //double dist=sqrt(normalSumSquared);
-                    //double invDist=invSqrt(normalSumSquared);
-
-                */
 
                 // 10/31/2023 copied from below collisions check
-                //float dist=sqrt(pow(2,2)+pow(2,2));
-
                 // copied from graviyMath.cpp at 6/7/2023
                 // distance vector
                     std::vector<double> dv;
@@ -170,18 +142,9 @@ int main() {
                         sqSum+=dv.at(k)*dv.at(k);
                     }
                     double dist=sqrt(sqSum);
-                // abs for magnitude is not needed due to squaring
+                    // abs for magnitude is not needed due to squaring
                     if(dist<data->objects[i]->radius+data->objects[j]->radius){
-
-
-                    //double dist=sqrt(normalSumSquared);
-                    //std::cout
-                    //    <<"Distance: "<<dist<<" Sum of radii: "
-                    //    <<(data->objects[i]->radius+data->objects[j]->radius)<<" ";
-                    //if(dist<(data->objects[i]->radius+data->objects[j]->radius)){
-                        //std::cout<<"collision with "<<i<<" and "<<j<<" ";
                         separateOrbs(data->objects[i],data->objects[j]);
-                    //}
                     }
                 }
             }
