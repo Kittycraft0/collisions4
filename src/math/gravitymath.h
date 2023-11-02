@@ -14,6 +14,11 @@
 
 void gravity(ObjectNd* obj1, ObjectNd* obj2, double G);
 //void gravity(ObjectNd obj1, ObjectNd obj2);
+// 11/01/2023 second gravity function
+// i still carry around my tungsten cube
+// i got a 4/5 on the ap physics 1 test
+// i am now in ap physics C
+void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G);
 
 void mathTest2(float n);
 

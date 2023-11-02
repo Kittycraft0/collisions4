@@ -154,7 +154,7 @@ int main() {
         if(doGravity)
         for(int i=0;i<data->settings->numObjects;i++){
             for(int j=i+1;j<data->settings->numObjects;j++){
-                gravity(data->objects[i],data->objects[j],data->settings->G);
+                gravity2(data->objects[i],data->objects[j],data->settings->G);
             }
         }
 
@@ -248,109 +248,114 @@ int main() {
 
 
 
+        
+        // 10/11/2023
+        // Calculate the total energy in the system
+        double totalKineticEnergy=0;
+        double totalGlobalPotentialEnergy=0;
+        double totalOrbToOrbPotentialEnergy=0; //oh noo not the potition what is a potition
+        for(int i=0;i<data->objects.size();i++){
+            // Calculate the kinetic energy
+            double speedSquared=0;
+            for(int j=0;j<data->objects[i]->v.size();j++){
+                speedSquared+=data->objects[i]->v[j]*data->objects[i]->v[j];
+            }
+            totalKineticEnergy+=0.5*data->objects[i]->m*speedSquared;
+            // Calculate the global gravitational potential energy
+            if(doGlobalGravity){
+                for(int j=0;j<data->objects[i]->p.size();j++){
+                    // m*g*h
+                    totalGlobalPotentialEnergy+=
+                        -1* //gravity is negative or something
+                        data->objects[i]->m // m
+                        *data->settings->globalGravity[j] // g
+                        *(data->objects[i]->p[j]
+                        -data->settings->border1[j]-data->objects[i]->radius); // h from hitting ground
+                }
+            }
+            // orb-to-orb gravity
+            if(doGravity){
+                // for every object-on-object interaction
+                for(int j=i+1;j<data->objects.size();j++){
+                    double componentDistSumSquared=0;
+                    for(int k=0;k<data->objects[i]->p.size();k++){
+                        //std::cout<<k;
+                        //std::cout<<data->objects[j]->p[k];
+                        // x2-x1
+                        double componentDist=data->objects[j]->p[k]-data->objects[i]->p[k];
+                        // (x2-x1)^2
+                        componentDistSumSquared+=componentDist*componentDist;
+                        //std::cout<<componentDist;
+                        //std::cout<<" "<<componentDistSumSquared;
+                    }
+                    //don't do int...
+                    //DON'T DO INT
+                    // get the inverse distance
+                    double invDist=invSqrt(componentDistSumSquared);
+                    //std::cout<<invDist;
+                    //double invDist=1/sqrt(
+                    //    (data->objects[j]->p[0]-data->objects[i]->p[0])*
+                    //    (data->objects[j]->p[0]-data->objects[i]->p[0])+
+                    //    (data->objects[j]->p[1]-data->objects[i]->p[1])*
+                    //    (data->objects[j]->p[1]-data->objects[i]->p[1]));
+
+                    // U sub G = G*m1*m2/r
+                    totalOrbToOrbPotentialEnergy+=
+                        -1 // NEGATIVE ONE
+                        *data->settings->G // G
+                        *data->objects[i]->m // *m1
+                        *data->objects[j]->m // *m2
+                        *invDist; // /r
+                    //std::cout<<" invDist: "<<invDist;
+                    //std::cout<<" total orb potential energy: "<<totalOrbToOrbPotentialEnergy;
+                    //std::cout<<" "<<data->settings->G;
+                }
+            }
+        }
+        //std::cout<<" total orb potential energy: "<<totalOrbToOrbPotentialEnergy;
+        
+        
         data->drawText->reset();
-        data->drawText->write("no");
-        data->drawText->write("noooo");
 
 
         // Text on screen
         // FPS
         // 4/18/2023 - copy/pasted/modified on 6/23/2023
         // draw the fps text
-        sf::Text fpsText;
         
         char temp[256];
         //temp[256];RedRed
-        sprintf(temp, "%f", 1/spf);
-        fpsText.setString(temp);
-        fpsText.setFont(data->fonts->comicMono);
-        fpsText.setCharacterSize(24);
-        fpsText.setFillColor(sf::Color::Red);
-        // right align text from ChatGPT -4/6/2023
-        // Set the origin to the right side of the text
-        fpsText.setOrigin(fpsText.getLocalBounds().width,-24);
-        // Set the position to the right side of the window
-        fpsText.setPosition(data->window->getSize().x, 0);
-        data->window->draw(fpsText);
-
-        // 10/11/2023
-        // Calculate the total energy in the system
-        double totalKineticEnergy=0;
-        double totalPotentialEnergy=0;
-        for(int i=0;i<data->objects.size();i++){
-            double speedSquared=0;
-            for(int j=0;j<data->objects[i]->v.size();j++){
-                speedSquared+=data->objects[i]->v[j]*data->objects[i]->v[j];
-            }
-            totalKineticEnergy+=0.5*data->objects[i]->m*speedSquared;
-            if(doGlobalGravity){
-                for(int j=0;j<data->objects[i]->p.size();j++){
-                    // m*g*h
-                    totalPotentialEnergy+=
-                        -1* //gravity is negative or something
-                        data->objects[i]->m // m
-                        *data->settings->globalGravity[j] // g
-                        *(data->objects[i]->p[j]
-                        -data->settings->border1[j]-data->objects[i]->radius); // h from hitting ground
-                    //std::cout
-                    //    <<"Object y: "<<data->objects[1]->p[1]
-                    //    <<"\nBorder2 position: "<<data->settings->border1[1]<<"\n";
-                }
-            }
-        }
-        // 10/11/2023
-        // copy/paste from above then modified for my purposes
-        // Text on screen
-        // energy
+        sprintf(temp, "FPS: %f", (1/spf));
+        data->drawText->write(temp);
+        
+        // 10/11/2023 copy/paste from above then modified for my purposes
         // 4/18/2023 - copy/pasted/modified on 6/23/2023
-        // draw the fps text
-        sf::Text energyText;
-        //sprintf(temp, "Total kinetic energy: %d", (int)totalKineticEnergy);
         // llu unsigned long long (int)? cool
         sprintf(temp, "Total kinetic energy: %lli", (long long int)totalKineticEnergy);
-        energyText.setString(temp);
-        energyText.setFont(data->fonts->comicMono);
-        energyText.setCharacterSize(24);
-        energyText.setFillColor(sf::Color::Red);
-        // Set the origin to the right side of the text
-        energyText.setOrigin(energyText.getLocalBounds().width,-48);
-        // Set the position to the right side of the window
-        energyText.setPosition(data->window->getSize().x, 0);
-        data->window->draw(energyText);
-
+        data->drawText->write(temp);
+        
         // 10/26/2023
         // draw potential energy text and total energy text
         // potential global gravitational energy
-        sprintf(temp, "Total potential energy: %lli", (long long int)totalPotentialEnergy);
-        sf::Text potentialEnergyText;
-        potentialEnergyText.setString(temp);
-        potentialEnergyText.setFont(data->fonts->comicMono);
-        potentialEnergyText.setCharacterSize(24);
-        potentialEnergyText.setFillColor(sf::Color::Red);
-        // Set the origin to the right side of the text
-        potentialEnergyText.setOrigin(potentialEnergyText.getLocalBounds().width,-72);
-        // Set the position to the right side of the window
-        potentialEnergyText.setPosition(data->window->getSize().x, 0);
-        data->window->draw(potentialEnergyText);
+        sprintf(temp, "Total potential energy: %lli", (long long int)totalGlobalPotentialEnergy);
+        data->drawText->write(temp);
+
+        // 11/01/2023
+        // potential orb-to-orb gravitational potential energy text
+        sprintf(temp, "Total orb potential energy: %lli", (long long int)totalOrbToOrbPotentialEnergy);
+        data->drawText->write(temp);
+
         // total energy
         //unsigned long long int tke=(unsigned long long int)totalKineticEnergy;
         //unsigned long long int tpe=(unsigned long long int)totalPotentialEnergy;
         //unsigned long long int te=tke+tpe;
         long long int totalEnergy=
             (long long int)totalKineticEnergy
-            +(long long int)totalPotentialEnergy;
+            +(long long int)totalGlobalPotentialEnergy
+            +(long long int)totalOrbToOrbPotentialEnergy;
         sprintf(temp, "Total energy: %lli", totalEnergy);
-        sf::Text totalEnergyText;
-        totalEnergyText.setString(temp);
-        totalEnergyText.setFont(data->fonts->comicMono);
-        totalEnergyText.setCharacterSize(24);
-        totalEnergyText.setFillColor(sf::Color::Red);
-        // Set the origin to the right side of the text
-        totalEnergyText.setOrigin(totalEnergyText.getLocalBounds().width,-96);
-        // Set the position to the right side of the window
-        totalEnergyText.setPosition(data->window->getSize().x, 0);
-        data->window->draw(totalEnergyText);
-
+        data->drawText->write(temp);
+        
         // n.
         n++;
 
