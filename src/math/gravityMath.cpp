@@ -60,3 +60,23 @@ void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G){
         obj2->linForce[i]-=normal[i]*forceOfAttraction;
     }
 }
+
+// 11/02/2023 [to the above gravity2 method] - much better... however, energy is still not conserved...
+// i will now go read the wikipedia page for elipses...
+// progress - 
+// 11/02/2023 - found "barycenter" - seems to be center of mass, also seems to 
+// be one of the focal points of the two elipses?
+// found two-body problem
+// found Kepler problem
+// found amazing picture: 
+// https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/
+// Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg
+// /310px-Cat_demonstrating_static_cling_with_styrofoam_peanuts.jpg
+// weirdly the energy likes staying like below 60000 for two objects at the current settings...
+// 11/03/2023 - AP Physics C Mechanics FAQ final yesterday, Mechanics MCQ final today
+// 11/03/2023 - found Kepler's laws oh planetary motion wikipedia page, reading up on those
+// 11/08/2023 - got like 55/90 on the ap physics c mechanics final, got an ap score of a 5/5 lol
+// 11/08/2023 - asked chatgpt some questions, then found this image:
+// https://www.researchgate.net/profile/Harry-Varvoglis/publication/252503394
+// /figure/fig3/AS:667713391300608@1536206686009/Definition-of-true-v-eccentric-E-and-mean-M-anomaly.png
+// it is very useful for actually telling me what stuff is

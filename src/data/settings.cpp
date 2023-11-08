@@ -52,9 +52,9 @@ Settings::Settings(){
     this->timeMultiplier=1;
 
     // 6/23/2023 set the project seed
-    this->seed=60002;
+    this->seed=60007;
     // constants
-    this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
+    this->G=10000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;
 
     // 10/25/2023
@@ -62,7 +62,7 @@ Settings::Settings(){
     // ap exam said g is 10, bit slow though
     // this is now a vector
     // default is like -100
-    this->globalGravity={0,0,0,0};
+    this->globalGravity={0,-5,0,0};
     
 
     // window
@@ -75,8 +75,8 @@ Settings::Settings(){
 
     // physics border corners as coordinates
     // 4 dimensions beecaue why not
-    this->border1={-120,-90,-100,-100};
-    this->border2={120,90,100,100};
+    this->border1={-120,-100,-120,-100};
+    this->border2={120,100,120,100};
     
     this->showWireframe=false;
     this->modelPath="assets/models";

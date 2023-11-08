@@ -231,12 +231,14 @@ int main() {
         // Copied and modified from render/render2d.cpp
         // Initialize the rendered object
         sf::CircleShape com;
+        // radius of com circle
+        int comRadius=3;
         // Set the size
-        com.setRadius(10);
+        com.setRadius(comRadius);
         // Set the color
         com.setFillColor(sf::Color::Red);
         // Set the position
-        com.setPosition(sf::Vector2f(centerOfMass[0]-10,-centerOfMass[1]-10));
+        com.setPosition(sf::Vector2f(centerOfMass[0]-comRadius,-centerOfMass[1]-comRadius));
         // Set the origin
         com.setOrigin(
             -(int)data->window->getSize().x/2,
@@ -266,7 +268,7 @@ int main() {
                 for(int j=0;j<data->objects[i]->p.size();j++){
                     // m*g*h
                     totalGlobalPotentialEnergy+=
-                        -1* //gravity is negative or something
+                        -1* // gravity is negative or something (AS IN THE ORIGINAL EQUATION)
                         data->objects[i]->m // m
                         *data->settings->globalGravity[j] // g
                         *(data->objects[i]->p[j]
@@ -301,7 +303,7 @@ int main() {
 
                     // U sub G = G*m1*m2/r
                     totalOrbToOrbPotentialEnergy+=
-                        -1 // NEGATIVE ONE
+                        -1 // NEGATIVE ONE (as is in the ORIGINAL EQUATION)
                         *data->settings->G // G
                         *data->objects[i]->m // *m1
                         *data->objects[j]->m // *m2

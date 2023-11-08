@@ -24,7 +24,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     // the mass randomizer
     std::uniform_real_distribution<> massRandomizer(1.0f,5.0f);
     // set the radius randomizer
-    std::uniform_real_distribution<> radiusRandomizer(1.f, 30.0f);
+    std::uniform_real_distribution<> radiusRandomizer(5.0f, 10.0f);
     
     // what
     //std::random_device rd;
@@ -83,6 +83,7 @@ ObjectNd::ObjectNd(int d,Data* data){
     // 6/8/2023 or not - there is so much math behind the moment of inertia!!!
     // 10/26/2023 
     // https://math.stackexchange.com/questions/565333/moment-of-inertia-of-a-n-dimensional-sphere
+    // mr^2(d-1)/(d+2)d
     i=m*radius*radius*(d-1)/(d+2);
 
     for(int j=0;j<d;j++){
