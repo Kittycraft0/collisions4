@@ -114,7 +114,8 @@ int main() {
             for(ObjectNd* obj:data->objects){
                 //wallCollide(obj,data->settings->windowWidth,data->settings->windowHeight);
                 wallCollide(obj,data->settings->border1,
-                    data->settings->border2,data->settings->globalGravity);
+                    data->settings->border2,data->settings->globalGravity,
+                    data->settings->wallRestitution);
             }
         }
 

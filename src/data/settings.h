@@ -24,6 +24,7 @@ public:
     std::string modelPath;
     double G;
     double restitution;
+    double wallRestitution;
     double objectSpawnMargin;
     std::vector<double> globalGravity;
     double timeMultiplier;
