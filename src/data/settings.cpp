@@ -68,6 +68,8 @@ Settings::Settings(){
     this->globalGravity={0,-0,0,0};
     this->massMin=1;
     this->massMax=10;
+    this->velMin=0;
+    this->velMax=0.00001;
     
 
     // window
