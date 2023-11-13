@@ -55,9 +55,9 @@ Settings::Settings(){
     this->seed=60007;
     // constants
     // was 10000
-    this->G=10000*7/(this->numObjects*sqrt(this->numObjects));
-    this->restitution=-0.999;
-    this->wallRestitution=1;
+    this->G=500000*7/(this->numObjects*sqrt(this->numObjects));
+    this->restitution=1;
+    this->wallRestitution=0;
 
     // 10/25/2023
     // global gravity in meters per second squared
@@ -65,7 +65,9 @@ Settings::Settings(){
     // this is now a vector
     // default is like -100
     // was -5
-    this->globalGravity={0,-10,0,0};
+    this->globalGravity={0,-0,0,0};
+    this->massMin=1;
+    this->massMax=10;
     
 
     // window

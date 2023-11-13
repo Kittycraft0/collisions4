@@ -81,3 +81,20 @@ void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G){
 // https://www.researchgate.net/profile/Harry-Varvoglis/publication/252503394
 // /figure/fig3/AS:667713391300608@1536206686009/Definition-of-true-v-eccentric-E-and-mean-M-anomaly.png
 // it is very useful for actually telling me what stuff is
+
+// 11/13/2023 - finding an expert on this subject is very hard to do... i asked my AP Physics C teacher 
+// for help
+// - learned that the "partial derivatives" of the components are in an imaginary space
+// such that if you square any component then the result is the negative magnitude
+// - learned that the partial momentum with respect to position is imaginary (not complex!!!?)
+// using things like i-hat and j-hat and k-hat and just let me generalize it to n-hat
+// 0=dp/dt=
+// sqrt(sum(d)(n=1)((partial derivative of P in component n
+// /partial derivative of position in component n)^2))
+// 0=dp/dt=
+// sqrt(sum(d)(n=1)((∂Pn/∂n)^2))
+// ∂ is the symbol for partial derivatives
+// what is a partial derivative?
+// - was told that i need to use legrange transforms (whatever those are???)
+// time to read the wikipedia page for it, get distracted multiple times, and then read it over
+// over and over again until i actually absorb some critical information!

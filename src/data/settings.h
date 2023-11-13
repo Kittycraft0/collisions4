@@ -28,6 +28,8 @@ public:
     double objectSpawnMargin;
     std::vector<double> globalGravity;
     double timeMultiplier;
+    double massMin;
+    double massMax;
 
     // 6/1/2023
     // constructor
