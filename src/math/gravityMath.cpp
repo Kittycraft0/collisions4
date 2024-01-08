@@ -103,4 +103,4 @@ void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G){
 // the math is actually too complicated to implement practically
 // i mean i could but i haven't even really gotten half way there yet
 // but i did evaluate an integral that is probably kinda static
-// the result is absolutely massive though
+// the result is an absolutely massive equation though
