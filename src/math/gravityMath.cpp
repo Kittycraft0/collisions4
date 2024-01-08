@@ -98,3 +98,9 @@ void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G){
 // - was told that i need to use legrange transforms (whatever those are???)
 // time to read the wikipedia page for it, get distracted multiple times, and then read it over
 // over and over again until i actually absorb some critical information!
+
+// 1/8/2024 - i did a thing
+// the math is actually too complicated to implement practically
+// i mean i could but i haven't even really gotten half way there yet
+// but i did evaluate an integral that is probably kinda static
+// the result is absolutely massive though
