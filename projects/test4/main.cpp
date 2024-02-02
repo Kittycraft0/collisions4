@@ -367,6 +367,17 @@ int main() {
 
     // De-allocate memory, wiping it foreverrrrr
     delete data;
+    // 2/2/2024 while it was obvious at the time of writing
+    // and it is obvious when you look at it
+    // and this is ruining the above's joke,
+    // the above could be replaced with something that saves
+    // the contents of the data object to a file
+    // so the data could be loaded later
+    // so you could continue where you left off
+    // but i really just wanted to put a date around here
+    // but even though the above was probably made like back around 5/??/2023
+    // and i'm stretching this joke too far
+    // and with the double first word line pair things here
 
     return(0);
 }
