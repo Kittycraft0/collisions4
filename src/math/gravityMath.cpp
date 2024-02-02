@@ -145,3 +145,7 @@ void gravity3(ObjectNd* obj1, ObjectNd* obj2, double G){
     // initial kinetic energy plus the final kinetic energy...
     // you know what? that's a formualted idea that i can actually put in, i think i'll try that...
 }
+
+void setEnergy(ObjectNd* obj, double G){
+    
+}
