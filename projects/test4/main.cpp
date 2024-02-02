@@ -377,7 +377,7 @@ int main() {
     // but i really just wanted to put a date around here
     // but even though the above was probably made like back around 5/??/2023
     // and i'm stretching this joke too far
-    // and with the double first word line pair things here.
+    // and with the double first word line pair things here
 
     return(0);
 }
