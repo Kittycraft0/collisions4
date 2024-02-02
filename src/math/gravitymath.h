@@ -20,6 +20,16 @@ void gravity(ObjectNd* obj1, ObjectNd* obj2, double G);
 // i am now in ap physics C
 void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G);
 
+// 2/2/2024
+// ap physics has ended, i am sad, so now i view ap physics 2 on kahn academy while at work if there
+// are no more customers present because my schedule couldn't fit it in without replacing spanish 1,
+// of which i need to not need to take it in college...
+void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G);
+
+// 2/2/2024 cringe imperfect energy
+void setEnergy(ObjectNd* obj, double G);
+
+
 void mathTest2(float n);
 
 

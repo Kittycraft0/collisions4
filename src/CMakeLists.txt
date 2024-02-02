@@ -3,7 +3,7 @@
 # include the subdirectories
 
 # ???
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(MyProject)
 
 # Include something -5/30/2023

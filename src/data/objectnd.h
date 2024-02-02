@@ -45,6 +45,10 @@ public:
     std::vector<double> rotForce;
     double radius;
 
+    // 2/2/2024 - cringe adding properties...
+    double lastPotentialEnergy;
+    double lastKineticEnergy;
+
     // 6/1/2023
     // constructor
     // integer d for the number of dimensions

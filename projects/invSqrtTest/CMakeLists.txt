@@ -14,12 +14,14 @@ set(AWESOME_PROJECT_EXECUTABLE invSqrtTest)
 # this (the first parameter thing) is 
 # also probably the name of the created .exe file thing
 #add_executable(collisions3 main.cpp)
-add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/invSqrtTest/invsqrttest.cpp)
+# 1/23/2024 commented out
+#add_executable(${AWESOME_PROJECT_EXECUTABLE} projects/invSqrtTest/invsqrttest.cpp)
 
 # 5/9/2023
 # The below like sets the variable thing of "invsqrt" to the 
 # library (.cpp with .h) for use in the cmake file here
-add_library(theinvsqrt ../src/math/invsqrt.cpp)
+# 1/23/2024 commented out
+#add_library(theinvsqrt ../src/math/invsqrt.cpp)
 
 # 5/9/2023
 # The below connects the executable (first) 

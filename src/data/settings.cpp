@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=5;
+    this->numObjects=2;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
@@ -68,8 +68,8 @@ Settings::Settings(){
     this->globalGravity={0,-00,0,0};
     this->massMin=1;
     this->massMax=10;
-    this->velMin=0;
-    this->velMax=0;
+    this->velMin=-32;
+    this->velMax=8;
     
 
     // window

@@ -104,3 +104,44 @@ void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G){
 // i mean i could but i haven't even really gotten half way there yet
 // but i did evaluate an integral that is probably kinda static
 // the result is an absolutely massive equation though
+
+
+// 2/2/2024 - just keep the energy constant...?
+void gravity3(ObjectNd* obj1, ObjectNd* obj2, double G){
+    // i said "just", but i'm not sure if it's really "just" that simple, though...
+    // add the force and then add the displacement in here?
+    // or like directly change the velocity?
+    // maybe even like don't output any forces at all and just change the 
+    // position and velocity directly...?
+    // 2/4/2024 - 8:24 AM CST, Friday
+    // overall goal: conserve energy in gravitational interraction
+    // how can this be done?
+
+    // E_ki+E_pi=E_kf+E_pf
+    // get the direction of the final speed by doing the thing. . .
+    // could you do like final velocity minus inital velocity, unit vector of that, and multiply by
+    // final speed minus initial speed?
+
+    // this most likely will not work well at all, but i guess why not try...?
+    // funny -i think  my comments here might take up more lines than the second iteration of code
+    // as a whole
+
+    // 2 (/) 2 (/) 2 (0) 2 (4)
+    // 2     2     2     2
+    // 2 2 2 2
+    // 2222
+    // 2 2 2 2
+    // 2/2/2024
+    // it lines up, crazy!!! 
+    // ...
+
+    // 2/2/2024 - copied from gravity2 and then modified
+    // 8:44 AM CST - i just deleted it
+    
+    // oh hey a new dumb idea - 
+    // save the initial mechanical energy of each orb and then at the end of the frame
+    // iterate through them all and modify the magnitue of their velocity such that the 
+    // final kinetic energy plus the final potential energy equals that of the 
+    // initial kinetic energy plus the final kinetic energy...
+    // you know what? that's a formualted idea that i can actually put in, i think i'll try that...
+}

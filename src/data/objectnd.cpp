@@ -171,4 +171,8 @@ void ObjectNd::update(double deltaTime){
         // Set the angular displacement to zero
         this->rotDisp[j]=0;
     }
+
+    // 2/2/2024 cringe extra properties
+    this->lastKineticEnergy=-1;
+    this->lastPotentialEnergy=-1;
 }

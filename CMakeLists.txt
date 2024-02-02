@@ -5,9 +5,20 @@
 # 6/22/2023 Set project variables - change these!
 
 # 6/22/2023 Name of the executable & project directory name
+# 1/23/2024 - https://code.visualstudio.com/docs/cpp/config-mingw
+# 1/23/2024 - do >CMAKE:Select a kit and select GCC - 13.2.0
+# 1/23/2024 - https://www.sfml-dev.org/download/sfml/2.5.1/
+# 2/1/2024 - https://github.com/brechtsanders/winlibs_mingw/releases/download
+# /12.2.0-16.0.0-10.0.0-msvcrt-r5
+# /winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64msvcrt-10.0.0-r5.7z
+# the above is the compiler download link for windows 11 spread over 3 lines
+# select GCC 7.3.0 x86_64-w64-mingw32
+# or 12.2.0 x86_64-w64-mingw32 (mingw64)
+# whichever one shows up
+# and it works!!!!!!!!
 set(EXE_NAME test4)
 # 6/22/2023 Compiler used, or something - either LINUX or GCC
-set(COMPILER LINUX)
+set(COMPILER GCC)
 
 
 # 9/5/2023
@@ -23,7 +34,7 @@ set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 
 # 6/22/2023 Initialize project details
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.5.0)
 project(cppProject VERSION 0.1.0)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
