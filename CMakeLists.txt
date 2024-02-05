@@ -16,6 +16,8 @@
 # or 12.2.0 x86_64-w64-mingw32 (mingw64)
 # whichever one shows up
 # and it works!!!!!!!!
+# 2/5/2024 - remember to also delete build/CMakeCache.txt because it holds the project
+# directory in there and it's probably not the same
 set(EXE_NAME test4)
 # 6/22/2023 Compiler used, or something - either LINUX or GCC
 set(COMPILER GCC)

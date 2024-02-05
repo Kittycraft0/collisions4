@@ -214,6 +214,12 @@ void setEnergy(ObjectNd* obj,std::vector<ObjectNd*> objects,double G){
 // were last updated BEFORE the velocity and displacement changes
 // 2/5/2024
 void correctVelocities(std::vector<ObjectNd*> objects,double G){
+    // get the initial total energies...
+    //std::vector<double> initialEnergies;
+    //for(int i=0;i<objects.size();i++){
+    //
+    //}
+    
     for(int i=0;i<objects.size();i++){
         // get the magnitude of the object velocity vector
         double velocitySquareSum;
@@ -222,12 +228,15 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
         }
         // multipliable thing to get the magnitude
         double velocityInverseMagnitude=invSqrt(velocitySquareSum);
+        
+        // get the old potential energy
+        // the old total energy must be from before the velocity and displacement changes
+        double oldTotalEnergy=objects[i]->lastPotentialEnergy/2+objects[i]->lastKineticEnergy;
+        // get the new potential energy
+        setEnergy(objects[i],objects,G);
+
         // update the velocities
         for(int j=0;j<objects[i]->v.size();j++){
-            // the old total energy must be from before the velocity and displacement changes
-            double oldTotalEnergy=objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy;
-            // get the new potential energy
-            setEnergy(objects[i],objects,G);
             // normalize the object velocity vector component
             // remember to multiply by the inverse...
             double normVelComponent=objects[i]->v[j]*velocityInverseMagnitude;
@@ -235,11 +244,11 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
             // the final kinetic energy equals the total initial energy minus the final potential energy
             // E_kf=E_i-E_pf=(1/2)*m*v_f^2
             // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
-            objects[i]->v[j]=
+            objects[i]->v[j]=10*
                 normVelComponent
                 *sqrt(
                     2/objects[i]->m
-                    *(oldTotalEnergy-objects[i]->lastPotentialEnergy));
+                    *(oldTotalEnergy-objects[i]->lastPotentialEnergy/2));
         }
     }
 }
