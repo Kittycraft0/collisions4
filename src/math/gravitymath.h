@@ -27,8 +27,10 @@ void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G);
 void gravity2(ObjectNd* obj1, ObjectNd* obj2, double G);
 
 // 2/2/2024 cringe imperfect energy
-void setEnergy(ObjectNd* obj, double G);
+void setEnergy(ObjectNd* obj,std::vector<ObjectNd*> objects,double G);
 
+// 2/5/2024 correct the velocities with the power cringe
+void correctVelocities(std::vector<ObjectNd*> objects,double G);
 
 void mathTest2(float n);
 

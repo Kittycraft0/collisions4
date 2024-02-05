@@ -146,6 +146,100 @@ void gravity3(ObjectNd* obj1, ObjectNd* obj2, double G){
     // you know what? that's a formualted idea that i can actually put in, i think i'll try that...
 }
 
-void setEnergy(ObjectNd* obj, double G){
-    
+// 2/2/2024
+// set the potential and kinetic energies of the objects
+// in the reference frame of the world space...?
+// also, at this point it could just even be two separate methods...
+// 2/2/2024
+void setEnergy(ObjectNd* obj,std::vector<ObjectNd*> objects,double G){
+    // get the kinetic energy
+    // get the sum of the velocity components squared
+    double velocityComponentsSquared=0;
+    for(int i=0;i<obj->v.size();i++){
+        velocityComponentsSquared+=obj->v[i]*obj->v[i];
+    }
+
+    // i just copy/pasted the old kinetic energy code and sorta formatted the whole thing to be
+    // identical to see what was wrong and i had just
+    // forgotten to multiply the orb energies by their mass...
+    // it's gone now but it's still funny that i did that...
+    // although honestly i think it's a good strategy for bug finding,
+    // being comparing to old code
+
+    // the velocity doesn't need to be squared here because it is already squared
+    // it's also just the speed squared as well
+    obj->lastKineticEnergy=0.5*obj->m*velocityComponentsSquared;
+
+
+    // get the potential energy
+    obj->lastPotentialEnergy=0;
+    // cycle through all pairs of object that include the selected object
+    for(int i=0;i<objects.size();i++){
+        // check to make sure it's not the same object because sometimes lazy idk
+        if(objects[i]!=obj){
+            double posSumSquared=0;
+            for(int j=0;j<obj->p.size();j++){
+                // the order doesn't matter
+                posSumSquared+=pow(obj->p[j]-objects[i]->p[j],2);
+            }
+            // if this is undefined then ree idk
+            double invDist=invSqrt(posSumSquared);
+            // remember negative because the equation for
+            // gravitational potential energy does funny things
+            // "add" to the lastPotentialEnergy variable in the object!
+            // there could be optimization here by "adding" this to objects[i] as well
+            // and recurse from the currently selected index plus 1, but eh idk
+            obj->lastPotentialEnergy+=-G*obj->m*objects[i]->m*invDist;
+        }
+    }
+}
+
+// 2/5/2024 here's a note i wrote on 2/3/2024:
+// "Gravity loop, displacement loop, THEN velocity loop?"
+// i'll write like the gravity loop and the velocity loop here i guess idk
+// the potential energy setter thingy above doesn't factor in forces so it can be before
+// the gravity loop or after it, it doesn't matter as long as it is before
+// the velocity setting loop
+// the displacement loop is already built in, normally at the end of each frame
+// now should i correct the velocities before or after the displacement by the velocities?
+// WAIT - NO, THAT WOULD SORT OF BREAK STUFF - IT WOULD HAVE TO BE AFTER
+// correct the velocities AFTER the displacemenet by the new velocities inflicted upon by the forces
+// however, what happens if the new velocity is faster than terminal velocity? does it then
+// put a negative number in a square root? i don't think so, as it isn't getting the velocity,
+// it's setting it...
+// velocity correction loop
+// assumes a system of only the orbs - no external things whatsoever...
+// or else things will get broken...
+// also assumes that the current lastPotentialEnergy and lastKineticEnergy properties of the objects
+// were last updated BEFORE the velocity and displacement changes
+// 2/5/2024
+void correctVelocities(std::vector<ObjectNd*> objects,double G){
+    for(int i=0;i<objects.size();i++){
+        // get the magnitude of the object velocity vector
+        double velocitySquareSum;
+        for(int j=0;j<objects[i]->v.size();j++){
+            velocitySquareSum+=objects[i]->v[j]*objects[i]->v[j];
+        }
+        // multipliable thing to get the magnitude
+        double velocityInverseMagnitude=invSqrt(velocitySquareSum);
+        // update the velocities
+        for(int j=0;j<objects[i]->v.size();j++){
+            // the old total energy must be from before the velocity and displacement changes
+            double oldTotalEnergy=objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy;
+            // get the new potential energy
+            setEnergy(objects[i],objects,G);
+            // normalize the object velocity vector component
+            // remember to multiply by the inverse...
+            double normVelComponent=objects[i]->v[j]*velocityInverseMagnitude;
+            // set the velocity to the normalized velocity component times the true speed
+            // the final kinetic energy equals the total initial energy minus the final potential energy
+            // E_kf=E_i-E_pf=(1/2)*m*v_f^2
+            // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
+            objects[i]->v[j]=
+                normVelComponent
+                *sqrt(
+                    2/objects[i]->m
+                    *(oldTotalEnergy-objects[i]->lastPotentialEnergy));
+        }
+    }
 }

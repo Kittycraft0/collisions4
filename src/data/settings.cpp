@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=2;
+    this->numObjects=10;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
@@ -56,6 +56,7 @@ Settings::Settings(){
     // constants
     // was 10000
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
+    this->G=100000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;
     this->wallRestitution=1;
 
@@ -67,9 +68,9 @@ Settings::Settings(){
     // was -5
     this->globalGravity={0,-00,0,0};
     this->massMin=1;
-    this->massMax=10;
-    this->velMin=-32;
-    this->velMax=8;
+    this->massMax=2;
+    this->velMin=-16;
+    this->velMax=16;
     
 
     // window
@@ -82,8 +83,10 @@ Settings::Settings(){
 
     // physics border corners as coordinates
     // 4 dimensions beecaue why not
-    this->border1={-120,-100,-120,-100};
-    this->border2={120,100,120,100};
+    //this->border1={-120,-100,-120,-100};
+    //this->border2={120,100,120,100};
+    this->border1={-200,-200,-120,-100};
+    this->border2={200,200,120,100};
     
     this->showWireframe=false;
     this->modelPath="assets/models";

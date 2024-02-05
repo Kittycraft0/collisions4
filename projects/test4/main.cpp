@@ -199,6 +199,8 @@ int main() {
             obj->update(deltaTime);
         }
 
+        // 2/5/2024 - correct the object velocities
+        //correctVelocities(data->objects,data->settings->G);
 
 
 
@@ -330,22 +332,8 @@ int main() {
         sprintf(temp, "FPS: %f", (1/spf));
         data->drawText->write(temp);
         
-        // 10/11/2023 copy/paste from above then modified for my purposes
-        // 4/18/2023 - copy/pasted/modified on 6/23/2023
-        // llu unsigned long long (int)? cool
-        sprintf(temp, "Total kinetic energy: %lli", (long long int)totalKineticEnergy);
-        data->drawText->write(temp);
         
-        // 10/26/2023
-        // draw potential energy text and total energy text
-        // potential global gravitational energy
-        sprintf(temp, "Total potential energy: %lli", (long long int)totalGlobalPotentialEnergy);
-        data->drawText->write(temp);
 
-        // 11/01/2023
-        // potential orb-to-orb gravitational potential energy text
-        sprintf(temp, "Total orb potential energy: %lli", (long long int)totalOrbToOrbPotentialEnergy);
-        data->drawText->write(temp);
 
         // total energy
         //unsigned long long int tke=(unsigned long long int)totalKineticEnergy;
@@ -358,6 +346,50 @@ int main() {
         sprintf(temp, "Total energy: %lli", totalEnergy);
         data->drawText->write(temp);
         
+        // 2/2/2024 - see if the new method as of 2/2/2024 works idk
+        double totalPotentialEnergy1=0;
+        double totalKineticEnergy1=0;
+        for(int i=0;i<data->objects.size();i++){
+            setEnergy(data->objects[i],data->objects,data->settings->G);
+            totalPotentialEnergy1+=data->objects[i]->lastPotentialEnergy;
+            totalKineticEnergy1+=data->objects[i]->lastKineticEnergy;
+        }
+        long long int totalEnergy1=
+            (long long int)totalKineticEnergy1
+            +(long long int)totalPotentialEnergy1/2;
+        
+        // 10/26/2023
+        // draw potential energy text and total energy text
+        // potential global gravitational energy
+        sprintf(temp, "Total global potential energy0: %lli", (long long int)totalGlobalPotentialEnergy);
+        data->drawText->write(temp);
+        
+        // 2/5/2024 what
+        sprintf(temp, "Total potential energy0: %lli", (long long int)totalOrbToOrbPotentialEnergy);
+        data->drawText->write(temp);
+        // why does it need to be half?
+        sprintf(temp, "Total Potential Energy1: %lli", (long long int)totalPotentialEnergy1/2);
+        data->drawText->write(temp);
+        
+        // 10/11/2023 copy/paste from above then modified for my purposes
+        // 4/18/2023 - copy/pasted/modified on 6/23/2023
+        // llu unsigned long long (int)? cool
+        
+        sprintf(temp, "Total kinetic energy0: %lli", (long long int)totalKineticEnergy);
+        data->drawText->write(temp);
+        sprintf(temp, "Total Kinetic Energy1: %lli", (long long int)totalKineticEnergy1);
+        data->drawText->write(temp);
+        
+        // 11/01/2023
+        // potential orb-to-orb gravitational potential energy text
+        //sprintf(temp, "Total orb potential energy0: %lli", (long long int)totalOrbToOrbPotentialEnergy);
+        //data->drawText->write(temp);
+        // 2/5/2024
+        sprintf(temp, "Total energy0: %lli", totalEnergy);
+        data->drawText->write(temp);
+        sprintf(temp, "Total energy1: %lli", totalEnergy1);
+        data->drawText->write(temp);
+
         // n.
         n++;
 
