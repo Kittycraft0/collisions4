@@ -200,7 +200,7 @@ int main() {
         }
 
         // 2/5/2024 - correct the object velocities
-        //correctVelocities(data->objects,data->settings->G);
+        correctVelocities(data->objects,data->settings->G);
 
 
 
