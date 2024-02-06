@@ -231,7 +231,7 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
         
         // get the old potential energy
         // the old total energy must be from before the velocity and displacement changes
-        double oldTotalEnergy=objects[i]->lastPotentialEnergy/2+objects[i]->lastKineticEnergy;
+        double oldTotalEnergy=objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy;
         // get the new potential energy
         setEnergy(objects[i],objects,G);
 
@@ -244,11 +244,17 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
             // the final kinetic energy equals the total initial energy minus the final potential energy
             // E_kf=E_i-E_pf=(1/2)*m*v_f^2
             // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
+            // the math looks correct... https://www.desmos.com/calculator/naoznlz2lw
             objects[i]->v[j]=10*
                 normVelComponent
+                //*sqrt(
+                //    2/objects[i]->m
+                //    *(oldTotalEnergy-objects[i]->lastPotentialEnergy));
                 *sqrt(
-                    2/objects[i]->m
-                    *(oldTotalEnergy-objects[i]->lastPotentialEnergy/2));
+                    2*(oldTotalEnergy-objects[i]->lastPotentialEnergy)
+                    /objects[i]->m
+                );
+            
         }
     }
 }

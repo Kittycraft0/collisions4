@@ -49,3 +49,29 @@ void render2dAsSquares(Data* data){
         data->window->draw(sfModel);
     }
 }
+
+// 2/5/2024 render all objects as circles with a color respect to index
+void render2dAsCirclesColoredIndex(Data* data){
+    // For every object
+    for(int i=0;i<data->objects.size();i++){
+        ObjectNd* obj=data->objects[i];
+        // Initialize the rendered object
+        sf::CircleShape sfModel;
+        // Set the size
+        sfModel.setRadius(obj->radius);
+        // Set the color//9/6/2023 the word "color" looks weird now, why so many 'o's
+        sf::Color color=sf::Color(0,255,255*i/data->objects.size());
+        //sfModel.setFillColor(sf::Color::Green);
+        sfModel.setFillColor(color);
+        // Set the position
+        //sfModel.setPosition(sf::Vector2f(obj->p[0]-obj->radius,-(obj->p[1]-obj->radius)));
+        sfModel.setPosition(sf::Vector2f(obj->p[0]-obj->radius,-obj->p[1]-obj->radius));
+        // Set the origin
+        sfModel.setOrigin(
+            -(int)data->window->getSize().x/2,
+            -(int)data->window->getSize().y/2
+        );
+        // Draw the object
+        data->window->draw(sfModel);
+    }
+}

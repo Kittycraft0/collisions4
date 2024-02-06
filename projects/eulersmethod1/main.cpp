@@ -1,12 +1,58 @@
 // 5/30/2023
 #include <iostream>
+#include <cmath>
 
-#include "../../src/src.h"
-
-
+//#include "../../src/src.h"
+double e=2.71828;
+// 2/6/2024
+// euler's method by hand is annoying
+// so i am writing this changable C++ program to do the mass arithmetic for me...
+double diffEquation(double x,double y){
+    //return(2*x-y);
+    //return(4*(x+y*y));
+    //return(pow(e,x));
+    return(1+x-y);
+    
+}
 
 int main() {
-    // added 6/23/2023 to suppress "Failed to set DirectInput device axis mode: 1"
+
+    // givens
+    double xInit=0;
+    double xFinal=2;
+    double steps=5;
+    double yInit=0;
+
+    double dx=(xFinal-xInit)/steps;
+
+    double y=yInit;
+    for(int i=0;i<steps;i++){
+        double x=xInit+i*dx;
+        double m=diffEquation(x,y);
+        double dy=m*dx;
+        std::cout<<"x: "<<x<<" y: "<<y<<" m: "<<m<<" dy: "<<dy;
+        y+=dy;
+        std::cout<<"\n";
+    }
+    std::cout<<"final x: "<<xFinal<<" final y: "<<y;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*// added 6/23/2023 to suppress "Failed to set DirectInput device axis mode: 1"
     sf::err().rdbuf(NULL);
 
     // Initialize data 6/5/2023
@@ -417,4 +463,5 @@ int main() {
     // and with the double first word line pair things here
 
     return(0);
+    */
 }

@@ -52,7 +52,8 @@ Settings::Settings(){
     this->timeMultiplier=1;
 
     // 6/23/2023 set the project seed
-    this->seed=60007;
+    //this->seed=60007;
+    this->seed=60008;
     // constants
     // was 10000
     this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
@@ -68,7 +69,7 @@ Settings::Settings(){
     // was -5
     this->globalGravity={0,-00,0,0};
     this->massMin=1;
-    this->massMax=2;
+    this->massMax=5;
     this->velMin=-16;
     this->velMax=16;
     
