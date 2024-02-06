@@ -343,8 +343,8 @@ int main() {
             (long long int)totalKineticEnergy
             +(long long int)totalGlobalPotentialEnergy
             +(long long int)totalOrbToOrbPotentialEnergy;
-        sprintf(temp, "Total energy: %lli", totalEnergy);
-        data->drawText->write(temp);
+        //sprintf(temp, "Total energy: %lli", totalEnergy);
+        //data->drawText->write(temp);
         
         // 2/2/2024 - see if the new method as of 2/2/2024 works idk
         double totalPotentialEnergy1=0;
@@ -364,9 +364,9 @@ int main() {
         sprintf(temp, "Total global potential energy0: %lli", (long long int)totalGlobalPotentialEnergy);
         data->drawText->write(temp);
         
-        // 2/5/2024 what
-        sprintf(temp, "Total potential energy0: %lli", (long long int)totalOrbToOrbPotentialEnergy);
-        data->drawText->write(temp);
+        // 2/5/2024 potential energy from orbs
+        //sprintf(temp, "Total potential energy0: %lli", (long long int)totalOrbToOrbPotentialEnergy);
+        //data->drawText->write(temp);
         // why does it need to be half?
         // 2/5/2024 - oh wait, it's half because that is baked into its derivation
         // it is the sum of all object1 paired with all object2
@@ -380,8 +380,8 @@ int main() {
         // 4/18/2023 - copy/pasted/modified on 6/23/2023
         // llu unsigned long long (int)? cool
         
-        sprintf(temp, "Total kinetic energy0: %lli", (long long int)totalKineticEnergy);
-        data->drawText->write(temp);
+        //sprintf(temp, "Total kinetic energy0: %lli", (long long int)totalKineticEnergy);
+        //data->drawText->write(temp);
         sprintf(temp, "Total Kinetic Energy1: %lli", (long long int)totalKineticEnergy1);
         data->drawText->write(temp);
         
@@ -390,10 +390,34 @@ int main() {
         //sprintf(temp, "Total orb potential energy0: %lli", (long long int)totalOrbToOrbPotentialEnergy);
         //data->drawText->write(temp);
         // 2/5/2024
-        sprintf(temp, "Total energy0: %lli", totalEnergy);
-        data->drawText->write(temp);
+        //sprintf(temp, "Total energy0: %lli", totalEnergy);
+        //data->drawText->write(temp);
         sprintf(temp, "Total energy1: %lli", totalEnergy1);
         data->drawText->write(temp);
+
+        // 2/6/2024
+        // get and display the masses and velocities of objects 1 and 2...
+        std::vector<double> velSquared;
+        std::vector<double> speeds;
+        for(int i=0;i<data->objects.size();i++){
+            velSquared.push_back(0);
+            for(int j=0;j<data->objects[i]->v.size();j++){
+                velSquared[i]+=pow(data->objects[i]->v[j],2);
+            }
+            // log the potential energy
+            sprintf(temp, "Potential Energy: %lf", data->objects[i]->lastPotentialEnergy);
+            data->drawText->write(temp);
+            // log the kinetic energy
+            sprintf(temp, "Kinetic Energy: %lf", data->objects[i]->lastKineticEnergy);
+            data->drawText->write(temp);
+            speeds.push_back(sqrt(velSquared[i]));
+            // log the speed
+            sprintf(temp, "Speed: %lf", speeds[i]);
+            data->drawText->write(temp);
+            // log the mass
+            sprintf(temp, "Mass: %lf", data->objects[i]->m);
+            data->drawText->write(temp);
+        }
 
         // n.
         n++;

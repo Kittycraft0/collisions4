@@ -215,14 +215,19 @@ void setEnergy(ObjectNd* obj,std::vector<ObjectNd*> objects,double G){
 // 2/5/2024
 void correctVelocities(std::vector<ObjectNd*> objects,double G){
     // get the initial total energies...
-    //std::vector<double> initialEnergies;
-    //for(int i=0;i<objects.size();i++){
-    //
-    //}
-    
+    std::vector<double> initialEnergies;
+    for(int i=0;i<objects.size();i++){
+        initialEnergies.push_back(objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy);
+    }
+    // reset the energies
+    for(int i=0;i<objects.size();i++){
+        setEnergy(objects[i],objects,G);
+    }
+   
     for(int i=0;i<objects.size();i++){
         // get the magnitude of the object velocity vector
-        double velocitySquareSum;
+        // OVER AN HOUR WASTED BECAUSE I FORGOT TO SET IT INITIALLY TO 0...
+        double velocitySquareSum=0;
         for(int j=0;j<objects[i]->v.size();j++){
             velocitySquareSum+=objects[i]->v[j]*objects[i]->v[j];
         }
@@ -231,9 +236,18 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
         
         // get the old potential energy
         // the old total energy must be from before the velocity and displacement changes
-        double oldTotalEnergy=objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy;
+        //double oldTotalEnergy=objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy;
+        double oldTotalEnergy=initialEnergies[i];
         // get the new potential energy
-        setEnergy(objects[i],objects,G);
+        //setEnergy(objects[i],objects,G);
+
+        // the final kinetic energy equals the total initial energy minus the final potential energy
+        // E_kf=E_i-E_pf=(1/2)*m*v_f^2
+        // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
+        // the math looks correct... https://www.desmos.com/calculator/naoznlz2lw
+        // get the new speed
+        double newSpeed=sqrt(2*(oldTotalEnergy-objects[i]->lastPotentialEnergy)/objects[i]->m);
+        //double newSpeed=1000;
 
         // update the velocities
         for(int j=0;j<objects[i]->v.size();j++){
@@ -241,20 +255,23 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
             // remember to multiply by the inverse...
             double normVelComponent=objects[i]->v[j]*velocityInverseMagnitude;
             // set the velocity to the normalized velocity component times the true speed
-            // the final kinetic energy equals the total initial energy minus the final potential energy
-            // E_kf=E_i-E_pf=(1/2)*m*v_f^2
-            // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
-            // the math looks correct... https://www.desmos.com/calculator/naoznlz2lw
-            objects[i]->v[j]=10*
-                normVelComponent
-                //*sqrt(
-                //    2/objects[i]->m
-                //    *(oldTotalEnergy-objects[i]->lastPotentialEnergy));
-                *sqrt(
-                    2*(oldTotalEnergy-objects[i]->lastPotentialEnergy)
-                    /objects[i]->m
-                );
-            
+            objects[i]->v[j]=normVelComponent*newSpeed;
         }
     }
+
+    // oh boy thanks over an hour used up to find this one trivial mistake...
+    /*        double velocitySquareSum;
+    for(int i=0;i<objects.size();i++){
+        //objects[i]->v[0]=30;
+        
+        velocitySquareSum=0;
+        for(int j=0;j<objects[i]->v.size();j++){
+            velocitySquareSum+=objects[i]->v[j]*objects[i]->v[j];
+        }
+        double speed=30;
+        for(int j=0;j<objects[i]->v.size();j++){
+            objects[i]->v[j]=speed*objects[i]->v[j]*invSqrt(velocitySquareSum);
+        }
+        
+    }*/
 }
