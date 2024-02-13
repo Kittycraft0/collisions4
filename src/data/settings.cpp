@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=2;
+    this->numObjects=3;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
@@ -70,13 +70,15 @@ Settings::Settings(){
     this->globalGravity={0,-00,0,0};
     this->massMin=1;
     this->massMax=5;
-    this->velMin=-16;
-    this->velMax=16;
+    this->velMin=0;
+    this->velMax=0;
     
 
     // window
-    this->windowWidth=800;
-    this->windowHeight=400;
+    //this->windowWidth=800;
+    //this->windowHeight=400;
+    this->windowWidth=1600;
+    this->windowHeight=800;
     // 6/6/2023 - it automatically puts itself back up at the top
     this->windowX=200;
     this->windowY=50;
@@ -86,8 +88,10 @@ Settings::Settings(){
     // 4 dimensions beecaue why not
     //this->border1={-120,-100,-120,-100};
     //this->border2={120,100,120,100};
-    this->border1={-200,-200,-120,-100};
-    this->border2={200,200,120,100};
+    //this->border1={-200,-200,-120,-100};
+    //this->border2={200,200,120,100};
+    this->border1={-400,-400,-120,-100};
+    this->border2={400,400,120,100};
     
     this->showWireframe=false;
     this->modelPath="assets/models";

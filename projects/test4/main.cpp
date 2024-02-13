@@ -200,7 +200,7 @@ int main() {
         }
 
         // 2/5/2024 - correct the object velocities
-        correctVelocities(data->objects,data->settings->G);
+        //correctVelocities(data->objects,data->settings->G);
 
 
 
@@ -395,7 +395,7 @@ int main() {
         sprintf(temp, "Total energy1: %lli", totalEnergy1);
         data->drawText->write(temp);
 
-        // 2/6/2024
+        /*// 2/6/2024
         // get and display the masses and velocities of objects 1 and 2...
         std::vector<double> velSquared;
         std::vector<double> speeds;
@@ -417,7 +417,7 @@ int main() {
             // log the mass
             sprintf(temp, "Mass: %lf", data->objects[i]->m);
             data->drawText->write(temp);
-        }
+        }*/
 
         // n.
         n++;

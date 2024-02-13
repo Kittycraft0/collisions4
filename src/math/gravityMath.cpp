@@ -246,7 +246,7 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
         // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
         // the math looks correct... https://www.desmos.com/calculator/naoznlz2lw
         // get the new speed
-        double newSpeed=sqrt(2*(oldTotalEnergy-objects[i]->lastPotentialEnergy)/objects[i]->m);
+        double newSpeed=sqrt(2*(oldTotalEnergy-objects[i]->lastPotentialEnergy/2)/objects[i]->m);
         //double newSpeed=1000;
 
         // update the velocities
