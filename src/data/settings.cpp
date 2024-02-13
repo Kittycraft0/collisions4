@@ -75,10 +75,11 @@ Settings::Settings(){
     
 
     // window
-    //this->windowWidth=800;
+    this->windowWidth=800;
     //this->windowHeight=400;
-    this->windowWidth=1600;
-    this->windowHeight=800;
+    //this->windowWidth=1600;
+    //this->windowHeight=800;
+    this->windowHeight=600;
     // 6/6/2023 - it automatically puts itself back up at the top
     this->windowX=200;
     this->windowY=50;
@@ -90,8 +91,10 @@ Settings::Settings(){
     //this->border2={120,100,120,100};
     //this->border1={-200,-200,-120,-100};
     //this->border2={200,200,120,100};
-    this->border1={-400,-400,-120,-100};
-    this->border2={400,400,120,100};
+    //this->border1={-400,-400,-120,-100};
+    //this->border2={400,400,120,100};
+    this->border1={-400,-300,-120,-100};
+    this->border2={400,300,120,100};
     
     this->showWireframe=false;
     this->modelPath="assets/models";
