@@ -275,3 +275,53 @@ void correctVelocities(std::vector<ObjectNd*> objects,double G){
         
     }*/
 }
+
+// trying it again cuz idk it's not being good
+// 2/14/2024
+void correctVelocities2(std::vector<ObjectNd*> objects,double G){
+    // get the initial total energies...
+    std::vector<double> initialEnergies;
+    for(int i=0;i<objects.size();i++){
+        initialEnergies.push_back(objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy);
+    }
+    // reset the energies
+    for(int i=0;i<objects.size();i++){
+        setEnergy(objects[i],objects,G);
+    }
+    
+    for(int i=0;i<objects.size();i++){
+        
+        // get the magnitude of the object velocity vector
+        double velocitySquareSum=0;
+        for(int j=0;j<objects[i]->v.size();j++){
+            velocitySquareSum+=objects[i]->v[j]*objects[i]->v[j];
+        }
+        // multipliable thing to get the magnitude
+        double velocityInverseMagnitude=invSqrt(velocitySquareSum);
+        
+
+        // get the old potential energy
+        // the old total energy must be from before the velocity and displacement changes
+        //double oldTotalEnergy=objects[i]->lastPotentialEnergy+objects[i]->lastKineticEnergy;
+        double oldTotalEnergy=initialEnergies[i];
+        // get the new potential energy
+        //setEnergy(objects[i],objects,G);
+
+        // the final kinetic energy equals the total initial energy minus the final potential energy
+        // E_kf=E_i-E_pf=(1/2)*m*v_f^2
+        // v_f=sqrt((2/m)*(E_i-E_pf)) <-- this is the speed, multiply by the normalized component
+        // the math looks correct... https://www.desmos.com/calculator/naoznlz2lw
+        // get the new speed
+        double newSpeed=0.5*sqrt(2*(oldTotalEnergy-objects[i]->lastPotentialEnergy/2)/objects[i]->m);
+        //double newSpeed=1000;
+
+        // update the velocities
+        for(int j=0;j<objects[i]->v.size();j++){
+            // normalize the object velocity vector component
+            // remember to multiply by the inverse...
+            double normVelComponent=objects[i]->v[j]*velocityInverseMagnitude;
+            // set the velocity to the normalized velocity component times the true speed
+            objects[i]->v[j]=normVelComponent*newSpeed;
+        }
+    }
+}

@@ -32,6 +32,9 @@ void setEnergy(ObjectNd* obj,std::vector<ObjectNd*> objects,double G);
 // 2/5/2024 correct the velocities with the power cringe
 void correctVelocities(std::vector<ObjectNd*> objects,double G);
 
+// 2/14/2024 *ahhem* the power... OF********... cringe
+void correctVelocities2(std::vector<ObjectNd*> objects,double G);
+
 void mathTest2(float n);
 
 

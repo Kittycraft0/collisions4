@@ -45,7 +45,7 @@ Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=3;
+    this->numObjects=50;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
@@ -56,8 +56,9 @@ Settings::Settings(){
     this->seed=60008;
     // constants
     // was 10000
-    this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
-    this->G=100000*7/(this->numObjects*sqrt(this->numObjects));
+    //this->G=1000*7/(this->numObjects*sqrt(this->numObjects));
+    //this->G=100000*7/(this->numObjects*sqrt(this->numObjects));
+    this->G=1000000*7/(this->numObjects*sqrt(this->numObjects));
     this->restitution=1;
     this->wallRestitution=1;
 

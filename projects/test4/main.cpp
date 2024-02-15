@@ -41,6 +41,14 @@ int main() {
     
     // 6/8/2023 n
     int n=0;
+
+    // 2/13/2024
+    double initialEnergy=-0;
+
+    // 2/14/2024
+    for(int i=0;i<data->objects.size();i++){
+        data->objects[i]->v[0]=-1000;
+    }
     
     while (data->window->isOpen())
     {
@@ -58,7 +66,7 @@ int main() {
         }
 
         bool doGlobalGravity=true;
-        bool doMove=false;
+        bool doTestMove=false;
         bool doGravity=true;
         bool doSeparateOrbs=true;
         bool doCollide=true;
@@ -73,6 +81,14 @@ int main() {
         //std::cout<<spf;
         if(forceDeltaTime){
             deltaTime=forcedDeltaTime*timeMultiplier;
+        }
+
+
+        // 2/13/2024
+        for(int i=0;i<data->objects.size();i++){
+            // get the energies in the values
+            setEnergy(data->objects[i],data->objects,data->settings->G);
+            // the old, start-of-frame energies should now be saved
         }
 
         // 10/25/2023
@@ -98,7 +114,7 @@ int main() {
         
 
         // 6/8/2023 test of the rendering speed
-        if(doMove)
+        if(doTestMove)
         if(n==1){
             for(ObjectNd* obj:data->objects){
                 for(int i=0;i<obj->v.size();i++){
@@ -200,7 +216,8 @@ int main() {
         }
 
         // 2/5/2024 - correct the object velocities
-        //correctVelocities(data->objects,data->settings->G);
+        // 2/14/2024 - make it better idk
+        correctVelocities2(data->objects,data->settings->G);
 
 
 
