@@ -55,6 +55,31 @@ public:
     // 6/6/2023 added pointer to data
     ObjectNd(int d,Data* data);
 
+    // 2/16/2024 custom constructor
+    // 2/16/2024 - initialize an object by setting all of the properties manually
+ObjectNd(
+    // position
+    std::vector<double> p,
+    // velocity
+    std::vector<double> v,
+    // angle
+    std::vector<double> a,
+    // angular velocity
+    std::vector<double> av,
+    // mass
+    double m,
+    // rotational inertia
+    double i,
+    // # of dimensions - be consistent maybe
+    int d,
+    // radius for circles rendering and circular collisions
+    double radius,
+    // model id for future model rendering
+    int modelID,
+    // scale for model stretching
+    std::vector<double> scale
+);
+
     // 6/6/2023 update velocity and position and reset impulse
     void update(double deltaTime);
 };

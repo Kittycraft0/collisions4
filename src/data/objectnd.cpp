@@ -111,6 +111,74 @@ ObjectNd::ObjectNd(int d,Data* data){
     }
 }
 
+// 2/16/2024 - initialize an object by setting all of the properties manually
+ObjectNd::ObjectNd(
+    // position
+    std::vector<double> p,
+    // velocity
+    std::vector<double> v,
+    // angle
+    std::vector<double> a,
+    // angular velocity
+    std::vector<double> av,
+    // mass
+    double m,
+    // rotational inertia
+    double i,
+    // # of dimensions - be consistent maybe
+    int d,
+    // radius for circles rendering and circular collisions
+    double radius,
+    // model id for future model rendering
+    int modelID,
+    // scale for model stretching
+    std::vector<double> scale
+){
+    // 0 as a placeholder
+    this->modelID=modelID;
+
+    // Linear mass
+    // for some reason two objects of equal mass freak out on collision
+    this->m=m;
+    // 10/11/2023 test AAAAAAA.
+    //int thepow=data->objects.size();
+    //m=pow(10,thepow);
+    //m=5.76185f;
+    //std::cout<<" "<<m;
+    //m=2;
+
+    // 6/8/2023 moved to here...
+    // 6/7/2023 Set the circular radius in base pixels
+    //this->radius=10;
+    this->radius=radius;
+    
+    // Rotational mass 5/11/2023
+    // 10/26/2023 
+    // https://math.stackexchange.com/questions/565333/moment-of-inertia-of-a-n-dimensional-sphere
+    //i=m*radius*radius*(d-1)/(d+2);
+    this->i=i;
+
+    this->p=p;
+    this->v=v;
+    // 2/16/2024 err... i hope i never messed anything up with acceleration...
+    this->a=a;
+    this->av=av;
+    for(int j=0;j<d;j++){
+        scale.push_back(1);
+        linDisp.push_back(0);
+        linMom.push_back(0);//v[i]*m);
+        linImp.push_back(0);
+        linForce.push_back(0);
+    }
+    // uses number of angular dimensions formula supplied by ChatGPT
+    for(int j=0;j<d*(d-1)/2;j++){
+        rotDisp.push_back(0);
+        rotMom.push_back(0);
+        rotImp.push_back(0);
+        rotForce.push_back(0);
+    }
+}
+
 // 6/6/2023 update object properties
 void ObjectNd::update(double deltaTime){
     // For linear values

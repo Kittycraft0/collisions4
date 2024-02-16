@@ -17,5 +17,6 @@
 #include "game/game.h"
 #include "math/math.h"
 #include "render/render.h"
+#include "init/init.h"
 
 #endif //SRC_ALL_H

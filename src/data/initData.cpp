@@ -32,7 +32,7 @@ Data::Data(){
     this->drawText->reset();
 
 
-    //initObjects(settings)
+    /*//initObjects(settings)
     //this->objects=0;
     // 5/11/2023
     for(int i=0;i<settings->numObjects;i++){
@@ -40,7 +40,7 @@ Data::Data(){
         // added this-> at 6/5/2023
         //this->objects.push_back(obj);
         this->objects.push_back(new ObjectNd(settings->d,this));
-    }
+    }*/
     std::cout<<"\nWindow width from the data constructor: "<<this->settings->windowWidth;
 }
 

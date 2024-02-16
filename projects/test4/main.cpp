@@ -12,6 +12,10 @@ int main() {
     // Initialize data 6/5/2023
     Data* data=new Data();
     
+    // 2/16/2024
+    // initialize the objects!
+    initObjects2(data);
+    
     // TESTING - REMOVE LATER PLEASE - 10/25/2023
     //data->objects[0]->p[0]=20;
     //data->objects[1]->p[0]=-20;
@@ -46,9 +50,10 @@ int main() {
     double initialEnergy=-0;
 
     // 2/14/2024
-    for(int i=0;i<data->objects.size();i++){
-        data->objects[i]->v[0]=-1000;
-    }
+    //for(int i=0;i<data->objects.size();i++){
+    //    data->objects[i]->v[0]=-1000;
+    //}
+
     
     while (data->window->isOpen())
     {
@@ -217,7 +222,7 @@ int main() {
 
         // 2/5/2024 - correct the object velocities
         // 2/14/2024 - make it better idk
-        correctVelocities2(data->objects,data->settings->G);
+        //correctVelocities2(data->objects,data->settings->G);
 
 
 

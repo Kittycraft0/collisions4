@@ -37,6 +37,7 @@ add_subdirectory(${SRC_DIR}/data)
 add_subdirectory(${SRC_DIR}/game)
 add_subdirectory(${SRC_DIR}/math)
 add_subdirectory(${SRC_DIR}/render)
+add_subdirectory(${SRC_DIR}/init)
 
 # 6/23/2023
 message("!!0 INCLUDED_LIBRARIES: " ${INCLUDED_LIBRARIES})

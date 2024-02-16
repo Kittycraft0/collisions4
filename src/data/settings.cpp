@@ -40,12 +40,14 @@ void dataTest3(int n){
 // Set all the settings! Sorry for the lack of a text file.
 // Feeling pressured on time, even though I have like a week of school left.
 // I sure hope I work on this next year!
+// 2/15/2024 - yes, it's fun working on this, i am glad i am currenly working on this now!
+// oh yes, of course, a text file... that's hard idk
 #include <cmath>
 Settings::Settings(){
     // number of dimensions
     this->d=2;
     // number of objects
-    this->numObjects=50;
+    this->numObjects=2;
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
