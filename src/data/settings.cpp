@@ -51,7 +51,7 @@ Settings::Settings(){
     // minimumn distance from the edge that objects should spawn with
     this->objectSpawnMargin=50;
 
-    this->timeMultiplier=1;
+    this->timeMultiplier=0.2;
 
     // 6/23/2023 set the project seed
     //this->seed=60007;

@@ -204,8 +204,8 @@ int main() {
                     collide4(
                         data->objects[i],
                         data->objects[j],
-                        data->settings->restitution,
-                        deltaTime
+                        data->settings->restitution//,
+                        //deltaTime
                     );
                 }else{
                     //std::cout<<"nope";
@@ -461,6 +461,9 @@ int main() {
     // but even though the above was probably made like back around 5/??/2023
     // and i'm stretching this joke too far
     // and with the double first word line pair things here
-
+    // 2/19/2024
+    // coolmanthecool says that i don't need to do this and that the program does it automatically
+    // frankly i don't care and i'm going to do it anyways
+    // as in deleting data above
     return(0);
 }

@@ -325,3 +325,62 @@ void correctVelocities2(std::vector<ObjectNd*> objects,double G){
         }
     }
 }
+
+// 2/16/2024
+// maybe actually IDENTIFY THE PROBLEMS FIRST...
+// i really did just waste a good 4-6 months because i never actually took the time to actually
+// try and identify the true problem...
+// the TRUE problem is drift. I think my above two (...?) solutions don't work
+// because they don't actually stop the drift, they just make the velocity smaller after the drift,
+// thus making said object now be slower in the orbit,
+// as well as not anymore conserving momentum, (maybe the momentum could have been split
+// up with the objects the objects giving said object energy by the ratio of the energy given 
+// to said object by the other object over the total energy given to the object? eh it probably 
+// wouldn't do too much good idk)
+// thus changing the orbit to be more elliptical (?)
+// of which then it falls (?)
+// but then it gets artificially faster as it falls because of the thing
+// and then it like just isn't perfect and it makes and compounds errors over time
+// leading to some really weird behavior
+
+
+// https://scicomp.stackexchange.com/questions/29149/
+// what-does-symplectic-mean-in-reference-to-numerical-integrators-and-does-scip/29154#29154
+
+// so i guess the solution is to use a "simplectic integrator" that conserves energy,
+// one of maybe even the first solutions i heard...?
+
+// oh yeah - also, the angular momentum is conserved as well, if that means anything...
+// i guess it remains constant maybe...? at least with a 2-body system where one object has an 
+// extremely large mass?
+
+
+// 2/16/2024
+// here is something totally irrelevant:
+// let's say you put someone in a room and ask them a whole bunch of questions.
+// this is an experiment
+// the experimental groups have the recurring question "does your head hurt?"
+// sprinkled into the questions at varying frequencies,
+// while the control grou does not ever ask "does your head hurt?".
+// i wonder if this would eventually make the person's head hurt depending on frequency
+// because their mind is thinking about it and there may be some sort of 
+// placebo-esque effect going on.
+// could one apply the results into not repeatedly asking if a person has a problem
+// such that you don't cause them pain, if the conclusion is that asking more
+// gives more pain?
+// things to wonder...
+
+// 2/19/2024
+// i just looked up what kerbal space program used, because frankly 
+// (second time using frank again today here what), that has always sort of been the final goal
+// however now that i looked at it, 
+// https://en.wikipedia.org/wiki/Kerbal_Space_Program
+// #:~:text=The%20game%20simulates%20orbits%20using,physics%20engine%20to%20be%20rewritten.
+// "Implementing full n-body physics would require the entire physics engine to be rewritten."
+
+// this is kind of sad but i personally want an n-body simulation because...
+// why do i want it again?
+// oh yeah - because it is cool
+// i dunno why really to be completely honest...
+// should i just move onto rasterization?
+// thanks, 4 months, for teaching me that realistic gravitational simulations are impractical...

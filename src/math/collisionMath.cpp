@@ -362,8 +362,11 @@ void collide3(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTi
     }
 }
 
+// 2/19/2024  why is deltatime even needed anyways
+// i'm gonna remove it and see what happens lol
+// i guess it's fine - i'll keep it off then idk
 // 10/20/2023 - I did the mathematics once again, but now this time i am near certain that it is accurate
-void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution, double deltaTime){
+void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution){
 //void collide4(ObjectNd* obj1, ObjectNd* obj2, double restitution){
     // Desmos graph: https://www.desmos.com/calculator/8bnx8zm9yu
     // The below is partically copy/pasted (then modified) from 
