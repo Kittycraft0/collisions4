@@ -182,7 +182,8 @@ int main() {
         // 6/7/2023
         // Collisions
         if(doCollide){
-        for(int i=0;i<data->objects.size();i++){
+        baseCollide(data->objects,data->settings->restitution);
+        /*for(int i=0;i<data->objects.size();i++){
             //data->objects[i]->linDisp[0]+=1;
             for(int j=i+1;j<data->objects.size();j++){
                 //float dist=sqrt(pow(2,2)+pow(2,2));
@@ -211,7 +212,7 @@ int main() {
                     //std::cout<<"nope";
                 }
             }
-        }
+        }*/
         }
 
         // 6/6/2023

@@ -16,6 +16,6 @@
 void baseCollide(std::vector<ObjectNd*> objects, double restitution);
 void nTreeOpimizedCollide(std::vector<ObjectNd*> objects, double restitution);
 
-void separateOrbs(ObjectNd* obj1, ObjectNd* obj2);
+//void separateOrbs(ObjectNd* obj1, ObjectNd* obj2);
 
 #endif //COLLISIONOPTIMIZATIONMATH_H

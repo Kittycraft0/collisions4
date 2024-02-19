@@ -74,7 +74,7 @@
 //void separateOrbs(ObjectNd* obj1, ObjectNd* obj2);
 
 
-
+// 2/19/2024
 void baseCollide(std::vector<ObjectNd*> objects, double restitution){
     for(int i=0;i<objects.size();i++){
         //objects[i]->linDisp[0]+=1;
@@ -106,7 +106,7 @@ void baseCollide(std::vector<ObjectNd*> objects, double restitution){
     }    
 }
 
-
+// 2/19/2024
 void nTreeOpimizedCollide(std::vector<ObjectNd*> objects, double restitution){
     
 }

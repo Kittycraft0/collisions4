@@ -9,6 +9,7 @@ set(SOURCES_MATH
     ${MATH_DIR}/gravityMath.cpp
     ${MATH_DIR}/invsqrt.cpp
     ${MATH_DIR}/wallCollide.cpp
+    ${MATH_DIR}/collisionOptimizationMath.cpp
 )
 
 # !!! Create the data library

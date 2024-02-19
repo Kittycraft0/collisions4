@@ -4,6 +4,7 @@
 
 // deine all things math
 #include "collisionmath.h"
+#include "collisionoptimizationmath.h"
 #include "gravitymath.h"
 #include "invsqrt.h"
 #include "wallCollide.h"
